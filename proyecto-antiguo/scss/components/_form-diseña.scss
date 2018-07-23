@@ -1,0 +1,290 @@
+//form-diseña-Maria
+//icons
+
+.rectangle_2 {
+  width: 21px;
+  height: 18px;
+  color: $color-primary;
+}
+
+.arrow  {
+    width: 16px;
+    height: 18px;
+    color: $color-middark;
+    text-align: center;
+}
+//style blu radio butoom clikable
+.container_input_div {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+ .clikable{
+    opacity: 0;
+}
+.checkmark {
+    position: relative;
+    height: 17px;
+    width: 17px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $color-midtonemidark;
+    opacity: 1;
+    background-color: $color-ligthtone;
+    border-radius: 50%;
+}
+.clikable:checked ~ .checkmark {
+    background-color: $color-red-bright;
+    opacity: 1;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.clikable:checked ~ .checkmark:after {
+  display: block;
+  @include absoluteCentered ();
+
+}
+.container_input_div .checkmark:after {
+   width: 6px;
+   height: 6px;
+   border-radius: 50%;
+   background:$color-ligthtone;
+
+}
+//position
+
+.container__rectangle_title_arrow{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.container__rectangle_title{
+    display: flex;
+    align-items: baseline;
+    width: 125px;
+}
+
+.form__title-principal{
+    margin-left: 10px;
+    padding: 0;
+}
+
+.form__subtitle {
+   align-self: flex-start;
+}
+.fieldset-colors{
+   padding: 0;
+}
+.container-legend-label-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 25px;
+    padding: 0 20px 30px 39px;
+}
+.container__input__labels > *{
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+}
+.container_input_div{
+    margin-bottom: 20px;
+}
+.container__square{
+  display: flex;
+  margin-left: 10px;
+}
+.container_input_font{
+    margin-bottom: 9px;
+}
+.container__font {
+    margin-left: 10px;
+
+}
+
+//borders
+.form__desing{
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+}
+.fieldset-colors {
+    border-width: 0;
+    width: 100%;
+    margin: 0;
+
+}
+
+.fieldset-font{
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+//typo
+
+.form__title-principal{
+    font-family: $font-family-primary;
+    font-weight: $semibold;
+    font-size: $font-size-l;
+    color: $color-middark;
+}
+.form__subtitle{
+    font-family: $font-family-primary;
+    font-weight: $normal;
+    font-size: $font-size-m;
+    color: $color-middark;
+}
+.font1{
+    font-family: $font-family-primary;
+    font-weight: $semibold;
+    font-size: $font-size-m-plus;
+    color: $color-middark;
+
+}
+
+.font2{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-weight: $normal;
+    font-size: $font-size-m-plus;
+    color: $color-middark;
+}
+
+.font3{
+    font-family: $font-family-secundary;
+    font-weight: $normal;
+    font-size: $font-size-m-plus;
+    color: $color-middark;
+}
+// colors
+
+//first-color
+.first-color__square1 {
+    @include creatingSquares ($color-secondary);
+}
+.first-color__square2 {
+    @include creatingSquares ($color-secondary-light);
+}
+.first-color__square3 {
+    @include creatingSquares ($color-secondary-lighter);
+}
+//second-color
+.second-color__square1 {
+    @include creatingSquares ($color-red-blood);
+}
+.second-color__square2 {
+    @include creatingSquares ($color-red-bright);
+}
+.second-color__square3 {
+    @include creatingSquares ($color-red-sunset);
+}
+//third-color
+.third-color__square1 {
+    @include creatingSquares ($color-San-Juan);
+}
+.third-color__square2 {
+    @include creatingSquares ($color-solitude);
+}
+.third-color__square3 {
+    @include creatingSquares ($color-regent);
+}
+
+//clases change colors
+.redTarget {
+        .color-line{
+            background-color:$color-red-sunset;
+        }
+
+    .name_line{
+        color:$color-red-blood;
+    }
+  .boton-red-social {
+      border: solid 2px $color-red-sunset;
+  }
+  .etiqueta-habilidad{
+      background-color: $color-red-bright;
+  }
+  .logo-preview{
+      color: $color-red-blood;
+  }
+}
+
+.greenTarget {
+    .color-line{
+    background-color:$color-secondary-lighter;
+    }
+    .name_line{
+    color:$color-secondary;
+    }
+    .boton-red-social {
+     border: solid 2px $color-secondary-lighter;
+    }
+    .etiqueta-habilidad{
+    background-color: $color-secondary-light;
+    }
+    .logo-preview{
+    color: $color-secondary;
+    }
+}
+
+.greyTarget {
+    .color-line{
+        background-color:$color-regent;
+    }
+
+.name_line{
+    color:$color-San-Juan;
+}
+.boton-red-social {
+  border: solid 2px $color-regent;
+}
+.etiqueta-habilidad{
+  background-color: $color-solitude;
+}
+.logo-preview{
+  color: $color-San-Juan;
+}
+}
+
+//clases change font
+
+.ubuntuFont{
+    .name_line{
+      font-family: $font-family-primary;
+    }
+    .profesion_line{
+        font-family: $font-family-primary;
+    }
+}
+
+.comicFont{
+    .name_line{
+      font-family: $font-family-terciary;
+    }
+    .profesion_line{
+        font-family: $font-family-terciary;
+    }
+}
+
+.montFont{
+    .name_line{
+      font-family: $font-family-secundary;
+    }
+    .profesion_line{
+        font-family: $font-family-secundary;
+    }
+}
+
+.arrow-down {
+    transform: rotate(180deg);
+
+}
+
+.lineasseparacion {
+
+}

@@ -1,0 +1,25 @@
+@mixin flex-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin normalize {
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+
+@mixin absoluteCentered() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//mixin dineña form
+@mixin creatingSquares ($squareColor){
+  height: 25px;
+  width: 30px;
+  background-color: $squareColor;
+}

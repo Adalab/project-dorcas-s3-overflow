@@ -1,0 +1,258 @@
+.form__fill {
+  border: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.container__rectangle_title{
+  cursor:pointer;
+}
+
+.icono-teclado {
+  color: $color-primary;
+  align-self: center;
+  margin-right: 10px;
+}
+
+.form__title {
+  font-family: $font-family-primary;
+  font-weight: $semibold;
+  font-size: $font-size-l;
+  color: $color-middark;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.contenedor-icono {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.icon__second-title {
+  display: flex;
+  align-items: baseline;
+  width: 125px;
+}
+
+.arrow-second {
+  width: 16px;
+  height: 18px;
+  color: $color-middark;
+  cursor:pointer;
+}
+
+.form__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleshare {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.icon__Third-title {
+  display: flex;
+  align-items: baseline;
+  width: 125px;
+}
+
+.form__label {
+  font-family: $font-family-primary;
+  font-weight: $normal;
+  font-size: $font-size-m;
+  color: $color-secondary;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.form__input {
+  border-color: $color-secondary-lighter;
+  border-style: solid;
+  border-width: 1px;
+  color: $color-midtonedark;
+  height: 30px;
+  padding-left: 10px;
+  font-size: $font-size-m;
+  opacity: 0.5;
+  font-family: $font-family-primary;
+  font-size: $font-size-m;
+}
+
+.form__container--habilidades {
+  padding-top: 40px;
+}
+
+.form__container--habilidad {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form__select {
+  border-color: $color-secondary-lighter;
+  border-style: solid;
+  border-width: 1px;
+  color: $color-midtonedark;
+  width: 165px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: $color-ligthtone;
+  color: $color-darktone;
+  font-family: $font-family-primary;
+  font-size: $font-size-m;
+}
+
+.boton--sumar-restar {
+  height: 30px;
+  width: 30px;
+  border: 2px solid $color-primary;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+}
+
+.icono--signo {
+  color: $color-primary;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+//BOTON CREAR Tarjetas
+.form_title3 {
+  font-family: $font-family-primary;
+  font-weight: $semibold;
+  font-size: $font-size-l;
+  color: $color-middark;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 0;
+}
+
+.contenedor-boton {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.makecard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  background-color: $color-primary;
+  color: $color-ligthtone;
+  text-decoration: none;
+  font-family: $font-family-primary;
+  font-weight: $semibold;
+  font-size: $font-size-l;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.32);
+  border-radius: 12px;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.rectangl2 {
+  width: 95%;
+  height: 1px;
+  background-color: #d8d8d8;
+  margin-bottom: 20px;
+}
+
+.contenedor-twitter {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.titletarjeta {
+  color: $color-middark;
+
+  margin-bottom: 5px;
+  font-family: $font-family-primary;
+}
+
+.parraphtarjeta {
+  color: $color-primary;
+  font-size: $font-size-xl-plus;
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-family: $font-family-primary;
+}
+
+.maketwitter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 180px;
+  height: 30px;
+  font-size: $font-size-m;
+  background-color: #00a0f5;
+  text-decoration: none;
+  color: $color-ligthtone;
+  font-family: $font-family-primary;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.32);
+}
+
+.icon_comparte {
+  color: $color-primary;
+}
+
+// CLASE PARA AÑADIR IMAGEN
+
+.action__hiddenField {
+  display: none;
+}
+
+.form__container--imagen {
+  display: flex;
+}
+
+.boton__añadir-imagen {
+  background-color: $color-primary;
+  color: $color-ligthtone;
+  text-decoration: none;
+  font-family: $font-family-primary;
+  font-weight: $normal;
+  font-size: $font-size-m;
+  display: block;
+  box-sizing: border-box;
+  width: 140px;
+  height: 30px;
+  text-align: center;
+  padding-top: 5px;
+  border-radius: 3px;
+}
+.profile-image__item {
+  width: 100%;
+  display: block;
+}
+
+.contenedor--imagen {
+  border-color: $color-secondary-lighter;
+  border-style: solid;
+  border-width: 1px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  margin-left: 20px;
+}
+
+// AQUI ACABAN CLASES PARA AÑADIR IMAGEN
