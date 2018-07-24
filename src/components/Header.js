@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import imageLogoAfter from './images/after.svg';
-import imageLogoBefore from './images/before.svg';
+import imageLogoAfter from '../images/after.svg';
 
-import './Header.css';
+import '../Main.css';
 
 class Header extends Component {
     render() {
@@ -15,7 +14,5 @@ class Header extends Component {
         );
     }
 }
-
-
 
 export default Header;
