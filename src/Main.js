@@ -7,7 +7,8 @@ class Main extends Component {
   render() {
     return (
       <Fragment>
-      {/* <Header/>*/}
+      <Header/>
+  
       <Footer/> 
       </Fragment>
     );
