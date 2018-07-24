@@ -12,10 +12,13 @@ const saveLocalStore = (key, value) => {
 }
 
 const writeData = event => {
+ 
   const campoModificado = event.currentTarget;
+  
   saveLocalStore(campoModificado.name, campoModificado.value);
     if(campoModificado.classList.contains("form__input") && !campoModificado.classList.contains("inputhref")){
      const elementInCard = document.querySelector(`.local-- ${campoModificado.name}`);
+    
       elementInCard.innerHTML = campoModificado.value;
     } else if(campoModificado.classList.contains("inputhref")) {
       const hrefelement = document.querySelector(`. ${campoModificado.name} _button`);
@@ -33,6 +36,7 @@ const writeData = event => {
 
 
 for(let a = 0; a < arrayForm.length; a++){
+  
   arrayForm[a].addEventListener("keyup", writeData)
 }
 
