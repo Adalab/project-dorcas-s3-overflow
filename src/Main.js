@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Header from './Header.js';
-import Footer from './Footer.js';
+import Footer from './components/Footer.js';
 import './Main.css';
 
 class Main extends Component {
@@ -8,7 +8,8 @@ class Main extends Component {
     return (
       <Fragment>
       <Header/>
-      {/* <Footer/> */}
+  
+      <Footer/> 
       </Fragment>
     );
   }
