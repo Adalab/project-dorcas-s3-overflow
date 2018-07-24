@@ -12,7 +12,9 @@ const saveLocalStore = (key, value) => {
 }
 
 const writeData = event => {
+ 
   const campoModificado = event.currentTarget;
+  
   saveLocalStore(campoModificado.name, campoModificado.value);
     if(campoModificado.classList.contains("form__input") && !campoModificado.classList.contains("inputhref")){
      let elementInCard = document.querySelector(`.local--${campoModificado.name}`);
