@@ -17,11 +17,10 @@ const writeData = event => {
   
   saveLocalStore(campoModificado.name, campoModificado.value);
     if(campoModificado.classList.contains("form__input") && !campoModificado.classList.contains("inputhref")){
-     const elementInCard = document.querySelector(`.local-- ${campoModificado.name}`);
-    
+     let elementInCard = document.querySelector(`.local--${campoModificado.name}`);
       elementInCard.innerHTML = campoModificado.value;
     } else if(campoModificado.classList.contains("inputhref")) {
-      const hrefelement = document.querySelector(`. ${campoModificado.name} _button`);
+      let hrefelement = document.querySelector(`. ${campoModificado.name} _button`);
       if(campoModificado.name === "email") {
         hrefelement.href = `mailto: ${campoModificado.value}`;
       } else if(campoModificado.name === "phone"){
@@ -35,9 +34,8 @@ const writeData = event => {
 }
 
 
-for(let a = 0; a < arrayForm.length; a++){
-  
-  arrayForm[a].addEventListener("keyup", writeData)
+for(let formElements of arrayForm) {
+  formElements.addEventListener("keyup", writeData)
 }
 
 
@@ -49,6 +47,7 @@ const cerrarOtrosColapsables = turnArrow => {
   for (let i = 0; i < colapsables.length; i++) {
     colapsables[i].classList.remove('colapsable--visible');
     turnArrow[i].classList.remove('arrow-down');
+    console.log('turnarrow', turnArrow[i]);
   }
 }
 
@@ -65,11 +64,12 @@ const actualizarColapsable = event => {
     cerrarOtrosColapsables(turnArrow);
     contenedor.classList.add('colapsable--visible');
     turnArrow[clikedID].classList.add('arrow-down');
+    console.log('girooo', turnArrow[clikedID]);
     }
   }
 //cogemos la flecha cuya posicion en el array sea igual al data-donde del elemento clikado y le quitamos y le ponemos la clase que la hace girar.
-for (let i = 0; i < tituloColapsable.length; i++) {
-  tituloColapsable[i].addEventListener('click', actualizarColapsable);
+for (let titles of tituloColapsable) {
+  titles.addEventListener('click', actualizarColapsable);
 }
 
 //color radio buttom\
@@ -86,8 +86,8 @@ const changeColors = event => {
   }
 }
 
-for (let i = 0; i < colorsP.length; i++) {
-  colorsP[i].addEventListener('click', changeColors);
+for (let color of colorsP) {
+  color.addEventListener('click', changeColors);
 }
 
 //font radio buttom
@@ -105,6 +105,6 @@ const changeFonts = event => {
   }
 
 }
-for (let i = 0; i < fontsP.length; i++) {
-  fontsP[i].addEventListener('click', changeFonts );
+for (let fonts of fontsP) {
+  fonts.addEventListener('click', changeFonts );
 }
