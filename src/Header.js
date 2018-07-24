@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import imageLogo from './images/after.svg';
+import imageLogoAfter from './images/after.svg';
+import imageLogoBefore from './images/before.svg';
 
 import './Header.css';
 
@@ -8,7 +9,7 @@ class Header extends Component {
         return (
             <header>
                 <div class="header__link" alt="Logo awesome">
-                    <img class="header__img" src={imageLogo} alt="imagen logo awesome" />
+                    <img class="header__img" src={imageLogoAfter} alt="imagen logo awesome" />
                 </div>
             </header>
         );
