@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import martirioPic from '../images/martirio.jpg';
+import Skills from './Skills.js';
 
 class Preview extends Component {
     render() {
@@ -41,9 +42,9 @@ class Preview extends Component {
                                     </a>
                                 </div>
                                 <div class="etiquetas-habilidades-container local local--skills">
-                                    <p class="etiqueta-habilidad">html</p>
-                                    <p class="etiqueta-habilidad">CSS</p>
-                                    <p class="etiqueta-habilidad">GULP</p>
+                                <Skills skillName='HTML'/>
+                                <Skills skillName='CSS'/>
+                                <Skills skillName='GULP'/>
                                 </div>
                             </div>
                         </div>
