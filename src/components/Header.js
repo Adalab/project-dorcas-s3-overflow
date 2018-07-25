@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import imageLogoAfter from '../images/after.svg';
 
-import '../Main.css';
-
 class Header extends Component {
     render() {
         return (
