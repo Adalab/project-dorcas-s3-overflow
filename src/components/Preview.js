@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import martirioPic from '../images/martirio.jpg';
+import Skills from './Skills.js';
 
 class Preview extends Component {
     render() {
@@ -39,10 +40,26 @@ class Preview extends Component {
                                     <i class="fab fa-github-alt logo-preview logo-github"></i>
                                 </a>
                             </div>
-                            <div class="etiquetas-habilidades-container local local--skills">
-                                <p class="etiqueta-habilidad">html</p>
-                                <p class="etiqueta-habilidad">CSS</p>
-                                <p class="etiqueta-habilidad">GULP</p>
+                            <div class="footer-preview__container">
+                                <div class="logos-container">
+                                    <a class="boton-red-social tfn_button phone_button local--phone" id="element-telefono" href="">
+                                        <i class="fas fa-mobile-alt logo-preview logo-fono"></i>
+                                    </a>
+                                    <a class="boton-red-social email_button local--email" id="element-email" href="">
+                                        <i class="far fa-envelope logo-preview logo-carta"></i>
+                                    </a>
+                                    <a class="boton-red-social linkedin_button local--linkedin" id="element-linkedin" href="">
+                                        <i class="fab fa-linkedin-in logo-preview logo-in"></i>
+                                    </a>
+                                    <a class="boton-red-social github_button local--github" id="element-github" href="">
+                                        <i class="fab fa-github-alt logo-preview logo-github"></i>
+                                    </a>
+                                </div>
+                                <div class="etiquetas-habilidades-container local local--skills">
+                                    <Skills skillName='HTML' />
+                                    <Skills skillName='CSS' />
+                                    <Skills skillName='GULP' />
+                                </div>
                             </div>
                         </div>
                     </div>
