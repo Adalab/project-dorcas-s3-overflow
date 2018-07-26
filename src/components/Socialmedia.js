@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 class Socialmedia extends Component {
     render() {
 
         return (
-            <div className="logos-container">
-                <a className="boton-red-social " id="element-telefono" href="">
-                    <i className="fas fa-mobile-alt logo-preview logo-fono"></i>
+            <Fragment>
+                <a className="boton-red-social" href={this.props.url}>
+                    <i className={this.props.icon}></i>
                 </a>
+                
                 {/* <a class="boton-red-social email_button local--email" id="element-email" href="">
                     <i class="far fa-envelope logo-preview logo-carta"></i>
                 </a>
@@ -17,7 +18,7 @@ class Socialmedia extends Component {
                 <a class="boton-red-social github_button local--github" id="element-github" href="">
                     <i class="fab fa-github-alt logo-preview logo-github"></i>
                 </a> */}
-            </div>
+            </Fragment>
         );
     }
 }
