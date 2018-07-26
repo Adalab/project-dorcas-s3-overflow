@@ -5,7 +5,7 @@ class Socialmedia extends Component {
 
         return (
             <div className="logos-container">
-                <a className="boton-red-social tfn_button phone_button local--phone" id="element-telefono" href="">
+                <a className="boton-red-social " id="element-telefono" href="">
                     <i className="fas fa-mobile-alt logo-preview logo-fono"></i>
                 </a>
                 {/* <a class="boton-red-social email_button local--email" id="element-email" href="">
