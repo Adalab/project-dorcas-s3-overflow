@@ -7,11 +7,24 @@ import './Main.css';
 
 class Main extends Component {
   render() {
+    const { userInfo } = this.props
     return (
       <Fragment>
       <Header/>
       <main className= "container-mediaqueries-preview">
-      <Preview /> 
+      <Preview 
+        // userInfoPreview={userInfo}
+        name={userInfo.name}
+        job={userInfo.job}
+        email={userInfo.email}
+        phone={userInfo.phone}
+        github={userInfo.github}
+        linkedin={userInfo.linkedin}
+        photo={userInfo.photo}
+        skills={userInfo.skills}
+        // palette: "2",
+        // typography: "1"
+        /> 
       <Formulario/>
       </main>
       <Footer/> 
