@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import martirioPic from '../images/martirio.jpg';
 import Skills from './Skills.js';
+import Socialmedia from './Socialmedia.js';
 
 class Preview extends Component {
     render() {
@@ -26,45 +27,35 @@ class Preview extends Component {
                             <img class="changeImagePreview local--photo" src={martirioPic} alt="" />
                         </div>
                         <div class="footer-preview__container">
+
                             <div class="logos-container">
-                                <a class="boton-red-social tfn_button phone_button local--phone" id="element-telefono" href="">
-                                    <i class="fas fa-mobile-alt logo-preview logo-fono"></i>
-                                </a>
-                                <a class="boton-red-social email_button local--email" id="element-email" href="">
-                                    <i class="far fa-envelope logo-preview logo-carta"></i>
-                                </a>
-                                <a class="boton-red-social linkedin_button local--linkedin" id="element-linkedin" href="">
-                                    <i class="fab fa-linkedin-in logo-preview logo-in"></i>
-                                </a>
-                                <a class="boton-red-social github_button local--github" id="element-github" href="">
-                                    <i class="fab fa-github-alt logo-preview logo-github"></i>
-                                </a>
+                                <Socialmedia 
+                                url="pondremos el protocolo más la url como una var de js"
+                                icon={`fas fa-mobile-alt logo-preview`}
+                                />
+                                <Socialmedia 
+                                url="pondremos el protocolo más la url como una var de js"
+                                icon={`far fa-envelope logo-preview`}
+                                />
+                                <Socialmedia 
+                                url="pondremos el protocolo más la url como una var de js"
+                                icon={`fab fa-linkedin-in logo-preview`}
+                                />
+                                <Socialmedia 
+                                url="pondremos el protocolo más la url como una var de js"
+                                icon={`fab fa-github-alt logo-preview`}
+                                />
                             </div>
-                            <div class="footer-preview__container">
-                                <div class="logos-container">
-                                    <a class="boton-red-social tfn_button phone_button local--phone" id="element-telefono" href="">
-                                        <i class="fas fa-mobile-alt logo-preview logo-fono"></i>
-                                    </a>
-                                    <a class="boton-red-social email_button local--email" id="element-email" href="">
-                                        <i class="far fa-envelope logo-preview logo-carta"></i>
-                                    </a>
-                                    <a class="boton-red-social linkedin_button local--linkedin" id="element-linkedin" href="">
-                                        <i class="fab fa-linkedin-in logo-preview logo-in"></i>
-                                    </a>
-                                    <a class="boton-red-social github_button local--github" id="element-github" href="">
-                                        <i class="fab fa-github-alt logo-preview logo-github"></i>
-                                    </a>
-                                </div>
-                                <div class="etiquetas-habilidades-container local local--skills">
-                                    <Skills skillName='HTML' />
-                                    <Skills skillName='CSS' />
-                                    <Skills skillName='GULP' />
-                                </div>
+                            <div class="etiquetas-habilidades-container local local--skills">
+                                <Skills skillName='HTML' />
+                                <Skills skillName='CSS' />
+                                <Skills skillName='GULP' />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         );
     }
 }
