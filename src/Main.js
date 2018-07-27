@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import Preview from './components/Preview.js';
-
+import Formulario from './components/Formulario.js';
 import './Main.css';
 
 class Main extends Component {
@@ -10,7 +10,10 @@ class Main extends Component {
     return (
       <Fragment>
       <Header/>
-      <Preview />
+      <main className= "container-mediaqueries-preview">
+      <Preview /> 
+      <Formulario/>
+      </main>
       <Footer/> 
       </Fragment>
     );
