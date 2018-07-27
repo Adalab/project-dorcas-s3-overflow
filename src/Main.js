@@ -10,7 +10,10 @@ class Main extends Component {
     return (
       <Fragment>
       <Header/>
-      <Preview />
+      <main className= "container-mediaqueries-preview">
+      <Preview /> 
+      <Formulario/>
+      </main>
       <Footer/> 
       </Fragment>
     );
