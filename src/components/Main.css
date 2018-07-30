@@ -48,7 +48,7 @@ $font-size-xxl-plus:    px;
   height: 150px; }
   .header__link::after {
     content: '';
-    background-image: url("./images/before.svg");
+    background-image: url("../images/before.svg");
     background-size: contain;
     background-repeat: no-repeat;
     display: inline;
@@ -440,7 +440,7 @@ body {
 
 .preview-container {
   border: 0;
-  background-image: url("./images/fondo-dots2.svg");
+  background-image: url("../images/fondo-dots2.svg");
   background-size: cover;
   display: flex;
   justify-content: center; }
