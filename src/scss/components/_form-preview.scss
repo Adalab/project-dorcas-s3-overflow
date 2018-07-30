@@ -58,7 +58,7 @@ border-bottom: 1px solid lightgrey;
 
 .preview-container {
   border: 0;
-  background-image: url('./images/fondo-dots2.svg');
+  background-image: url('../images/fondo-dots2.svg');
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -213,6 +213,9 @@ border-bottom: 1px solid lightgrey;
 }
 
 .etiqueta-habilidad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 65px;
   height: 18px;
   border-radius: 4px;

@@ -48,7 +48,7 @@ $font-size-xxl-plus:    px;
   height: 150px; }
   .header__link::after {
     content: '';
-    background-image: url("./images/before.svg");
+    background-image: url("../images/before.svg");
     background-size: contain;
     background-repeat: no-repeat;
     display: inline;
@@ -440,7 +440,7 @@ body {
 
 .preview-container {
   border: 0;
-  background-image: url("./images/fondo-dots2.svg");
+  background-image: url("../images/fondo-dots2.svg");
   background-size: cover;
   display: flex;
   justify-content: center; }
@@ -573,6 +573,9 @@ body {
   padding: 10px 10px 10px 15px; }
 
 .etiqueta-habilidad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 65px;
   height: 18px;
   border-radius: 4px;
