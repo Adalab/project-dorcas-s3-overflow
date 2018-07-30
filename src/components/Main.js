@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import Header from './components/Header.js';
-import Footer from './components/Footer.js';
-import Preview from './components/Preview.js';
-import Formulario from './components/Formulario.js';
+import Header from './Header.js';
+import Footer from './Footer.js';
+import Preview from './Preview.js';
+import Formulario from './Formulario.js';
 import './Main.css';
 
+// de
 const paletteClass = {
   "1": 'greenTarget',
-  "2": 'redTarged',
+  "2": 'redTarget',
   "3": 'greyTarget'
 }
 
@@ -42,7 +43,6 @@ class Main extends Component {
         <Header />
         <main className="container-mediaqueries-preview">
           <Preview
-            // userInfoPreview={userInfo}
             name={userInfo.name}
             job={userInfo.job}
             email={userInfo.email}
@@ -51,8 +51,8 @@ class Main extends Component {
             linkedin={userInfo.linkedin}
             photo={userInfo.photo}
             skills={userInfo.skills}
-            palette={paletteClass[userInfo.palette]}
-            typography={fontClass[userInfo.typography]}
+            paletteClass={paletteClass[userInfo.palette]}
+            typographyClass={fontClass[userInfo.typography]}
           />
           <Formulario />
         </main>
@@ -61,6 +61,5 @@ class Main extends Component {
     );
   }
 }
-
 
 export default Main;

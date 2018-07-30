@@ -14,11 +14,11 @@ class Preview extends Component {
             linkedin,
             photo,
             skills,
-            palette,
-            typography
+            paletteClass,
+            typographyClass
         } = this.props
         return (
-            <div className="preview-container">
+            <div className={`preview-container ${paletteClass} ${typographyClass}`}>
                 <div className="margin-preview">
                     <div className="button-reset__container">
                         <a className="button-reset__link button-reset__title" href="#">
