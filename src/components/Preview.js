@@ -5,7 +5,18 @@ import Socialmedia from './Socialmedia.js';
 
 class Preview extends Component {
     render() {
-        const { name, job, email, phone, github, linkedin, photo, skills } = this.props
+        const { 
+            name,
+            job, 
+            email,
+            phone,
+            github,
+            linkedin,
+            photo,
+            skills,
+            palette,
+            typography
+        } = this.props
         return (
             <div className="preview-container">
                 <div className="margin-preview">
