@@ -1,5 +1,25 @@
 import React, { Component, Fragment } from 'react';
 class Formulario extends Component {
+  constructor(){
+    super()
+  }
+
+
+    handleAddImage(){
+      console.log('imagen añadida')
+    }
+
+    handleAbilities(){
+      console.log('habilidad añadida')
+    }
+
+    handleCreateCard(){
+      console.log('tarjeta creada')
+    }
+
+    handleTwitter(){
+      console.log('compartido en twitter')
+    }
 
     render() {
       return (
@@ -126,7 +146,7 @@ class Formulario extends Component {
               <label className="form__label">Imagen de perfil</label>
               <div className="form__container--imagen">
 
-                <div className="action form__container--imagen">
+                <div className="action form__container--imagen" onClick={this.handleAddImage}>
                   <button className="action__upload-btn boton__añadir-imagen" type="button">Añadir imagen</button>
                   <input type="file" name="photo" id="img-selector" className="action__hiddenField"/>
                 </div>
@@ -149,7 +169,7 @@ class Formulario extends Component {
             </div>
             <div className="form__container--habilidad">
               <div id="mama">
-                <button type="button" id="fetch" className="button">
+                <button type="button" id="fetch" className="button" onClick={this.handleAbilities}>
                   <div className="content-button-habilities"> + </div>
                 </button>
               </div>
@@ -171,7 +191,7 @@ class Formulario extends Component {
           </div>
           <div className="contenido-colapsable">
             <div className="contenedor-boton">
-              <a href="" className="makecard submit" id="submit">&nbsp;&nbsp;CREAR TARJETA
+              <a href="" className="makecard submit" id="submit" onClick={this.handleCreateCard}>&nbsp;&nbsp;CREAR TARJETA
                 <i className="far fa-address-card"></i>
               </a>
               <span className="rectangl2"></span>
@@ -179,7 +199,7 @@ class Formulario extends Component {
             <div className="contenedor-twitter">
               <h2 className="titletarjeta response parraphtarjeta"></h2>
 
-              <a href="" className="maketwitter" target="_blank">&nbsp;&nbsp;Compartir en Twitter
+              <a href="" className="maketwitter" target="_blank" onClick={this.handleTwitter}>&nbsp;&nbsp;Compartir en Twitter
                 <i className="fab fa-twitter"></i>
               </a>
               <span className="rectangl2"></span>

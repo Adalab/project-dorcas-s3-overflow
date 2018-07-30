@@ -4,6 +4,14 @@ import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
 
 class Preview extends Component {
+    constructor(){
+        super()
+    }
+    
+    handleReset(){
+        console.log('elemento clicado')
+    }
+    
     render() {
         const { 
             name,
@@ -18,9 +26,10 @@ class Preview extends Component {
             typographyClass
         } = this.props
         return (
+        
             <div className={`preview-container ${paletteClass} ${typographyClass}`}>
                 <div className="margin-preview">
-                    <div className="button-reset__container">
+                    <div className="button-reset__container" onClick={this.handleReset}>
                         <a className="button-reset__link button-reset__title" href="#">
                             <i className=" far fa-trash-alt icono-basura">RESET</i>
                         </a>
