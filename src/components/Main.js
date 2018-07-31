@@ -19,25 +19,27 @@ const fontClass = {
 }
 
 class Main extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      name: "Bucky",
-      job: "Recat",
-      email: "buckythecat@gmail.com",
-      phone: "666666666",
-      github: "buckythecat",
-      linkedin: "buckythecat",
-      photo: "./images/cat.png",
-      skills: "HTML",
-      palette: "2",
-      typography: "1"
+      data: {
+        name: "Bucky",
+        job: "Recat",
+        email: "buckythecat@gmail.com",
+        phone: "666666666",
+        github: "buckythecat",
+        linkedin: "buckythecat",
+        photo: "./images/cat.png",
+        skills: "HTML",
+        palette: "2",
+        typography: "1"
+      }
     }
   }
 
   render() {
-    const  userInfo  = this.state
+    const userInfo = this.state.data
     return (
       <Fragment>
         <Header />

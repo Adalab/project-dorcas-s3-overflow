@@ -1,9 +1,24 @@
 import React, {Component, Fragment} from 'react';
 import Collapsable from './Collapsable';
 class Formulario extends Component {
-    constructor() {
-        super()
-    }
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          data: {
+            name: "Bucky",
+            job: "Recat",
+            email: "buckythecat@gmail.com",
+            phone: "666666666",
+            github: "buckythecat",
+            linkedin: "buckythecat",
+            photo: "./images/cat.png",
+            skills: "HTML",
+            palette: "2",
+            typography: "1"
+          }
+        }
+      }
 
     handleAddImage() {
         console.log('imagen añadida')
@@ -25,7 +40,7 @@ class Formulario extends Component {
         return (
             <div className="container-izquierda">
                 <form className="form" action="/signup" method="post">
-                    <Collapsable seccion={"DISEÑA"} icono={"far fa-object-ungroup"}>
+                    <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`}>
                         <fieldset className="fieldset-colors">
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">COLORES</legend>
