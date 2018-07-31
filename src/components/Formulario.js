@@ -25,8 +25,8 @@
         this.handleJobInput = this.handleJobInput.bind(this);
         this.handleEmailInput = this.handleEmailInput.bind(this);
         this.handlePhoneInput = this.handlePhoneInput.bind(this);
-        this.handleGithub = this.handleGithubInput.bind(this);
-        this.handleLinkedin = this.handleLinkedinInput.bind(this);
+        this.handleGithubInput = this.handleGithubInput.bind(this);
+        this.handleLinkedinInput = this.handleLinkedinInput.bind(this);
 
         }
 
@@ -68,7 +68,7 @@
             })
         }
 
-        handleGithub(event) {
+        handleGithubInput(event) {
             this.setState ({
                 data: {
                     ...this.state.data,
@@ -77,11 +77,11 @@
             })
         }
 
-        handleLinkedin(event) {
+        handleLinkedinInput(event) {
             this.setState ({
                 data: {
                     ...this.state.data,
-                    linkedin: event.target.value
+                    name: event.target.value
                 }
             })
         }
@@ -105,6 +105,7 @@
         }
 
         render() {
+            const stateForm = this.state.data;
             return (
                 <div className="container-izquierda">
                     <form className="form" action="/signup" method="post">
@@ -217,7 +218,7 @@
                         </Collapsable>
                         <Collapsable seccion={`RELLENA`} icono={`far fa-keyboard`}>
                             <div className="form__container">
-                                <label className="form__label" for="nombre">Nombre completo</label>
+                                <label className="form__label" htmlFor="nombre">Nombre completo</label>
                                 <input
                                     className="form__input form__input--nombre local--input--name"
                                     id="nombre"
@@ -225,7 +226,9 @@
                                     name="name"
                                     placeholder="Ej. Martirio"
                                     maxlength="19"
-                                    data-donde="element-nombre"/>
+                                    value={stateForm.name}
+                                    onChange={this.handleNameInput}
+                                    />
                                 <label className="form__label" for="puesto">Puesto</label>
                                 <input
                                     className="form__input form__input--puesto local--input--job"
@@ -234,7 +237,9 @@
                                     name="job"
                                     placeholder="Ej. Reina de la canción"
                                     maxlength="22"
-                                    data-donde="element-puesto"/>
+                                    value={stateForm.job}
+                                    onChange={this.handleJobInput}
+                                    />
                                 <label className="form__label">Imagen de perfil</label>
                                 <div className="form__container--imagen">
                                     <div className="action form__container--imagen" onClick={this.handleAddImage}>
@@ -259,8 +264,9 @@
                                     type="mail"
                                     name="email"
                                     placeholder="Ej. reinadelacancion@ole.es"
-                                    data-donde="element-email"
-                                    href=""/>
+                                    value={stateForm.email}
+                                    onChange={this.handleEmailInput}
+                                    />
                                 <label className="form__label" for="telefono">Teléfono</label>
                                 <input
                                     className="form__input inputhref form__telefono local--input--phone"
@@ -268,7 +274,9 @@
                                     type="number"
                                     name="phone"
                                     placeholder="Ej. 982938437"
-                                    data-donde="element-telefono"/>
+                                    value={stateForm.phone}
+                                    onChange={this.handlePhoneInput}
+                                    />
                                 <label className="form__label " for="linkedin">Linkedin</label>
                                 <input
                                     className="form__input inputhref form__linkedin local--input--linkedin"
@@ -276,7 +284,8 @@
                                     type="text"
                                     name="linkedin"
                                     placeholder="Ej. martirio.reina"
-                                    data-donde="element-linkedin"/>
+                                    value={stateForm.linkedin}
+                                    onChange={this.handleLinkedin}/>
                                 <label className="form__label" for="github">Github</label>
                                 <input
                                     className="form__input inputhref form__github local--input--github"
@@ -284,7 +293,8 @@
                                     type="text"
                                     name="github"
                                     placeholder="Ej. martirio-reina"
-                                    data-donde="element-github"/>
+                                    value={stateForm.github}
+                                    onChange={this.handleGithubInput}/>
                                 <div className="form__container--habilidades">
                                     <label className="form__label" for="habilidades">Habilidades (máximo 3)</label>
                                 </div>
