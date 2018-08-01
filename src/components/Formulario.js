@@ -115,10 +115,6 @@ import Collapsable from './Collapsable';
 
             //handle button
 
-            handleAddImage() {
-                console.log('imagen añadida')
-            }
-
             handleAbilities() {
                 console.log('habilidad añadida')
             }
