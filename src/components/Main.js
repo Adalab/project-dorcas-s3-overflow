@@ -34,6 +34,19 @@ class Main extends Component {
       palette: "2",
       typography: "1"
     }
+
+    this.handleInputName = this.handleInputName.bind(this);
+  }
+
+  handleInputName(event){
+    console.log("hola")
+    console.log(event.target.value)
+    const nombre = event.target.value;
+    console.log(nombre)
+    console.log(this.state.name)
+    this.setState({
+      name: event.target.value
+    })
   }
 
   render() {
@@ -54,7 +67,11 @@ class Main extends Component {
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
-          <Formulario />
+          <Formulario 
+            name = {this.state.name}
+            onInputNameChange = {this.handleInputName}
+
+          />
         </main>
         <Footer />
       </Fragment>

@@ -7,6 +7,7 @@ class Formulario extends Component {
     this.fileInput = React.createRef();
     this.handleAddImage = this.handleAddImage.bind(this);
     this.handleClickImage = this.handleClickImage.bind(this);
+    
   };
 
 
@@ -26,6 +27,7 @@ class Formulario extends Component {
     fr.readAsDataURL(event.target.files[0]);
    
   }
+
   handleAbilities() {
     console.log('habilidad añadida')
   }
@@ -39,6 +41,8 @@ class Formulario extends Component {
   }
 
   render() {
+    console.log(this.props);
+    
     return (
       <div className="container-izquierda">
         <form className="form" action="/signup" method="post">
@@ -159,7 +163,11 @@ class Formulario extends Component {
                 name="name"
                 placeholder="Ej. Martirio"
                 maxlength="19"
-                data-donde="element-nombre" />
+                data-donde="element-nombre" 
+                
+                onChange={this.props.onInputNameChange}
+
+              />
               <label className="form__label" for="puesto">Puesto</label>
               <input
                 className="form__input form__input--puesto local--input--job"
