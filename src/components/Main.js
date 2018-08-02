@@ -23,7 +23,7 @@ class Main extends Component {
     super();
 
     this.state = {
-      name: "Bucky",
+      name: "",
       job: "Recat",
       email: "buckythecat@gmail.com",
       phone: "666666666",

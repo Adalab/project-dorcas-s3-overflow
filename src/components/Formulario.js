@@ -164,7 +164,7 @@ class Formulario extends Component {
                 placeholder="Ej. Martirio"
                 maxlength="19"
                 data-donde="element-nombre" 
-                
+                value = {this.props.name}
                 onChange={this.props.onInputNameChange}
 
               />
