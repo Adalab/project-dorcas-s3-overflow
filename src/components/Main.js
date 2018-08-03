@@ -20,37 +20,154 @@ const fontClass = {
 
 class Main extends Component {
   constructor() {
-    super();
+    super()
+
+    this.fileInput = React.createRef();
+    this.handleAddImage = this
+        .handleAddImage
+        .bind(this);
+    this.handleClickImage = this
+        .handleClickImage
+        .bind(this);
 
     this.state = {
-      name: "",
-      job: "Recat",
-      email: "buckythecat@gmail.com",
-      phone: "666666666",
-      github: "buckythecat",
-      linkedin: "buckythecat",
-      photo: "./images/cat.png",
-      skills: "HTML",
-      palette: "2",
-      typography: "1"
+        data: {
+            name: '',
+            job: '',
+            image: '',
+            email: '',
+            phone: '',
+            github: '',
+            linkedin: '',
+            skills: '',
+            palette: '',
+            typography: ''
+        }
     }
 
-    this.handleInputName = this.handleInputName.bind(this);
-  }
+    // rellena inputs binds
 
-  handleInputName(event){
-    console.log("hola")
-    console.log(event.target.value)
-    const nombre = event.target.value;
-    console.log(nombre)
-    console.log(this.state.name)
+    this.handleNameInput = this
+        .handleNameInput
+        .bind(this);
+    this.handleJobInput = this
+        .handleJobInput
+        .bind(this);
+    this.handleEmailInput = this
+        .handleEmailInput
+        .bind(this);
+    this.handlePhoneInput = this
+        .handlePhoneInput
+        .bind(this);
+    this.handleGithubInput = this
+        .handleGithubInput
+        .bind(this);
+    this.handleLinkedinInput = this
+        .handleLinkedinInput
+        .bind(this);
+
+}
+
+handleClickImage(event) {
+    console.log(event.target.files)
+    console.log(this.setState)
+    const fr = new FileReader();
+    fr.addEventListener('load', () => {
+        this.setState({image: fr.result});
+    });
+    fr.readAsDataURL(event.target.files[0]);
+
+}
+
+handleAbilities() {
+    console.log('habilidad añadida')
+}
+
+// handle rellena inputs
+
+handleNameInput(event) {
     this.setState({
-      name: event.target.value
+        data: {
+            ...this.state.data,
+            name: event.target.value
+        }
+})
+}
+
+    
+handleJobInput(event) {
+this.setState({
+    data: {
+        ...this.state.data,
+        job: event.target.value
+    }
+})
+}
+
+handleEmailInput(event) {
+this.setState({
+    data: {
+        ...this.state.data,
+        email: event.target.value
+    }
+})
+}
+
+handlePhoneInput(event) {
+this.setState({
+    data: {
+        ...this.state.data,
+        phone: event.target.value
+    }
+})
+}
+
+handleGithubInput(event) {
+this.setState({
+    data: {
+        ...this.state.data,
+        github: event.target.value
+    }
+})
+}
+
+handleLinkedinInput(event) {
+this.setState({
+    data: {
+        ...this.state.data,
+        name: event.target.value
+    }
+})
+}
+
+// handle imagen load
+
+handleAddImage(event) {
+this
+    .fileInput
+    .current
+    .click()
+}
+
+handleClickImage(event) {
+const fr = new FileReader();
+
+fr.addEventListener('load', () => {
+    this.setState({
+        data: {
+            ...this.state.data,
+            image: fr.result
+        }
     })
-  }
+})
+
+fr.readAsDataURL(event.target.files[0]);
+
+}
 
   render() {
-    const  userInfo  = this.state
+    const userInfo = this.state.data
+    console.log(userInfo)
     return (
       <Fragment>
         <Header />
@@ -68,9 +185,8 @@ class Main extends Component {
             typographyClass={fontClass[userInfo.typography]}
           />
           <Formulario 
-            name = {this.state.name}
-            onInputNameChange = {this.handleInputName}
-
+            userInfo = {this.state.data}
+            onInputNameChange = {this.handleNameInput}
           />
         </main>
         <Footer />
