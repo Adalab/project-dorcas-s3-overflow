@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Collapsable from './Collapsable';
+import Select from './Select';
 class Formulario extends Component {
 //handle button
 
@@ -17,7 +18,8 @@ handleTwitter() {
 
 render() {
     
-    const {userInfo, onInputNameChange} = this.props; 
+    const {userInfo, onInputNameChange, optionSkills} = this.props; 
+
     return (
         <div className="container-izquierda">
             <form className="form" action="/signup" method="post">
@@ -214,6 +216,7 @@ render() {
                         </div>
 
                         <div className="form__container--habilidad">
+                            <Select optionSkills={optionSkills.skills}/>
                             <div id="mama">
                                 <button
                                     type="button"

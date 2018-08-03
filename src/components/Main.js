@@ -31,10 +31,12 @@ class Main extends Component {
         phone: '',
         github: '',
         linkedin: '',
-        skills: '',
+        skills: [],
         palette: '',
         typography: ''
-      }
+      },
+
+      possibleSkills: []
     }
 
     // rellena inputs binds
@@ -169,9 +171,9 @@ class Main extends Component {
   getSkills() {
     fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
       .then((response) => response.json())
-      .then((skills) => {
+      .then((jsonskills) => {
         this.setState({
-          skills: skills
+          possibleSkills: jsonskills
         });
       });
   }
@@ -195,7 +197,11 @@ class Main extends Component {
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
-          <Formulario />
+          <Formulario 
+            userInfo = {this.state.data}
+            onInputNameChange = {this.handleNameInput}
+            optionSkills={this.state.possibleSkills}
+          />
         </main>
         <Footer />
       </Fragment>
