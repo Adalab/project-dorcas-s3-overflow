@@ -22,31 +22,148 @@ class Main extends Component {
   constructor() {
     super()
 
-    this.fileInput = React.createRef();
-    this.handleAddImage = this
-        .handleAddImage
-        .bind(this);
-    this.handleClickImage = this
-        .handleClickImage
-        .bind(this);
-
     this.state = {
-<<<<<<< HEAD
       data: {
-        name: "Bucky",
-        job: "Recat",
-        email: "buckythecat@gmail.com",
-        phone: "666666666",
-        github: "buckythecat",
-        linkedin: "buckythecat",
-        photo: "./images/cat.png",
-        skills: ',
-        palette: "2",
-        typography: "1"
+        name: '',
+        job: '',
+        image: '',
+        email: '',
+        phone: '',
+        github: '',
+        linkedin: '',
+        skills: '',
+        palette: '',
+        typography: ''
       }
     }
 
-    this.getSkills();
+    // rellena inputs binds
+
+    this.handleNameInput = this
+      .handleNameInput
+      .bind(this);
+    this.handleJobInput = this
+      .handleJobInput
+      .bind(this);
+    this.handleEmailInput = this
+      .handleEmailInput
+      .bind(this);
+    this.handlePhoneInput = this
+      .handlePhoneInput
+      .bind(this);
+    this.handleGithubInput = this
+      .handleGithubInput
+      .bind(this);
+    this.handleLinkedinInput = this
+      .handleLinkedinInput
+      .bind(this);
+    this.fileInput = React.createRef();
+    this.handleAddImage = this
+      .handleAddImage
+      .bind(this);
+    this.handleClickImage = this
+      .handleClickImage
+      .bind(this);
+
+      this.getSkills();
+  }
+
+
+
+  handleClickImage(event) {
+    console.log(event.target.files)
+    console.log(this.setState)
+    const fr = new FileReader();
+    fr.addEventListener('load', () => {
+      this.setState({ image: fr.result });
+    });
+    fr.readAsDataURL(event.target.files[0]);
+
+  }
+
+  handleAbilities() {
+    console.log('habilidad añadida')
+  }
+
+  // handle rellena inputs
+
+  handleNameInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        name: event.target.value
+      }
+    })
+  }
+
+  handleJobInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        job: event.target.value
+      }
+    })
+  }
+
+  handleEmailInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        email: event.target.value
+      }
+    })
+  }
+
+  handlePhoneInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        phone: event.target.value
+      }
+    })
+  }
+
+  handleGithubInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        github: event.target.value
+      }
+    })
+  }
+
+  handleLinkedinInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        name: event.target.value
+      }
+    })
+  }
+
+  // handle imagen load
+
+  handleAddImage(event) {
+    this
+      .fileInput
+      .current
+      .click()
+  }
+
+  handleClickImage(event) {
+    const fr = new FileReader();
+
+    fr.addEventListener('load', () => {
+      this.setState({
+        data: {
+          ...this.state.data,
+          image: fr.result
+        }
+      })
+    })
+
+    fr.readAsDataURL(event.target.files[0]);
+
   }
 
   getSkills() {
@@ -58,146 +175,10 @@ class Main extends Component {
         });
       });
   }
-=======
-        data: {
-            name: '',
-            job: '',
-            image: '',
-            email: '',
-            phone: '',
-            github: '',
-            linkedin: '',
-            skills: '',
-            palette: '',
-            typography: ''
-        }
-    }
-
-    // rellena inputs binds
-
-    this.handleNameInput = this
-        .handleNameInput
-        .bind(this);
-    this.handleJobInput = this
-        .handleJobInput
-        .bind(this);
-    this.handleEmailInput = this
-        .handleEmailInput
-        .bind(this);
-    this.handlePhoneInput = this
-        .handlePhoneInput
-        .bind(this);
-    this.handleGithubInput = this
-        .handleGithubInput
-        .bind(this);
-    this.handleLinkedinInput = this
-        .handleLinkedinInput
-        .bind(this);
-
-}
-
-handleClickImage(event) {
-    console.log(event.target.files)
-    console.log(this.setState)
-    const fr = new FileReader();
-    fr.addEventListener('load', () => {
-        this.setState({image: fr.result});
-    });
-    fr.readAsDataURL(event.target.files[0]);
-
-}
-
-handleAbilities() {
-    console.log('habilidad añadida')
-}
-
-// handle rellena inputs
-
-handleNameInput(event) {
-    this.setState({
-        data: {
-            ...this.state.data,
-            name: event.target.value
-        }
-})
-}
-
-    
-handleJobInput(event) {
-this.setState({
-    data: {
-        ...this.state.data,
-        job: event.target.value
-    }
-})
-}
-
-handleEmailInput(event) {
-this.setState({
-    data: {
-        ...this.state.data,
-        email: event.target.value
-    }
-})
-}
-
-handlePhoneInput(event) {
-this.setState({
-    data: {
-        ...this.state.data,
-        phone: event.target.value
-    }
-})
-}
-
-handleGithubInput(event) {
-this.setState({
-    data: {
-        ...this.state.data,
-        github: event.target.value
-    }
-})
-}
-
-handleLinkedinInput(event) {
-this.setState({
-    data: {
-        ...this.state.data,
-        name: event.target.value
-    }
-})
-}
-
-// handle imagen load
-
-handleAddImage(event) {
-this
-    .fileInput
-    .current
-    .click()
-}
-
-handleClickImage(event) {
-const fr = new FileReader();
-
-fr.addEventListener('load', () => {
-    this.setState({
-        data: {
-            ...this.state.data,
-            image: fr.result
-        }
-    })
-})
-
-fr.readAsDataURL(event.target.files[0]);
-
-}
->>>>>>> master
 
   render() {
     console.log('skills', this.state.skills)
     const userInfo = this.state.data
-    console.log(userInfo)
     return (
       <Fragment>
         <Header />
@@ -214,10 +195,7 @@ fr.readAsDataURL(event.target.files[0]);
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
-          <Formulario 
-            userInfo = {this.state.data}
-            onInputNameChange = {this.handleNameInput}
-          />
+          <Formulario />
         </main>
         <Footer />
       </Fragment>
