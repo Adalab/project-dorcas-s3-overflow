@@ -5,7 +5,7 @@ import Preview from './Preview.js';
 import Formulario from './Formulario.js';
 import './Main.css';
 
-// de
+// mapeado de clases
 const paletteClass = {
   "1": 'greenTarget',
   "2": 'redTarget',
@@ -31,30 +31,27 @@ class Main extends Component {
         github: "buckythecat",
         linkedin: "buckythecat",
         photo: "./images/cat.png",
-        skills: [],
+        skills: ',
         palette: "2",
         typography: "1"
       }
     }
+
+    this.getSkills();
   }
 
-  // getSkills() {
-  //   fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
-  //   .then(function (response) {
-  //     return response.json();
-  //   })
-  //   .then(function (json) {
-  //     arraySkills = json.skills;
-  //   });
-
-  //   this.setState({
-  //     data: {
-  //       skills: [arraySkills]
-  //     }
-  //   })
-  // }
+  getSkills() {
+    fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+      .then((response) => response.json())
+      .then((skills) => {
+        this.setState({
+          skills: skills
+        });
+      });
+  }
 
   render() {
+    console.log('skills', this.state.skills)
     const userInfo = this.state.data
     return (
       <Fragment>
