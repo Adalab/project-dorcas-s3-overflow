@@ -135,7 +135,7 @@ handleLinkedinInput(event) {
 this.setState({
     data: {
         ...this.state.data,
-        name: event.target.value
+        linkedin: event.target.value
     }
 })
 }
@@ -187,6 +187,11 @@ fr.readAsDataURL(event.target.files[0]);
           <Formulario 
             userInfo = {this.state.data}
             onInputNameChange = {this.handleNameInput}
+            onInputJobChange =  {this.handleJobInput}
+            onInputEmailChange = {this.handleEmailInput}
+            onInputPhoneChange = {this.handlePhoneInput}
+            onInputGitChange = {this.handleGithubInput}
+            onInputLinkedinChange = {this.handleLinkedinInput}
           />
         </main>
         <Footer />
