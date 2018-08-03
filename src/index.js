@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from `react-router-dom`;
 import './index.css';
 import Main from './components/Main.js';
-import registerServiceWorker from './registerServiceWorker';
 import fontAwesomeStyles from '@fortawesome/fontawesome-free/css/all.css';
 
-ReactDOM.render(<Main />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+    <HashRouter>
+      <Main />
+    </HashRouter>,
+    document.getElementById('react-root')
+  );
+  
