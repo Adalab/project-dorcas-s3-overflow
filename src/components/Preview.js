@@ -58,11 +58,11 @@ class Preview extends Component {
                                 icon={`far fa-envelope logo-preview`}
                                 />
                                 <Socialmedia 
-                                url={`https//:${linkedin}`}
+                                url={`https://www.linkedin.com/${linkedin}`}
                                 icon={`fab fa-linkedin-in logo-preview`}
                                 />
                                 <Socialmedia 
-                                url={`https//:${github}`}
+                                url={`https://github.com/${github}`}
                                 icon={`fab fa-github-alt logo-preview`}
                                 />
                             </div>

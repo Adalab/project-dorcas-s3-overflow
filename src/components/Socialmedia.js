@@ -4,7 +4,7 @@ class Socialmedia extends Component {
     render() {
         return (
             <Fragment>
-                <a className="boton-red-social" href={this.props.url}>
+                <a className="boton-red-social" target="_blank" href={this.props.url}>
                     <i className={this.props.icon}></i>
                 </a>
             </Fragment>
