@@ -3,7 +3,7 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import Preview from './Preview.js';
 import Formulario from './Formulario.js';
-import './Main.css';
+import '../scss/Main.css';
 
 // mapeado de clases
 const paletteClass = {
@@ -31,46 +31,34 @@ class Main extends Component {
         phone: '',
         github: '',
         linkedin: '',
-        skills: [],
+        skills: ['HTML'],
         palette: '',
         typography: ''
       },
 
-      skillOptions: []
+      selectLogic: {
+        skillOptions: [],
+        optionSelected: '',
+        buttonIcon: '+'
+      }
     }
 
     // rellena inputs binds
 
-    this.handleNameInput = this
-      .handleNameInput
-      .bind(this);
-    this.handleJobInput = this
-      .handleJobInput
-      .bind(this);
-    this.handleEmailInput = this
-      .handleEmailInput
-      .bind(this);
-    this.handlePhoneInput = this
-      .handlePhoneInput
-      .bind(this);
-    this.handleGithubInput = this
-      .handleGithubInput
-      .bind(this);
-    this.handleLinkedinInput = this
-      .handleLinkedinInput
-      .bind(this);
+    this.handleNameInput = this.handleNameInput.bind(this);
+    this.handleJobInput = this.handleJobInput.bind(this);
+    this.handleEmailInput = this.handleEmailInput.bind(this);
+    this.handlePhoneInput = this.handlePhoneInput.bind(this);
+    this.handleGithubInput = this.handleGithubInput.bind(this);
+    this.handleLinkedinInput = this.handleLinkedinInput.bind(this);
     this.fileInput = React.createRef();
-    this.handleAddImage = this
-      .handleAddImage
-      .bind(this);
-    this.handleClickImage = this
-      .handleClickImage
-      .bind(this);
+    this.handleAddImage = this.handleAddImage.bind(this);
+    this.handleClickImage = this.handleClickImage.bind(this);
+    this.handleAbilitesButton = this.handleAbilitesButton.bind(this);
+    this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
 
-      this.getSkills();
+    this.getSkills();
   }
-
-
 
   handleClickImage(event) {
     console.log(event.target.files)
@@ -81,10 +69,6 @@ class Main extends Component {
     });
     fr.readAsDataURL(event.target.files[0]);
 
-  }
-
-  handleAbilities() {
-    console.log('habilidad añadida')
   }
 
   // handle rellena inputs
@@ -139,9 +123,9 @@ class Main extends Component {
       data: {
         ...this.state.data,
         linkedin: event.target.value
-    }
-})
-}
+      }
+    })
+  }
 
   // handle imagen load
 
@@ -168,18 +152,62 @@ class Main extends Component {
 
   }
 
+  // fetch to get skills
+
   getSkills() {
     fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
       .then((response) => response.json())
       .then((jsonskills) => {
         this.setState({
-          skillOptions: jsonskills.skills
+          selectLogic:{
+          ...this.state.selectLogic,
+          skillOptions: jsonskills.skills}
         });
       });
   }
 
+  // Skills handlers
+
+  handleAbilitiesSelect(event) {
+    this.setState({
+      selectLogic: {
+        optionSelected:
+        [...this.state.selectLogic, event.target.value]
+      }
+    })
+    console.log('funciono')
+    console.log(this.state.selectLogic.optionSelected)
+  }
+
+  handleAbilitesButton(event) {
+    event.preventDefault();
+
+    this.setState((prevState, props) => ({
+      buttonIcon: (prevState.buttonIcon === '+') ? '-' : '+'
+    }));
+    // creo que falla aquí
+    if (this.state.selectLogic.buttonIcon === '+') {
+      this.setState({
+        selectLogic: {
+          ...this.state.selectLogic,
+          optionsOnCard: [...this.state.data.Skills, this.state.selectLogic.optionSelected]
+        }
+      })
+    } else {
+      const array = [...this.state.data.Skills]; // make a separate copy of the array
+      const index = array.indexOf(event.target.value)
+      array.splice(index, 1);
+      this.setState({
+        selectLogic: {
+          ...this.state.selectLogic,
+          optionsOnCard: array
+        }
+      });
+    }
+  }
+
   render() {
-    console.log('skills', this.state.skills)
+    console.log('skills', this.state.data.skills)
     const userInfo = this.state.data
     return (
       <Fragment>
@@ -197,15 +225,18 @@ class Main extends Component {
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
-          <Formulario 
-            userInfo = {this.state.data}
-            onInputNameChange = {this.handleNameInput}
-            onInputJobChange =  {this.handleJobInput}
-            onInputEmailChange = {this.handleEmailInput}
-            onInputPhoneChange = {this.handlePhoneInput}
-            onInputGitChange = {this.handleGithubInput}
-            onInputLinkedinChange = {this.handleLinkedinInput}
-            skillOptions={this.state.skillOptions}
+          <Formulario
+            userInfo={this.state.data}
+            onInputNameChange={this.handleNameInput}
+            onInputJobChange={this.handleJobInput}
+            onInputEmailChange={this.handleEmailInput}
+            onInputPhoneChange={this.handlePhoneInput}
+            onInputGitChange={this.handleGithubInput}
+            onInputLinkedinChange={this.handleLinkedinInput}
+            skillOptions={this.state.selectLogic.skillOptions}
+            handleAbilitiesButton={this.handleAbilitiesButton}
+            handleAbilitiesSelect={this.handleAbilitiesSelect}
+            buttonIcon={this.state.selectLogic.buttonIcon}
           />
         </main>
         <Footer />

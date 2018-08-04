@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 
 class Skills extends Component {
     render() {
-        const skills = this.props;
+        const {skillName} = this.props;
+
         return (
-            <p className="etiqueta-habilidad">{skills.skillName}</p>
+            <ul>
+                {skillName.map((skill, i) =>
+                    <li
+                        key={i}
+                        className="etiqueta-habilidad"
+                    >
+                        {skill}
+                    </li>
+                )}
+            </ul>
+
         );
     }
 }

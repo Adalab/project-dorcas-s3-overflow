@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import martirioPic from '../images/martirio.jpg';
 import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
@@ -25,6 +25,7 @@ class Preview extends Component {
             paletteClass,
             typographyClass
         } = this.props
+
         return (
         
             <div className={`preview-container ${paletteClass} ${typographyClass}`}>
@@ -67,9 +68,7 @@ class Preview extends Component {
                                 />
                             </div>
                             <div className="etiquetas-habilidades-container">
-                                <Skills skillName='HTML' />
-                                <Skills skillName='CSS' />
-                                <Skills skillName='GULP' />
+                                <Skills skillName={skills} />
                             </div>
                         </div>
                     </div>
