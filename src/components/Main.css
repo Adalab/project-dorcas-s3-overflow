@@ -138,8 +138,12 @@ $font-size-xxl-plus:    px;
 
 .form__container--habilidad {
   display: flex;
-  flex-direction: row;
-  align-items: center; }
+  flex-direction: column; }
+
+.form__container-select {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; }
 
 .form__select {
   border-color: #a2deaf;
@@ -890,7 +894,7 @@ body {
   height: 30px;
   width: 30px;
   background-color: white;
-  margin-left: 174px;
+  margin-left: 20px;
   border-radius: 50px;
   position: relative; }
   .button:focus {
