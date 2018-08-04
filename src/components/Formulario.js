@@ -18,8 +18,7 @@ class Formulario extends Component {
 
     render() {
 
-        const { userInfo, onInputNameChange, optionSkills } = this.props;
-
+        const { userInfo, onInputNameChange, onInputJobChange, onInputEmailChange, onInputPhoneChange, onInputGitChange, onInputLinkedinChange } = this.props;
         return (
             <div className="container-izquierda">
                 <form className="form" action="/signup" method="post">
@@ -150,8 +149,8 @@ class Formulario extends Component {
                                 name="job"
                                 placeholder="Ej. Reina de la canción"
                                 maxlength="22"
-                                // value={stateForm.job}
-                                onChange={this.handleJobInput} />
+                                value={userInfo.job}
+                                onChange={onInputJobChange} />
                             <label className="form__label">Imagen de perfil</label>
 
                             <div className="form__container--imagen">
@@ -182,8 +181,8 @@ class Formulario extends Component {
                                 type="mail"
                                 name="email"
                                 placeholder="Ej. reinadelacancion@ole.es"
-                                //value={stateForm.email}
-                                onChange={this.handleEmailInput} />
+                                value={userInfo.email}
+                                onChange={onInputEmailChange} />
                             <label className="form__label" for="telefono">Teléfono</label>
                             <input
                                 className="form__input inputhref form__telefono local--input--phone"
@@ -191,8 +190,8 @@ class Formulario extends Component {
                                 type="number"
                                 name="phone"
                                 placeholder="Ej. 982938437"
-                                //value={stateForm.phone}
-                                onChange={this.handlePhoneInput} />
+                                value={userInfo.phone}
+                                onChange={onInputPhoneChange} />
                             <label className="form__label " for="linkedin">Linkedin</label>
                             <input
                                 className="form__input inputhref form__linkedin local--input--linkedin"
@@ -200,8 +199,8 @@ class Formulario extends Component {
                                 type="text"
                                 name="linkedin"
                                 placeholder="Ej. martirio.reina"
-                                //value={stateForm.linkedin}
-                                onChange={this.handleLinkedin} />
+                                value={userInfo.linkedin}
+                                onChange={onInputLinkedinChange} />
                             <label className="form__label" for="github">Github</label>
                             <input
                                 className="form__input inputhref form__github local--input--github"
@@ -209,8 +208,9 @@ class Formulario extends Component {
                                 type="text"
                                 name="github"
                                 placeholder="Ej. martirio-reina"
-                                //value={stateForm.github}
-                                onChange={this.handleGithubInput} />
+                                value={userInfo.github}
+                                onChange={onInputGitChange} />
+
                             <div className="form__container--habilidades">
                                 <label className="form__label" for="habilidades">Habilidades (máximo 3)</label>
                             </div>
@@ -242,7 +242,7 @@ class Formulario extends Component {
                         </div>
                     </Collapsable>
                 </form>
-            </div>
+            </div >
         );
     }
 }

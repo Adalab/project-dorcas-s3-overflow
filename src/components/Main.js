@@ -138,10 +138,10 @@ class Main extends Component {
     this.setState({
       data: {
         ...this.state.data,
-        name: event.target.value
-      }
-    })
-  }
+        linkedin: event.target.value
+    }
+})
+}
 
   // handle imagen load
 
@@ -200,6 +200,11 @@ class Main extends Component {
           <Formulario 
             userInfo = {this.state.data}
             onInputNameChange = {this.handleNameInput}
+            onInputJobChange =  {this.handleJobInput}
+            onInputEmailChange = {this.handleEmailInput}
+            onInputPhoneChange = {this.handlePhoneInput}
+            onInputGitChange = {this.handleGithubInput}
+            onInputLinkedinChange = {this.handleLinkedinInput}
             skillOptions={this.state.skillOptions}
           />
         </main>
