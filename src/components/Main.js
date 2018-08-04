@@ -36,7 +36,7 @@ class Main extends Component {
         typography: ''
       },
 
-      possibleSkills: []
+      skillOptions: []
     }
 
     // rellena inputs binds
@@ -173,7 +173,7 @@ class Main extends Component {
       .then((response) => response.json())
       .then((jsonskills) => {
         this.setState({
-          possibleSkills: jsonskills
+          skillOptions: jsonskills.skills
         });
       });
   }
@@ -200,7 +200,7 @@ class Main extends Component {
           <Formulario 
             userInfo = {this.state.data}
             onInputNameChange = {this.handleNameInput}
-            optionSkills={this.state.possibleSkills}
+            skillOptions={this.state.skillOptions}
           />
         </main>
         <Footer />
