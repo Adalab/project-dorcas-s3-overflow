@@ -5,7 +5,7 @@ import Preview from './Preview.js';
 import Formulario from './Formulario.js';
 import './Main.css';
 
-// de
+// mapeado de clases
 const paletteClass = {
   "1": 'greenTarget',
   "2": 'redTarget',
@@ -19,26 +19,167 @@ const fontClass = {
 }
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super()
 
     this.state = {
       data: {
-        name: "Bucky",
-        job: "Recat",
-        email: "buckythecat@gmail.com",
-        phone: "666666666",
-        github: "buckythecat",
-        linkedin: "buckythecat",
-        photo: "./images/cat.png",
-        skills: "HTML",
-        palette: "2",
-        typography: "1"
-      }
+        name: '',
+        job: '',
+        image: '',
+        email: '',
+        phone: '',
+        github: '',
+        linkedin: '',
+        skills: [],
+        palette: '',
+        typography: ''
+      },
+
+      skillOptions: []
     }
+
+    // rellena inputs binds
+
+    this.handleNameInput = this
+      .handleNameInput
+      .bind(this);
+    this.handleJobInput = this
+      .handleJobInput
+      .bind(this);
+    this.handleEmailInput = this
+      .handleEmailInput
+      .bind(this);
+    this.handlePhoneInput = this
+      .handlePhoneInput
+      .bind(this);
+    this.handleGithubInput = this
+      .handleGithubInput
+      .bind(this);
+    this.handleLinkedinInput = this
+      .handleLinkedinInput
+      .bind(this);
+    this.fileInput = React.createRef();
+    this.handleAddImage = this
+      .handleAddImage
+      .bind(this);
+    this.handleClickImage = this
+      .handleClickImage
+      .bind(this);
+
+      this.getSkills();
+  }
+
+
+
+  handleClickImage(event) {
+    console.log(event.target.files)
+    console.log(this.setState)
+    const fr = new FileReader();
+    fr.addEventListener('load', () => {
+      this.setState({ image: fr.result });
+    });
+    fr.readAsDataURL(event.target.files[0]);
+
+  }
+
+  handleAbilities() {
+    console.log('habilidad añadida')
+  }
+
+  // handle rellena inputs
+
+  handleNameInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        name: event.target.value
+      }
+    })
+  }
+
+  handleJobInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        job: event.target.value
+      }
+    })
+  }
+
+  handleEmailInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        email: event.target.value
+      }
+    })
+  }
+
+  handlePhoneInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        phone: event.target.value
+      }
+    })
+  }
+
+  handleGithubInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        github: event.target.value
+      }
+    })
+  }
+
+  handleLinkedinInput(event) {
+    this.setState({
+      data: {
+        ...this.state.data,
+        linkedin: event.target.value
+    }
+})
+}
+
+  // handle imagen load
+
+  handleAddImage(event) {
+    this
+      .fileInput
+      .current
+      .click()
+  }
+
+  handleClickImage(event) {
+    const fr = new FileReader();
+
+    fr.addEventListener('load', () => {
+      this.setState({
+        data: {
+          ...this.state.data,
+          image: fr.result
+        }
+      })
+    })
+
+    fr.readAsDataURL(event.target.files[0]);
+
+  }
+
+  getSkills() {
+    fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+      .then((response) => response.json())
+      .then((jsonskills) => {
+        this.setState({
+          skillOptions: jsonskills.skills
+        });
+      });
   }
 
   render() {
+    console.log('skills', this.state.skills)
     const userInfo = this.state.data
     return (
       <Fragment>
@@ -56,7 +197,16 @@ class Main extends Component {
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
-          <Formulario />
+          <Formulario 
+            userInfo = {this.state.data}
+            onInputNameChange = {this.handleNameInput}
+            onInputJobChange =  {this.handleJobInput}
+            onInputEmailChange = {this.handleEmailInput}
+            onInputPhoneChange = {this.handlePhoneInput}
+            onInputGitChange = {this.handleGithubInput}
+            onInputLinkedinChange = {this.handleLinkedinInput}
+            skillOptions={this.state.skillOptions}
+          />
         </main>
         <Footer />
       </Fragment>
