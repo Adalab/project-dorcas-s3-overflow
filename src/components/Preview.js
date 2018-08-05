@@ -4,14 +4,8 @@ import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
 
 class Preview extends Component {
-    constructor(){
-        super()
-    }
-    
-    handleReset(){
-        console.log('elemento clicado')
-    }
-    
+   
+
     render() {
         const { 
             name,
@@ -23,13 +17,14 @@ class Preview extends Component {
             photo,
             skills,
             paletteClass,
-            typographyClass
+            typographyClass,
+            OnResetButton,
         } = this.props
         return (
         
             <div className={`preview-container ${paletteClass} ${typographyClass}`}>
                 <div className="margin-preview">
-                    <div className="button-reset__container" onClick={this.handleReset}>
+                    <div className="button-reset__container" onClick={OnResetButton}>
                         <a className="button-reset__link button-reset__title" href="#">
                             <i className=" far fa-trash-alt icono-basura">RESET</i>
                         </a>
@@ -45,7 +40,7 @@ class Preview extends Component {
                             </div>
                         </div>
                         <div className="photo-container">
-                            <img className="changeImagePreview" src={photo} alt="" />
+                            <img className="changeImagePreview" src={photo ||martirioPic} alt="" />
                         </div>
                         <div className="footer-preview__container">
                             <div className="logos-container">
