@@ -69,16 +69,7 @@ class Main extends Component {
 
 
 
-  handleClickImage(event) {
-    console.log(event.target.files)
-    console.log(this.setState)
-    const fr = new FileReader();
-    fr.addEventListener('load', () => {
-      this.setState({ image: fr.result });
-    });
-    fr.readAsDataURL(event.target.files[0]);
 
-  }
 
   handleAbilities() {
     console.log('habilidad añadida')
@@ -142,14 +133,15 @@ class Main extends Component {
 
   // handle imagen load
 
+
   handleAddImage(event) {
-    this
-      .fileInput
-      .current
-      .click()
+    console.log(this.fileInput.click)
+    this.fileInput.current.click()
   }
 
+
   handleClickImage(event) {
+    console.log(event.target.files)
     const fr = new FileReader();
 
     fr.addEventListener('load', () => {
@@ -187,7 +179,7 @@ class Main extends Component {
           phone={userInfo.phone}
           github={userInfo.github}
           linkedin={userInfo.linkedin}
-          photo={userInfo.photo}
+          photo={userInfo.image}
           skills={userInfo.skills}
           paletteClass={paletteClass[userInfo.palette]}
           typographyClass={fontClass[userInfo.typography]}
@@ -196,11 +188,14 @@ class Main extends Component {
           userInfo={this.state.data}
           onInputNameChange={this.handleNameInput}
           onInputJobChange={this.handleJobInput}
+          onInputImageClick={this.handleAddImage}
+          onInputImageChange={this.handleClickImage}
           onInputEmailChange={this.handleEmailInput}
           onInputPhoneChange={this.handlePhoneInput}
           onInputGitChange={this.handleGithubInput}
           onInputLinkedinChange={this.handleLinkedinInput}
           skillOptions={this.state.skillOptions}
+          fileInput={this.fileInput}
         />
       </main>
 
