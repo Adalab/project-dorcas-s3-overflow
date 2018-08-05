@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import Header from './Header.js';
-import Footer from './Footer.js';
+import PropTypes from 'prop-types';
 import Preview from './Preview.js';
 import Formulario from './Formulario.js';
+<<<<<<< HEAD
 import '../scss/Main.css';
 
+=======
+>>>>>>> master
 // mapeado de clases
 const paletteClass = {
   "1": 'greenTarget',
@@ -244,5 +246,21 @@ class Main extends Component {
     );
   }
 }
+
+
+Main.propTypes = {
+  name: PropTypes.string,
+  job: PropTypes.string,
+  image: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.number,
+  github: PropTypes.string,
+  linkedin: PropTypes.string,
+  skills: PropTypes.array,
+  palette: PropTypes.string,
+  typography: PropTypes.string,
+  skillOptions: PropTypes.array,
+  // nombre de los selects:PropTypes.array
+};
 
 export default Main;
