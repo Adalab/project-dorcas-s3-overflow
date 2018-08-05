@@ -7,14 +7,14 @@ class Skills extends Component {
 
         return (
             <ul>
-                {skillName.map((skill, i) =>
+                {/* {skillName.map((skill, i) =>
                     <li
                         key={i}
                         className="etiqueta-habilidad"
                     >
                         {skill}
                     </li>
-                )}
+                )} */}
             </ul>
 
         );
@@ -23,7 +23,6 @@ class Skills extends Component {
 
 Skills.propTypes = {
     skills: PropTypes.array
-  
 };
 
 export default Skills;

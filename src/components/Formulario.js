@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-=======
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
->>>>>>> master
 import Collapsable from './Collapsable';
 import Select from './Select';
 
@@ -49,7 +45,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="1"
                                             name="palette"
-                                            defaultChecked/>
+                                            defaultChecked />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="first-color__square1"></div>
@@ -120,7 +116,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="2"
                                             name="typography"
-                                            defaultChecked/>
+                                            defaultChecked />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Comic Sans
@@ -239,11 +235,13 @@ class Formulario extends Component {
                                 <Select
                                     skillOptions={skillOptions}
                                     onClickAbilityButton={handleAbilitiesButton}
+                                    onChangeAbilitySelect={handleAbilitiesSelect}
                                     buttonIcon={buttonIcon}
                                 />
                                 <Select
                                     skillOptions={skillOptions}
                                     onClickAbilityButton={handleAbilitiesButton}
+                                    onChangeAbilitySelect={handleAbilitiesSelect}
                                     buttonIcon={buttonIcon}
                                 />
                             </div>

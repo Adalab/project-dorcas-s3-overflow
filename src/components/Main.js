@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview.js';
 import Formulario from './Formulario.js';
+import Header from './Header';
+import Footer from './Footer'
 import '../scss/Main.css';
 
 // mapeado de clases
@@ -30,7 +32,6 @@ class Main extends Component {
         phone: '',
         github: '',
         linkedin: '',
-        skills: ['HTML'],
         palette: '',
         typography: ''
       },
@@ -38,6 +39,7 @@ class Main extends Component {
       selectLogic: {
         skillOptions: [],
         optionSelected: '',
+        skills: [],
         buttonIcon: '+'
       }
     }
@@ -53,15 +55,13 @@ class Main extends Component {
     this.fileInput = React.createRef();
     this.handleAddImage = this.handleAddImage.bind(this);
     this.handleClickImage = this.handleClickImage.bind(this);
-    this.handleAbilitesButton = this.handleAbilitesButton.bind(this);
+    this.handleAbilitiesButton = this.handleAbilitiesButton.bind(this);
     this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
 
     this.getSkills();
   }
 
   handleClickImage(event) {
-    console.log(event.target.files)
-    console.log(this.setState)
     const fr = new FileReader();
     fr.addEventListener('load', () => {
       this.setState({ image: fr.result });
@@ -168,45 +168,51 @@ class Main extends Component {
   // Skills handlers
 
   handleAbilitiesSelect(event) {
+    console.log(event.target.value)
     this.setState({
       selectLogic: {
-        optionSelected:
-        [...this.state.selectLogic, event.target.value]
+        ...this.state.selectLogic,
+        optionSelected: event.target.value
       }
     })
-    console.log('funciono')
-    console.log(this.state.selectLogic.optionSelected)
   }
 
-  handleAbilitesButton(event) {
+  handleAbilitiesButton(event) {
     event.preventDefault();
+    console.log('funciono')
 
-    this.setState((prevState, props) => ({
-      buttonIcon: (prevState.buttonIcon === '+') ? '-' : '+'
-    }));
-    // creo que falla aquí
-    if (this.state.selectLogic.buttonIcon === '+') {
-      this.setState({
-        selectLogic: {
-          ...this.state.selectLogic,
-          optionsOnCard: [...this.state.data.Skills, this.state.selectLogic.optionSelected]
+    this.setState({
+      selectLogic: {
+        buttonIcon: (prevState) => {
+          (prevState.buttonIcon === '+') ? '-' : '+'
         }
-      })
-    } else {
-      const array = [...this.state.data.Skills]; // make a separate copy of the array
-      const index = array.indexOf(event.target.value)
-      array.splice(index, 1);
-      this.setState({
-        selectLogic: {
-          ...this.state.selectLogic,
-          optionsOnCard: array
         }
-      });
-    }
+      }
+    );
+    // // creo que falla aquí
+    // if (this.state.selectLogic.buttonIcon === '+') {
+    //   this.setState({
+    //     selectLogic: {
+    //       ...this.state.selectLogic,
+    //       skills: [...this.state.selectLogic.skills, this.state.selectLogic.optionSelected]
+    //     }
+    //   })
+    // } else {
+    //   const array = [...this.state.selectLogic.skills]; // make a separate copy of the array
+    //   const index = array.indexOf(event.target.value)
+    //   array.splice(index, 1);
+    //   this.setState({
+    //     selectLogic: {
+    //       ...this.state.selectLogic,
+    //       skills: array
+    //     }
+    //   });
+    // }
+
   }
 
   render() {
-    console.log('skills', this.state.data.skills)
+   console.log(this.state.selectLogic.buttonIcon)
     const userInfo = this.state.data
     return (
       <Fragment>

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-=======
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
->>>>>>> master
 import martirioPic from '../images/martirio.jpg';
 import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
@@ -30,11 +26,7 @@ class Preview extends Component {
             paletteClass,
             typographyClass
         } = this.props
-<<<<<<< HEAD
 
-=======
-        console.log(this.props.paletteClass)
->>>>>>> master
         return (
         
             <div className={`preview-container ${paletteClass} ${typographyClass}`}>

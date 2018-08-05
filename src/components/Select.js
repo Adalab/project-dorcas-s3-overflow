@@ -7,11 +7,11 @@ class Select extends Component {
             skillOptions,
             onClickAbilityButton,
             onChangeAbilitySelect,
-            buttonIcon = { buttonIcon }
+            buttonIcon
         } = this.props;
         return (
             <div className="form__container-select">
-                <select name="" id=""
+                {/* <select name="" id=""
                     className="form__select"
                     onChange={onChangeAbilitySelect}>
                     {skillOptions.map((skill, i) =>
@@ -21,7 +21,7 @@ class Select extends Component {
                             {skill}
                         </option>
                     )}
-                </select>
+                </select> */}
                 <div id="mama">
                     <button
                         type="button"
