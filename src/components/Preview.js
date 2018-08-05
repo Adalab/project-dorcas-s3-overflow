@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import martirioPic from '../images/martirio.jpg';
 import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
@@ -25,6 +26,7 @@ class Preview extends Component {
             paletteClass,
             typographyClass
         } = this.props
+        console.log(this.props.paletteClass)
         return (
         
             <div className={`preview-container ${paletteClass} ${typographyClass}`}>
@@ -79,5 +81,18 @@ class Preview extends Component {
         );
     }
 }
+
+Preview.propTypes = {
+    name: PropTypes.string,
+    job: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.number,
+    github: PropTypes.string,
+    linkedin: PropTypes.string,
+    photo: PropTypes.string,
+    skills: PropTypes.array,
+    paletteClass: PropTypes.string,
+    typographyClass: PropTypes.string
+};
 
 export default Preview;

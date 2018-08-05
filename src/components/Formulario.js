@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
+
 class Formulario extends Component {
     //handle button
 
@@ -246,4 +248,16 @@ class Formulario extends Component {
         );
     }
 }
+
+Formulario.propTypes = {
+    userInfo: PropTypes.string,
+    onInputNameChange: PropTypes.string,
+    onInputJobChange: PropTypes.string,
+    onInputEmailChange: PropTypes.string,
+    onInputPhoneChange: PropTypes.number,
+    onInputGitChange: PropTypes.string,
+    onInputLinkedinChange: PropTypes.string,
+    // nombre de los selects:PropTypes.array
+};
+
 export default Formulario;
