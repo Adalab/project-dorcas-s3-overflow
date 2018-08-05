@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 class Select extends Component {
     render() {
@@ -31,5 +32,10 @@ class Select extends Component {
         );
     }
 }
+
+Select.propTypes = {
+    skillOptions: PropTypes.array
+  
+};
 
 export default Select;
