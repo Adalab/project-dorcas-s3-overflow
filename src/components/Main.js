@@ -2,11 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview.js';
 import Formulario from './Formulario.js';
-<<<<<<< HEAD
 import '../scss/Main.css';
 
-=======
->>>>>>> master
 // mapeado de clases
 const paletteClass = {
   "1": 'greenTarget',
