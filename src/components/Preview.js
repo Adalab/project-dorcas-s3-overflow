@@ -45,7 +45,7 @@ class Preview extends Component {
                             </div>
                         </div>
                         <div className="photo-container">
-                            <img className="changeImagePreview" src={photo} alt="" />
+                            <img className="changeImagePreview" src={photo || martirioPic} alt="" />
                         </div>
                         <div className="footer-preview__container">
                             <div className="logos-container">
