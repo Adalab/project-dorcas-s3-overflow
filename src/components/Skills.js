@@ -4,17 +4,16 @@ import PropTypes from 'prop-types';
 class Skills extends Component {
     render() {
         const {skillName} = this.props;
-
         return (
             <ul>
-                {/* {skillName.map((skill, i) =>
+                {skillName.map((skill, i) =>
                     <li
                         key={i}
                         className="etiqueta-habilidad"
                     >
                         {skill}
                     </li>
-                )} */}
+                )}
             </ul>
 
         );

@@ -22,7 +22,7 @@ class Preview extends Component {
             github,
             linkedin,
             photo,
-            skills,
+            skillsOnCard,
             paletteClass,
             typographyClass
         } = this.props
@@ -69,7 +69,7 @@ class Preview extends Component {
                                 />
                             </div>
                             <div className="etiquetas-habilidades-container">
-                                <Skills skillName={skills} />
+                                <Skills skillName={skillsOnCard} />
                             </div>
                         </div>
                     </div>

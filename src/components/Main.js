@@ -36,12 +36,10 @@ class Main extends Component {
         typography: ''
       },
 
-      selectLogic: {
         skillOptions: [],
         optionSelected: '',
-        skills: [],
+        skillsOnCard: [],
         buttonIcon: '+'
-      }
     }
 
     // rellena inputs binds
@@ -158,9 +156,7 @@ class Main extends Component {
       .then((response) => response.json())
       .then((jsonskills) => {
         this.setState({
-          selectLogic:{
-          ...this.state.selectLogic,
-          skillOptions: jsonskills.skills}
+          skillOptions: jsonskills.skills
         });
       });
   }
@@ -168,51 +164,31 @@ class Main extends Component {
   // Skills handlers
 
   handleAbilitiesSelect(event) {
-    console.log(event.target.value)
     this.setState({
-      selectLogic: {
-        ...this.state.selectLogic,
-        optionSelected: event.target.value
-      }
+      optionSelected: event.target.value,
     })
   }
 
   handleAbilitiesButton(event) {
     event.preventDefault();
-    console.log('funciono')
-
-    this.setState({
-      selectLogic: {
-        buttonIcon: (prevState) => {
-          (prevState.buttonIcon === '+') ? '-' : '+'
-        }
-        }
-      }
-    );
-    // // creo que falla aquí
-    // if (this.state.selectLogic.buttonIcon === '+') {
-    //   this.setState({
-    //     selectLogic: {
-    //       ...this.state.selectLogic,
-    //       skills: [...this.state.selectLogic.skills, this.state.selectLogic.optionSelected]
-    //     }
-    //   })
-    // } else {
-    //   const array = [...this.state.selectLogic.skills]; // make a separate copy of the array
-    //   const index = array.indexOf(event.target.value)
-    //   array.splice(index, 1);
-    //   this.setState({
-    //     selectLogic: {
-    //       ...this.state.selectLogic,
-    //       skills: array
-    //     }
-    //   });
-    // }
-
+    // lógica para cambiar el signo del botón
+    this.setState((prevState, props) => ({
+      buttonIcon: (prevState.buttonIcon === '+') ? '-' : '+'
+    }));
+    // lógica para añadir o quitar skills de la tarjeta
+    if (this.state.buttonIcon === '+') {
+      this.setState({
+        skillsOnCard: [...this.state.skillsOnCard, this.state.optionSelected]
+      })
+    } else {
+      const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+      const index = array.indexOf(event.target.value)
+      array.splice(index, 1);
+      this.setState({ skillsOnCard: array });
+    }
   }
 
   render() {
-   console.log(this.state.selectLogic.buttonIcon)
     const userInfo = this.state.data
     return (
       <Fragment>
@@ -226,7 +202,7 @@ class Main extends Component {
             github={userInfo.github}
             linkedin={userInfo.linkedin}
             photo={userInfo.photo}
-            skills={userInfo.skills}
+            skillsOnCard={this.state.skillsOnCard}
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
@@ -238,10 +214,10 @@ class Main extends Component {
             onInputPhoneChange={this.handlePhoneInput}
             onInputGitChange={this.handleGithubInput}
             onInputLinkedinChange={this.handleLinkedinInput}
-            skillOptions={this.state.selectLogic.skillOptions}
+            skillOptions={this.state.skillOptions}
             handleAbilitiesButton={this.handleAbilitiesButton}
             handleAbilitiesSelect={this.handleAbilitiesSelect}
-            buttonIcon={this.state.selectLogic.buttonIcon}
+            buttonIcon={this.state.buttonIcon}
           />
         </main>
         <Footer />
