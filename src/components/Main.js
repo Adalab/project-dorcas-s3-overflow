@@ -179,63 +179,64 @@ class Main extends Component {
       });
   }
 
-  handleReset() {
-    console.log('evento reset:', 'elemento clicado')
+  handleReset(event) {
+  event.preventDefault()
+  console.log('evento reset:', 'elemento clicado')
 
-    this.setState({
-      data: {
-        name: '',
-        job: '',
-        image: '',
-        email: '',
-        phone: '',
-        github: '',
-        linkedin: '',
-        skills: [],
-        palette: '',
-        typography: ''
-      },
+  this.setState({
+    data: {
+      name: '',
+      job: '',
+      image: '',
+      email: '',
+      phone: '',
+      github: '',
+      linkedin: '',
+      skills: [],
+      palette: '',
+      typography: ''
+    },
 
-      skillOptions: []
-    })
+    skillOptions: []
+  })
 
-  }
+}
 
-  render() {
-    console.log('skills', this.state.skills)
-    const userInfo = this.state.data
-    return (
-      <main className="container-mediaqueries-preview">
-        <Preview
-          OnResetButton={this.handleReset}
-          name={userInfo.name}
-          job={userInfo.job}
-          email={userInfo.email}
-          phone={userInfo.phone}
-          github={userInfo.github}
-          linkedin={userInfo.linkedin}
-          photo={userInfo.image}
-          skills={userInfo.skills}
-          paletteClass={paletteClass[userInfo.palette]}
-          typographyClass={fontClass[userInfo.typography]}
-        />
-        <Formulario
-          userInfo={this.state.data}
-          onInputNameChange={this.handleNameInput}
-          onInputJobChange={this.handleJobInput}
-          onInputImageClick={this.handleAddImage}
-          onInputImageChange={this.handleClickImage}
-          onInputEmailChange={this.handleEmailInput}
-          onInputPhoneChange={this.handlePhoneInput}
-          onInputGitChange={this.handleGithubInput}
-          onInputLinkedinChange={this.handleLinkedinInput}
-          skillOptions={this.state.skillOptions}
-          fileInput={this.fileInput}
-        />
-      </main>
+render() {
+  console.log('skills', this.state.skills)
+  const userInfo = this.state.data
+  return (
+    <main className="container-mediaqueries-preview">
+      <Preview
+        OnResetButton={this.handleReset}
+        name={userInfo.name}
+        job={userInfo.job}
+        email={userInfo.email}
+        phone={userInfo.phone}
+        github={userInfo.github}
+        linkedin={userInfo.linkedin}
+        photo={userInfo.image}
+        skills={userInfo.skills}
+        paletteClass={paletteClass[userInfo.palette]}
+        typographyClass={fontClass[userInfo.typography]}
+      />
+      <Formulario
+        userInfo={this.state.data}
+        onInputNameChange={this.handleNameInput}
+        onInputJobChange={this.handleJobInput}
+        onInputImageClick={this.handleAddImage}
+        onInputImageChange={this.handleClickImage}
+        onInputEmailChange={this.handleEmailInput}
+        onInputPhoneChange={this.handlePhoneInput}
+        onInputGitChange={this.handleGithubInput}
+        onInputLinkedinChange={this.handleLinkedinInput}
+        skillOptions={this.state.skillOptions}
+        fileInput={this.fileInput}
+      />
+    </main>
 
-    );
-  }
+  );
+}
 }
 
 
