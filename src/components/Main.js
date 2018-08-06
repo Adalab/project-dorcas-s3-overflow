@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Preview from './Preview.js';
 import Formulario from './Formulario.js';
 // mapeado de clases
@@ -144,14 +145,15 @@ class Main extends Component {
 
   // handle imagen load
 
+
   handleAddImage(event) {
-    this
-      .fileInput
-      .current
-      .click()
+    console.log(this.fileInput.click)
+    this.fileInput.current.click()
   }
 
+
   handleClickImage(event) {
+    console.log(event.target.files)
     const fr = new FileReader();
 
     fr.addEventListener('load', () => {
@@ -177,7 +179,7 @@ class Main extends Component {
       });
   }
 
-  handleReset(event) {
+  handleReset() {
     console.log('evento reset:', 'elemento clicado')
 
     this.setState({
@@ -212,27 +214,44 @@ class Main extends Component {
           phone={userInfo.phone}
           github={userInfo.github}
           linkedin={userInfo.linkedin}
-          photo={userInfo.photo}
+          photo={userInfo.image}
           skills={userInfo.skills}
           paletteClass={paletteClass[userInfo.palette]}
           typographyClass={fontClass[userInfo.typography]}
         />
-        
         <Formulario
-
           userInfo={this.state.data}
           onInputNameChange={this.handleNameInput}
           onInputJobChange={this.handleJobInput}
+          onInputImageClick={this.handleAddImage}
+          onInputImageChange={this.handleClickImage}
           onInputEmailChange={this.handleEmailInput}
           onInputPhoneChange={this.handlePhoneInput}
           onInputGitChange={this.handleGithubInput}
           onInputLinkedinChange={this.handleLinkedinInput}
           skillOptions={this.state.skillOptions}
+          fileInput={this.fileInput}
         />
       </main>
 
     );
   }
 }
+
+
+Main.propTypes = {
+  name: PropTypes.string,
+  job: PropTypes.string,
+  image: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.number,
+  github: PropTypes.string,
+  linkedin: PropTypes.string,
+  skills: PropTypes.array,
+  palette: PropTypes.string,
+  typography: PropTypes.string,
+  skillOptions: PropTypes.array,
+  // nombre de los selects:PropTypes.array
+};
 
 export default Main;

@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
+
 class Formulario extends Component {
     //handle button
 
@@ -18,7 +20,7 @@ class Formulario extends Component {
 
     render() {
 
-        const { userInfo, onInputNameChange, onInputJobChange, onInputEmailChange, onInputPhoneChange, onInputGitChange, onInputLinkedinChange } = this.props;
+        const { userInfo, onInputNameChange, onInputJobChange, onInputImageClick, onInputImageChange, onInputEmailChange, onInputPhoneChange, onInputGitChange, onInputLinkedinChange } = this.props;
         return (
             <div className="container-izquierda">
                 <form className="form" action="/signup" method="post">
@@ -158,19 +160,19 @@ class Formulario extends Component {
                                     <button
                                         className="action__upload-btn boton__añadir-imagen"
                                         type="button"
-                                        onClick={this.handleAddImage}>Añadir imagen</button>
+                                        onClick={onInputImageClick}>Añadir imagen</button>
                                     <input
                                         type="file"
                                         name="photo"
                                         id="img-selector"
                                         className="action__hiddenField"
-                                        //ref={this.fileInput}
-                                        onChange={this.handleClickImage} />
+                                        ref={this.props.fileInput}
+                                        onChange={onInputImageChange} />
                                 </div>
                                 <div className="profile-image contenedor--imagen">
                                     <img
                                         className="profile-image__item"
-                                        //src={this.state.image}
+                                        src={userInfo.image}
                                         alt="Foto de perfil" />
                                 </div>
                             </div>
@@ -246,4 +248,16 @@ class Formulario extends Component {
         );
     }
 }
+
+Formulario.propTypes = {
+    userInfo: PropTypes.string,
+    onInputNameChange: PropTypes.string,
+    onInputJobChange: PropTypes.string,
+    onInputEmailChange: PropTypes.string,
+    onInputPhoneChange: PropTypes.number,
+    onInputGitChange: PropTypes.string,
+    onInputLinkedinChange: PropTypes.string,
+    // nombre de los selects:PropTypes.array
+};
+
 export default Formulario;

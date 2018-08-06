@@ -125,7 +125,7 @@ $font-size-xxl-plus:    px;
   border-color: #a2deaf;
   border-style: solid;
   border-width: 1px;
-  color: #c5c5c5;
+  color: #000;
   height: 30px;
   padding-left: 10px;
   font-size: 14px;
@@ -659,7 +659,7 @@ body {
   width: 17px;
   border-style: solid;
   border-width: 1px;
-  border-color: #dde9ed;
+  border-color: #000;
   opacity: 1;
   background-color: #fff;
   border-radius: 50%; }
