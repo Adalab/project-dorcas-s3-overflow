@@ -23,6 +23,8 @@ class Formulario extends Component {
             onInputPhoneChange,
             onInputGitChange,
             onInputLinkedinChange,
+            onInputImageClick,
+            onInputImageChange,
             skillOptions,
             handleAbilitiesButton1,
             handleAbilitiesButton2,
@@ -169,22 +171,22 @@ class Formulario extends Component {
 
                             <div className="form__container--imagen">
                                 <div className="action form__container--imagen">
-                                    <button
+                                    {/* <button
                                         className="action__upload-btn boton__añadir-imagen"
                                         type="button"
-                                        onClick={this.handleAddImage}>Añadir imagen</button>
+                                        >Añadir imagen</button> */}
                                     <input
                                         type="file"
                                         name="photo"
                                         id="img-selector"
-                                        className="action__hiddenField"
-                                        //ref={this.fileInput}
-                                        onChange={this.handleClickImage} />
+                                        // className="action__hiddenField"
+                                        ref={this.props.fileInput}
+                                        onLoad={onInputImageClick} />
                                 </div>
                                 <div className="profile-image contenedor--imagen">
                                     <img
                                         className="profile-image__item"
-                                        //src={this.state.image}
+                                        src={userInfo.image}
                                         alt="Foto de perfil" />
                                 </div>
                             </div>

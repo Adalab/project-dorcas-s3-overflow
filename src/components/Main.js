@@ -34,12 +34,12 @@ class Main extends Component {
         typography: ''
       },
 
-        skillOptions: [],
-        optionSelected: '',
-        skillsOnCard: [],
-        buttonIcon1: '+',
-        buttonIcon2: '+',
-        buttonIcon3: '+',
+      skillOptions: [],
+      optionSelected: '',
+      skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
+      buttonIcon1: '+',
+      buttonIcon2: '+',
+      buttonIcon3: '+',
     }
 
     // rellena inputs binds
@@ -59,15 +59,6 @@ class Main extends Component {
     this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
 
     this.getSkills();
-  }
-
-  handleClickImage(event) {
-    const fr = new FileReader();
-    fr.addEventListener('load', () => {
-      this.setState({ image: fr.result });
-    });
-    fr.readAsDataURL(event.target.files[0]);
-
   }
 
   // handle rellena inputs
@@ -128,14 +119,13 @@ class Main extends Component {
 
   // handle imagen load
 
+
   handleAddImage(event) {
-    this
-      .fileInput
-      .current
-      .click()
+    // console.log(this.fileInput.click)
+    // this.fileInput.current.click()
   }
 
-  handleClickImage(event) {
+  handleClickImage(event) { 
     const fr = new FileReader();
 
     fr.addEventListener('load', () => {
@@ -147,8 +137,7 @@ class Main extends Component {
       })
     })
 
-    fr.readAsDataURL(event.target.files[0]);
-
+    fr.readAsDataURL(this.fileInput.current.files[0]);
   }
 
   // fetch to get skills
@@ -179,8 +168,9 @@ class Main extends Component {
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon1 === '+') {
+      const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [...this.state.skillsOnCard, this.state.optionSelected]
+        skillsOnCard: [this.state.optionSelected, ...array.slice(1,3)]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
@@ -198,8 +188,9 @@ class Main extends Component {
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon2 === '+') {
+      const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [...this.state.skillsOnCard, this.state.optionSelected]
+        skillsOnCard: [array[0], this.state.optionSelected, array[2]]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
@@ -217,8 +208,9 @@ class Main extends Component {
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon3 === '+') {
+      const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [...this.state.skillsOnCard, this.state.optionSelected]
+        skillsOnCard: [array[0], array[1], this.state.optionSelected]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
@@ -230,6 +222,7 @@ class Main extends Component {
 
   render() {
     const userInfo = this.state.data
+    
     return (
       <Fragment>
         <main className="container-mediaqueries-preview">
@@ -240,7 +233,7 @@ class Main extends Component {
             phone={userInfo.phone}
             github={userInfo.github}
             linkedin={userInfo.linkedin}
-            photo={userInfo.photo}
+            photo={userInfo.image}
             skillsOnCard={this.state.skillsOnCard}
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
@@ -253,6 +246,8 @@ class Main extends Component {
             onInputPhoneChange={this.handlePhoneInput}
             onInputGitChange={this.handleGithubInput}
             onInputLinkedinChange={this.handleLinkedinInput}
+            onInputImageClick={this.handleAddImage}
+            onInputImageChange={this.handleClickImage}
             skillOptions={this.state.skillOptions}
             handleAbilitiesButton1={this.handleAbilitiesButton1}
             handleAbilitiesButton2={this.handleAbilitiesButton2}
@@ -267,7 +262,6 @@ class Main extends Component {
     );
   }
 }
-
 
 Main.propTypes = {
   name: PropTypes.string,

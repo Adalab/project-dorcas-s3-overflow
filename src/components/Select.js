@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 class Select extends Component {
+
     render() {
         const {
             skillOptions,
@@ -34,6 +35,7 @@ class Select extends Component {
                             className="button"
                             onClick={onClickAbilityButton1}
                         >
+
                             <div className="content-button-habilities">
                                 {buttonIcon1}
                             </div>
@@ -59,6 +61,7 @@ class Select extends Component {
                             className="button"
                             onClick={onClickAbilityButton2}
                         >
+
                             <div className="content-button-habilities">
                                 {buttonIcon2}
                             </div>
@@ -84,6 +87,7 @@ class Select extends Component {
                             className="button"
                             onClick={onClickAbilityButton3}
                         >
+
                             <div className="content-button-habilities">
                                 {buttonIcon3}
                             </div>
