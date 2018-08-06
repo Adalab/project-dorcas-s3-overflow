@@ -65,11 +65,23 @@ class Main extends Component {
       .bind(this);
 
     this.getSkills();
+
+    this.handleReset = this.handleReset.bind(this);
+
   }
 
 
 
+  handleClickImage(event) {
+    console.log(event.target.files)
+    console.log(this.setState)
+    const fr = new FileReader();
+    fr.addEventListener('load', () => {
+      this.setState({ image: fr.result });
+    });
+    fr.readAsDataURL(event.target.files[0]);
 
+  }
 
   handleAbilities() {
     console.log('habilidad añadida')
@@ -167,12 +179,35 @@ class Main extends Component {
       });
   }
 
+  handleReset() {
+    console.log('evento reset:', 'elemento clicado')
+
+    this.setState({
+      data: {
+        name: '',
+        job: '',
+        image: '',
+        email: '',
+        phone: '',
+        github: '',
+        linkedin: '',
+        skills: [],
+        palette: '',
+        typography: ''
+      },
+
+      skillOptions: []
+    })
+
+  }
+
   render() {
     console.log('skills', this.state.skills)
     const userInfo = this.state.data
     return (
       <main className="container-mediaqueries-preview">
         <Preview
+          OnResetButton={this.handleReset}
           name={userInfo.name}
           job={userInfo.job}
           email={userInfo.email}

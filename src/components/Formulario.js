@@ -29,7 +29,7 @@ class Formulario extends Component {
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">COLORES</legend>
                                 <div className="container__input__labels">
-                                    <label className="container_input_div" for="form__subtitle__first-color">
+                                    <label className="container_input_div" htmlFor="form__subtitle__first-color">
                                         <input
                                             className="clikable local--palette radio-color"
                                             data-donde="greenTarget"
@@ -45,7 +45,7 @@ class Formulario extends Component {
                                             <div className="first-color__square3"></div>
                                         </div>
                                     </label>
-                                    <label className="container_input_div" for="form__subtitle__second-color">
+                                    <label className="container_input_div" htmlFor="form__subtitle__second-color">
                                         <input
                                             className="clikable local--palette radio-color"
                                             data-donde="redTarget"
@@ -85,7 +85,7 @@ class Formulario extends Component {
                                 <div className="container__input__labels ">
                                     <label
                                         className="font1 container_input_font container_input_div"
-                                        for="form__subtitle__first-font">
+                                        htmlFor="form__subtitle__first-font">
                                         <input
                                             className="clikable local--typography radio-font"
                                             data-donde="ubuntuFont"
@@ -100,7 +100,7 @@ class Formulario extends Component {
                                     </label>
                                     <label
                                         className="font2 container_input_font container_input_div"
-                                        for="form__subtitle__second-font">
+                                        htmlFor="form__subtitle__second-font">
                                         <input
                                             className="clikable local--typography radio-font"
                                             data-donde="comicFont"
@@ -114,7 +114,7 @@ class Formulario extends Component {
                                             Comic Sans
                                     </div>
                                     </label>
-                                    <label className="font3 container_input_div" for="form__subtitle__third-font">
+                                    <label className="font3 container_input_div" htmlFor="form__subtitle__third-font">
                                         <input
                                             className="clikable local--typography radio-font"
                                             data-donde="montFont"
