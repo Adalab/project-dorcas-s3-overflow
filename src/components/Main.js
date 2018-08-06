@@ -178,9 +178,9 @@ class Main extends Component {
   }
 
   handleReset(event) {
-    console.log('elemento clicado')
+    console.log('evento reset:', 'elemento clicado')
 
-    this.state = {
+    this.setState({
       data: {
         name: '',
         job: '',
@@ -195,7 +195,8 @@ class Main extends Component {
       },
 
       skillOptions: []
-    }
+    })
+
   }
 
   render() {
@@ -204,6 +205,7 @@ class Main extends Component {
     return (
       <main className="container-mediaqueries-preview">
         <Preview
+          OnResetButton={this.handleReset}
           name={userInfo.name}
           job={userInfo.job}
           email={userInfo.email}
@@ -215,8 +217,9 @@ class Main extends Component {
           paletteClass={paletteClass[userInfo.palette]}
           typographyClass={fontClass[userInfo.typography]}
         />
+        
         <Formulario
-          OnResetButton={this.handleReset}
+
           userInfo={this.state.data}
           onInputNameChange={this.handleNameInput}
           onInputJobChange={this.handleJobInput}
