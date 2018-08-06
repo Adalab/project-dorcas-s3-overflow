@@ -40,7 +40,7 @@ class Preview extends Component {
                                 <div className="color-line"></div>
                                 <div className="container-name-profesion">
                                     <p className="name_line" id="element-nombre">{name || "Martirio"}</p>
-                                    <p className="profesion_line" id="element-puesto">{job}</p>
+                                    <p className="profesion_line" id="element-puesto">{job || "Reina de la cancion"}</p>
                                 </div>
                             </div>
                         </div>
