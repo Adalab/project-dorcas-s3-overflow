@@ -121,23 +121,11 @@ class Main extends Component {
 
 
   handleAddImage(event) {
-    // console.log(this.fileInput.click)
-    // this.fileInput.current.click()
+  
   }
 
   handleClickImage(event) { 
-    const fr = new FileReader();
-
-    fr.addEventListener('load', () => {
-      this.setState({
-        data: {
-          ...this.state.data,
-          image: fr.result
-        }
-      })
-    })
-
-    fr.readAsDataURL(this.fileInput.current.files[0]);
+    
   }
 
   // fetch to get skills
@@ -174,8 +162,7 @@ class Main extends Component {
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      const index = array.indexOf(event.target.value)
-      array.splice(index, 1);
+      array.splice(0,1, '');
       this.setState({ skillsOnCard: array });
     }
   }
@@ -194,8 +181,7 @@ class Main extends Component {
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      const index = array.indexOf(event.target.value)
-      array.splice(index, 1);
+      array.splice(1,1, "");
       this.setState({ skillsOnCard: array });
     }
   }
@@ -214,8 +200,7 @@ class Main extends Component {
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      const index = array.indexOf(event.target.value)
-      array.splice(index, 1);
+      array.splice(2,1, '');
       this.setState({ skillsOnCard: array });
     }
   }
