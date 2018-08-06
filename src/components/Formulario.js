@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
+import martirioPic from '../images/martirio.jpg';
 
 class Formulario extends Component {
     //handle button
@@ -186,7 +187,7 @@ class Formulario extends Component {
                                 <div className="profile-image contenedor--imagen">
                                     <img
                                         className="profile-image__item"
-                                        src={userInfo.image}
+                                        src={userInfo.image || martirioPic}
                                         alt="Foto de perfil" />
                                 </div>
                             </div>

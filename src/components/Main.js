@@ -59,6 +59,20 @@ class Main extends Component {
     this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
 
     this.getSkills();
+
+    this.handleReset = this.handleReset.bind(this);
+
+  }
+
+  handleClickImage(event) {
+    console.log(event.target.files)
+    console.log(this.setState)
+    const fr = new FileReader();
+    fr.addEventListener('load', () => {
+      this.setState({ image: fr.result });
+    });
+    fr.readAsDataURL(event.target.files[0]);
+
   }
 
   // handle rellena inputs
@@ -117,17 +131,6 @@ class Main extends Component {
     })
   }
 
-  // handle imagen load
-
-
-  handleAddImage(event) {
-  
-  }
-
-  handleClickImage(event) { 
-    
-  }
-
   // fetch to get skills
 
   getSkills() {
@@ -158,11 +161,11 @@ class Main extends Component {
     if (this.state.buttonIcon1 === '+') {
       const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [this.state.optionSelected, ...array.slice(1,3)]
+        skillsOnCard: [this.state.optionSelected, ...array.slice(1, 3)]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      array.splice(0,1, '');
+      array.splice(0, 1, '');
       this.setState({ skillsOnCard: array });
     }
   }
@@ -181,7 +184,7 @@ class Main extends Component {
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      array.splice(1,1, "");
+      array.splice(1, 1, "");
       this.setState({ skillsOnCard: array });
     }
   }
@@ -200,18 +203,40 @@ class Main extends Component {
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      array.splice(2,1, '');
+      array.splice(2, 1, '');
       this.setState({ skillsOnCard: array });
     }
   }
+  
+    handleReset() {
+      console.log('evento reset:', 'elemento clicado')
 
-  render() {
-    const userInfo = this.state.data
-    
-    return (
-      <Fragment>
+      this.setState({
+        data: {
+          name: '',
+          job: '',
+          image: '',
+          email: '',
+          phone: '',
+          github: '',
+          linkedin: '',
+          skills: [],
+          palette: '',
+          typography: ''
+        },
+
+        skillOptions: []
+      })
+
+    }
+
+    render() {
+      const userInfo = this.state.data
+
+      return (
         <main className="container-mediaqueries-preview">
           <Preview
+            OnResetButton={this.handleReset}
             name={userInfo.name}
             job={userInfo.job}
             email={userInfo.email}
@@ -219,7 +244,7 @@ class Main extends Component {
             github={userInfo.github}
             linkedin={userInfo.linkedin}
             photo={userInfo.image}
-            skillsOnCard={this.state.skillsOnCard}
+            skills={this.state.skillsOnCard}
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
@@ -227,13 +252,14 @@ class Main extends Component {
             userInfo={this.state.data}
             onInputNameChange={this.handleNameInput}
             onInputJobChange={this.handleJobInput}
+            onInputImageClick={this.handleAddImage}
+            onInputImageChange={this.handleClickImage}
             onInputEmailChange={this.handleEmailInput}
             onInputPhoneChange={this.handlePhoneInput}
             onInputGitChange={this.handleGithubInput}
             onInputLinkedinChange={this.handleLinkedinInput}
-            onInputImageClick={this.handleAddImage}
-            onInputImageChange={this.handleClickImage}
-            skillOptions={this.state.skillOptions}
+            fileInput={this.fileInput}
+            killOptions={this.state.skillOptions}
             handleAbilitiesButton1={this.handleAbilitiesButton1}
             handleAbilitiesButton2={this.handleAbilitiesButton2}
             handleAbilitiesButton3={this.handleAbilitiesButton3}
@@ -243,24 +269,24 @@ class Main extends Component {
             buttonIcon3={this.state.buttonIcon3}
           />
         </main>
-      </Fragment>
-    );
+
+      );
+    }
   }
-}
 
-Main.propTypes = {
-  name: PropTypes.string,
-  job: PropTypes.string,
-  image: PropTypes.string,
-  email: PropTypes.string,
-  phone: PropTypes.number,
-  github: PropTypes.string,
-  linkedin: PropTypes.string,
-  skills: PropTypes.array,
-  palette: PropTypes.string,
-  typography: PropTypes.string,
-  skillOptions: PropTypes.array,
-  // nombre de los selects:PropTypes.array
-};
+  Main.propTypes = {
+    name: PropTypes.string,
+    job: PropTypes.string,
+    image: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.number,
+    github: PropTypes.string,
+    linkedin: PropTypes.string,
+    skills: PropTypes.array,
+    palette: PropTypes.string,
+    typography: PropTypes.string,
+    skillOptions: PropTypes.array,
+    // nombre de los selects:PropTypes.array
+  };
 
-export default Main;
+  export default Main;
