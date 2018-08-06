@@ -172,17 +172,17 @@ class Formulario extends Component {
 
                             <div className="form__container--imagen">
                                 <div className="action form__container--imagen">
-                                    {/* <button
+                                    <button
                                         className="action__upload-btn boton__añadir-imagen"
                                         type="button"
-                                        >Añadir imagen</button> */}
+                                        onClick={onInputImageClick}>Añadir imagen</button>
                                     <input
                                         type="file"
                                         name="photo"
                                         id="img-selector"
-                                        // className="action__hiddenField"
+                                        className="action__hiddenField"
                                         ref={this.props.fileInput}
-                                        onLoad={onInputImageClick} />
+                                        onChange={onInputImageChange} />
                                 </div>
                                 <div className="profile-image contenedor--imagen">
                                     <img

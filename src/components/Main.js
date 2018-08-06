@@ -75,6 +75,10 @@ class Main extends Component {
 
   }
 
+  handleAbilities() {
+    console.log('habilidad añadida')
+  }
+
   // handle rellena inputs
 
   handleNameInput(event) {
@@ -129,6 +133,32 @@ class Main extends Component {
         linkedin: event.target.value
       }
     })
+  }
+
+  // handle imagen load
+
+
+  handleAddImage(event) {
+    console.log(this.fileInput.click)
+    this.fileInput.current.click()
+  }
+
+
+  handleClickImage(event) {
+    console.log(event.target.files)
+    const fr = new FileReader();
+
+    fr.addEventListener('load', () => {
+      this.setState({
+        data: {
+          ...this.state.data,
+          image: fr.result
+        }
+      })
+    })
+
+    fr.readAsDataURL(event.target.files[0]);
+
   }
 
   // fetch to get skills
@@ -244,7 +274,7 @@ class Main extends Component {
             github={userInfo.github}
             linkedin={userInfo.linkedin}
             photo={userInfo.image}
-            skills={this.state.skillsOnCard}
+            skillsOnCard={this.state.skillsOnCard}
             paletteClass={paletteClass[userInfo.palette]}
             typographyClass={fontClass[userInfo.typography]}
           />
@@ -259,7 +289,7 @@ class Main extends Component {
             onInputGitChange={this.handleGithubInput}
             onInputLinkedinChange={this.handleLinkedinInput}
             fileInput={this.fileInput}
-            killOptions={this.state.skillOptions}
+            skillOptions={this.state.skillOptions}
             handleAbilitiesButton1={this.handleAbilitiesButton1}
             handleAbilitiesButton2={this.handleAbilitiesButton2}
             handleAbilitiesButton3={this.handleAbilitiesButton3}
