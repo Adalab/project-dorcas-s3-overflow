@@ -5,36 +5,92 @@ class Select extends Component {
     render() {
         const {
             skillOptions,
-            onClickAbilityButton,
+            onClickAbilityButton1,
+            onClickAbilityButton2,
+            onClickAbilityButton3,
             onChangeAbilitySelect,
-            buttonIcon
+            buttonIcon1,
+            buttonIcon2,
+            buttonIcon3,
         } = this.props;
         return (
-            <div className="form__container-select">
-                <select name="" id=""
-                    className="form__select"
-                    onChange={onChangeAbilitySelect}>
-                    {skillOptions.map((skill, i) =>
-                        <option
-                            key={i}
-                            value={skill}>
-                            {skill}
-                        </option>
-                    )}
-                </select>
-                <div id="mama">
-                    <button
-                        type="button"
-                        id="fetch"
-                        className="button"
-                        onClick={onClickAbilityButton}
-                    >
-                        <div className="content-button-habilities">
-                            {buttonIcon}
-                        </div>
-                    </button>
+            <Fragment>
+                <div className="form__container-select">
+                    <select name="" id=""
+                        className="form__select"
+                        onChange={onChangeAbilitySelect}>
+                        {skillOptions.map((skill, i) =>
+                            <option
+                                key={i}
+                                value={skill}>
+                                {skill}
+                            </option>
+                        )}
+                    </select>
+                    <div id="mama">
+                        <button
+                            type="button"
+                            id="fetch"
+                            className="button"
+                            onClick={onClickAbilityButton1}
+                        >
+                            <div className="content-button-habilities">
+                                {buttonIcon1}
+                            </div>
+                        </button>
+                    </div>
                 </div>
-            </div>
+                <div className="form__container-select">
+                    <select name="" id=""
+                        className="form__select"
+                        onChange={onChangeAbilitySelect}>
+                        {skillOptions.map((skill, i) =>
+                            <option
+                                key={i}
+                                value={skill}>
+                                {skill}
+                            </option>
+                        )}
+                    </select>
+                    <div id="mama">
+                        <button
+                            type="button"
+                            id="fetch"
+                            className="button"
+                            onClick={onClickAbilityButton2}
+                        >
+                            <div className="content-button-habilities">
+                                {buttonIcon2}
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div className="form__container-select">
+                    <select name="" id=""
+                        className="form__select"
+                        onChange={onChangeAbilitySelect}>
+                        {skillOptions.map((skill, i) =>
+                            <option
+                                key={i}
+                                value={skill}>
+                                {skill}
+                            </option>
+                        )}
+                    </select>
+                    <div id="mama">
+                        <button
+                            type="button"
+                            id="fetch"
+                            className="button"
+                            onClick={onClickAbilityButton3}
+                        >
+                            <div className="content-button-habilities">
+                                {buttonIcon3}
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </Fragment>
         );
     }
 }

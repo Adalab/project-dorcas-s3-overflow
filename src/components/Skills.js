@@ -5,7 +5,7 @@ class Skills extends Component {
     render() {
         const {skillName} = this.props;
         return (
-            <ul>
+            <ul className="skills__container-list">
                 {skillName.map((skill, i) =>
                     <li
                         key={i}

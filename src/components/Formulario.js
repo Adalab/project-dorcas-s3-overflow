@@ -24,9 +24,13 @@ class Formulario extends Component {
             onInputGitChange,
             onInputLinkedinChange,
             skillOptions,
-            handleAbilitiesButton,
+            handleAbilitiesButton1,
+            handleAbilitiesButton2,
+            handleAbilitiesButton3,
             handleAbilitiesSelect,
-            buttonIcon
+            buttonIcon1,
+            buttonIcon2,
+            buttonIcon3,
         } = this.props;
 
         return (
@@ -228,21 +232,13 @@ class Formulario extends Component {
                             <div className="form__container--habilidad">
                                 <Select
                                     skillOptions={skillOptions}
-                                    onClickAbilityButton={handleAbilitiesButton}
+                                    onClickAbilityButton1={handleAbilitiesButton1}
+                                    onClickAbilityButton2={handleAbilitiesButton2}
+                                    onClickAbilityButton3={handleAbilitiesButton3}
                                     onChangeAbilitySelect={handleAbilitiesSelect}
-                                    buttonIcon={buttonIcon}
-                                />
-                                <Select
-                                    skillOptions={skillOptions}
-                                    onClickAbilityButton={handleAbilitiesButton}
-                                    onChangeAbilitySelect={handleAbilitiesSelect}
-                                    buttonIcon={buttonIcon}
-                                />
-                                <Select
-                                    skillOptions={skillOptions}
-                                    onClickAbilityButton={handleAbilitiesButton}
-                                    onChangeAbilitySelect={handleAbilitiesSelect}
-                                    buttonIcon={buttonIcon}
+                                    buttonIcon1={buttonIcon1}
+                                    buttonIcon2={buttonIcon2}
+                                    buttonIcon3={buttonIcon3}
                                 />
                             </div>
                         </div>

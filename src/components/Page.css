@@ -288,10 +288,13 @@ $font-size-xxl-plus:    px;
   margin-left: 20px; }
 
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
 
 body {
-  margin: 0; }
+  display: flex;
+  flex-direction: column; }
 
 .allboxes {
   margin-left: auto;
@@ -937,3 +940,7 @@ body {
   margin: 5px;
   display: flex;
   align-items: center; }
+
+.skills__container-list {
+  display: flex;
+  justify-content: flex-start; }

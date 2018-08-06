@@ -2,8 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview.js';
 import Formulario from './Formulario.js';
-import Header from './Header';
-import Footer from './Footer'
 import '../scss/Main.css';
 
 // mapeado de clases
@@ -39,7 +37,9 @@ class Main extends Component {
         skillOptions: [],
         optionSelected: '',
         skillsOnCard: [],
-        buttonIcon: '+'
+        buttonIcon1: '+',
+        buttonIcon2: '+',
+        buttonIcon3: '+',
     }
 
     // rellena inputs binds
@@ -53,7 +53,9 @@ class Main extends Component {
     this.fileInput = React.createRef();
     this.handleAddImage = this.handleAddImage.bind(this);
     this.handleClickImage = this.handleClickImage.bind(this);
-    this.handleAbilitiesButton = this.handleAbilitiesButton.bind(this);
+    this.handleAbilitiesButton1 = this.handleAbilitiesButton1.bind(this);
+    this.handleAbilitiesButton2 = this.handleAbilitiesButton2.bind(this);
+    this.handleAbilitiesButton3 = this.handleAbilitiesButton3.bind(this);
     this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
 
     this.getSkills();
@@ -169,14 +171,52 @@ class Main extends Component {
     })
   }
 
-  handleAbilitiesButton(event) {
+  handleAbilitiesButton1(event) {
     event.preventDefault();
     // lógica para cambiar el signo del botón
     this.setState((prevState, props) => ({
-      buttonIcon: (prevState.buttonIcon === '+') ? '-' : '+'
+      buttonIcon1: (prevState.buttonIcon1 === '+') ? '-' : '+'
     }));
     // lógica para añadir o quitar skills de la tarjeta
-    if (this.state.buttonIcon === '+') {
+    if (this.state.buttonIcon1 === '+') {
+      this.setState({
+        skillsOnCard: [...this.state.skillsOnCard, this.state.optionSelected]
+      })
+    } else {
+      const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+      const index = array.indexOf(event.target.value)
+      array.splice(index, 1);
+      this.setState({ skillsOnCard: array });
+    }
+  }
+
+  handleAbilitiesButton2(event) {
+    event.preventDefault();
+    // lógica para cambiar el signo del botón
+    this.setState((prevState, props) => ({
+      buttonIcon2: (prevState.buttonIcon2 === '+') ? '-' : '+'
+    }));
+    // lógica para añadir o quitar skills de la tarjeta
+    if (this.state.buttonIcon2 === '+') {
+      this.setState({
+        skillsOnCard: [...this.state.skillsOnCard, this.state.optionSelected]
+      })
+    } else {
+      const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+      const index = array.indexOf(event.target.value)
+      array.splice(index, 1);
+      this.setState({ skillsOnCard: array });
+    }
+  }
+
+  handleAbilitiesButton3(event) {
+    event.preventDefault();
+    // lógica para cambiar el signo del botón
+    this.setState((prevState, props) => ({
+      buttonIcon3: (prevState.buttonIcon3 === '+') ? '-' : '+'
+    }));
+    // lógica para añadir o quitar skills de la tarjeta
+    if (this.state.buttonIcon3 === '+') {
       this.setState({
         skillsOnCard: [...this.state.skillsOnCard, this.state.optionSelected]
       })
@@ -192,7 +232,6 @@ class Main extends Component {
     const userInfo = this.state.data
     return (
       <Fragment>
-        <Header />
         <main className="container-mediaqueries-preview">
           <Preview
             name={userInfo.name}
@@ -215,12 +254,15 @@ class Main extends Component {
             onInputGitChange={this.handleGithubInput}
             onInputLinkedinChange={this.handleLinkedinInput}
             skillOptions={this.state.skillOptions}
-            handleAbilitiesButton={this.handleAbilitiesButton}
+            handleAbilitiesButton1={this.handleAbilitiesButton1}
+            handleAbilitiesButton2={this.handleAbilitiesButton2}
+            handleAbilitiesButton3={this.handleAbilitiesButton3}
             handleAbilitiesSelect={this.handleAbilitiesSelect}
-            buttonIcon={this.state.buttonIcon}
+            buttonIcon1={this.state.buttonIcon1}
+            buttonIcon2={this.state.buttonIcon2}
+            buttonIcon3={this.state.buttonIcon3}
           />
         </main>
-        <Footer />
       </Fragment>
     );
   }
