@@ -17,7 +17,7 @@ class Select extends Component {
         return (
             <Fragment>
                 <div className="form__container-select">
-                    <select name="" id=""
+                    <select name="" id="1"
                         className="form__select"
                         onChange={onChangeAbilitySelect}>
                         {skillOptions.map((skill, i) =>
@@ -43,7 +43,7 @@ class Select extends Component {
                     </div>
                 </div>
                 <div className="form__container-select">
-                    <select name="" id=""
+                    <select name="" id="2"
                         className="form__select"
                         onChange={onChangeAbilitySelect}>
                         {skillOptions.map((skill, i) =>
@@ -69,7 +69,7 @@ class Select extends Component {
                     </div>
                 </div>
                 <div className="form__container-select">
-                    <select name="" id=""
+                    <select name="" id="3"
                         className="form__select"
                         onChange={onChangeAbilitySelect}>
                         {skillOptions.map((skill, i) =>

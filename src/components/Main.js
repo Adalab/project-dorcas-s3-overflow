@@ -61,18 +61,12 @@ class Main extends Component {
   }
 
   handleClickImage(event) {
-    console.log(event.target.files)
-    console.log(this.setState)
     const fr = new FileReader();
     fr.addEventListener('load', () => {
       this.setState({ image: fr.result });
     });
     fr.readAsDataURL(event.target.files[0]);
 
-  }
-
-  handleAbilities() {
-    console.log('habilidad añadida')
   }
 
   // handle rellena inputs
@@ -135,13 +129,11 @@ class Main extends Component {
 
 
   handleAddImage(event) {
-    console.log(this.fileInput.click)
     this.fileInput.current.click()
   }
 
 
   handleClickImage(event) {
-    console.log(event.target.files)
     const fr = new FileReader();
 
     fr.addEventListener('load', () => {
@@ -178,6 +170,7 @@ class Main extends Component {
 
   handleAbilitiesButton1(event) {
     event.preventDefault();
+    
     // lógica para cambiar el signo del botón
     this.setState((prevState, props) => ({
       buttonIcon1: (prevState.buttonIcon1 === '+') ? '-' : '+'
@@ -235,7 +228,6 @@ class Main extends Component {
 
   handleReset(event) {
     event.preventDefault()
-    console.log('evento reset:', 'elemento clicado')
 
     this.setState({
       data: {
@@ -259,7 +251,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log('skills', this.state.skills)
     const userInfo = this.state.data
     return (
       <main className="container-mediaqueries-preview">
