@@ -237,86 +237,90 @@ class Main extends Component {
       this.setState({ skillsOnCard: array });
     }
   }
-  
-    handleReset() {
-      console.log('evento reset:', 'elemento clicado')
 
-      this.setState({
-        data: {
-          name: '',
-          job: '',
-          image: '',
-          email: '',
-          phone: '',
-          github: '',
-          linkedin: '',
-          skills: [],
-          palette: '',
-          typography: ''
-        },
+  handleReset(event) {
+    event.preventDefault()
+    console.log('evento reset:', 'elemento clicado')
 
-        skillOptions: []
-      })
+    this.setState({
+      data: {
+        name: '',
+        job: '',
+        image: '',
+        email: '',
+        phone: '',
+        github: '',
+        linkedin: '',
+        palette: '',
+        typography: ''
+      },
 
-    }
-
-    render() {
-      const userInfo = this.state.data
-
-      return (
-        <main className="container-mediaqueries-preview">
-          <Preview
-            OnResetButton={this.handleReset}
-            name={userInfo.name}
-            job={userInfo.job}
-            email={userInfo.email}
-            phone={userInfo.phone}
-            github={userInfo.github}
-            linkedin={userInfo.linkedin}
-            photo={userInfo.image}
-            skillsOnCard={this.state.skillsOnCard}
-            paletteClass={paletteClass[userInfo.palette]}
-            typographyClass={fontClass[userInfo.typography]}
-          />
-          <Formulario
-            userInfo={this.state.data}
-            onInputNameChange={this.handleNameInput}
-            onInputJobChange={this.handleJobInput}
-            onInputImageClick={this.handleAddImage}
-            onInputImageChange={this.handleClickImage}
-            onInputEmailChange={this.handleEmailInput}
-            onInputPhoneChange={this.handlePhoneInput}
-            onInputGitChange={this.handleGithubInput}
-            onInputLinkedinChange={this.handleLinkedinInput}
-            fileInput={this.fileInput}
-            skillOptions={this.state.skillOptions}
-            handleAbilitiesButton1={this.handleAbilitiesButton1}
-            handleAbilitiesButton2={this.handleAbilitiesButton2}
-            handleAbilitiesButton3={this.handleAbilitiesButton3}
-            handleAbilitiesSelect={this.handleAbilitiesSelect}
-            buttonIcon1={this.state.buttonIcon1}
-            buttonIcon2={this.state.buttonIcon2}
-            buttonIcon3={this.state.buttonIcon3}
-          />
-        </main>
-
-      );
-    }
+      optionSelected: '',
+      skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
+      buttonIcon1: '+',
+      buttonIcon2: '+',
+      buttonIcon3: '+',
+    })
   }
 
-  Main.propTypes = {
-    name: PropTypes.string,
-    job: PropTypes.string,
-    image: PropTypes.string,
-    email: PropTypes.string,
-    phone: PropTypes.number,
-    github: PropTypes.string,
-    linkedin: PropTypes.string,
-    skills: PropTypes.array,
-    palette: PropTypes.string,
-    typography: PropTypes.string,
-    skillOptions: PropTypes.array,
-    // nombre de los selects:PropTypes.array
-  };
+  render() {
+    console.log('skills', this.state.skills)
+    const userInfo = this.state.data
+    return (
+      <main className="container-mediaqueries-preview">
+        <Preview
+          OnResetButton={this.handleReset}
+          name={userInfo.name}
+          job={userInfo.job}
+          email={userInfo.email}
+          phone={userInfo.phone}
+          github={userInfo.github}
+          linkedin={userInfo.linkedin}
+          photo={userInfo.image}
+          skillsOnCard={this.state.skillsOnCard}
+          paletteClass={paletteClass[userInfo.palette]}
+          typographyClass={fontClass[userInfo.typography]}
+        />
+        <Formulario
+          userInfo={this.state.data}
+          onInputNameChange={this.handleNameInput}
+          onInputJobChange={this.handleJobInput}
+          onInputImageClick={this.handleAddImage}
+          onInputImageChange={this.handleClickImage}
+          onInputEmailChange={this.handleEmailInput}
+          onInputPhoneChange={this.handlePhoneInput}
+          onInputGitChange={this.handleGithubInput}
+          onInputLinkedinChange={this.handleLinkedinInput}
+          skillOptions={this.state.skillOptions}
+          fileInput={this.fileInput}
+          skillOptions={this.state.skillOptions}
+          handleAbilitiesButton1={this.handleAbilitiesButton1}
+          handleAbilitiesButton2={this.handleAbilitiesButton2}
+          handleAbilitiesButton3={this.handleAbilitiesButton3}
+          handleAbilitiesSelect={this.handleAbilitiesSelect}
+          buttonIcon1={this.state.buttonIcon1}
+          buttonIcon2={this.state.buttonIcon2}
+          buttonIcon3={this.state.buttonIcon3}
+        />
+      </main>
 
-  export default Main;
+    );
+  }
+}
+
+Main.propTypes = {
+  name: PropTypes.string,
+  job: PropTypes.string,
+  image: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.number,
+  github: PropTypes.string,
+  linkedin: PropTypes.string,
+  skills: PropTypes.array,
+  palette: PropTypes.string,
+  typography: PropTypes.string,
+  skillOptions: PropTypes.array,
+  // nombre de los selects:PropTypes.array
+};
+
+export default Main;
