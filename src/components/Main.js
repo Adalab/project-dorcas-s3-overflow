@@ -57,11 +57,7 @@ class Main extends Component {
     this.handleAbilitiesButton2 = this.handleAbilitiesButton2.bind(this);
     this.handleAbilitiesButton3 = this.handleAbilitiesButton3.bind(this);
     this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
-
-    this.getSkills();
-
     this.handleReset = this.handleReset.bind(this);
-
   }
 
   handleClickImage(event) {
@@ -162,8 +158,7 @@ class Main extends Component {
   }
 
   // fetch to get skills
-
-  getSkills() {
+  componentDidMount() {
     fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
       .then((response) => response.json())
       .then((jsonskills) => {
@@ -195,7 +190,7 @@ class Main extends Component {
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      array.splice(0, 1, '');
+      array.splice(0, 1);
       this.setState({ skillsOnCard: array });
     }
   }
@@ -214,7 +209,7 @@ class Main extends Component {
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      array.splice(1, 1, "");
+      array.splice(1, 1, '');
       this.setState({ skillsOnCard: array });
     }
   }
