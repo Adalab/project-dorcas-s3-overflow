@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Skills extends Component {
+
+
+
     render() {
         const {skillName} = this.props;
+        const skillFiltered = skillName.filter(skill => skill !== '')
         return (
             <ul className="skills__container-list">
-                {skillName.map((skill, i) =>
+                {skillFiltered.map((skill, i) =>
                     <li
                         key={i}
                         className="etiqueta-habilidad"
