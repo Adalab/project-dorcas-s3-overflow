@@ -31,7 +31,7 @@ class Preview extends Component {
                             <i className=" far fa-trash-alt icono-basura">RESET</i>
                         </a>
                     </div>
-                    <div className="preview">
+                    <div className="preview redTarget">
                         <div className="preview_title">
                             <div className="preview-title__container">
                                 <div className="color-line"></div>

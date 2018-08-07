@@ -30,7 +30,7 @@ class Main extends Component {
         phone: '',
         github: '',
         linkedin: '',
-        palette: '',
+        palette: '1',
         typography: ''
       },
 
@@ -61,6 +61,22 @@ class Main extends Component {
     this.getSkills();
 
     this.handleReset = this.handleReset.bind(this);
+    this.handleRadioColor = this.handleRadioColor.bind(this);
+
+  }
+  handleRadioColor(event) {
+    console.log(event.target.value)
+    const { value } = event.target;
+    this.setState((prevState) => ({
+      data: {
+        ...prevState.data,
+        palette: value
+      }
+    }), () => {
+
+      console.log(this.state.data.palette)
+
+    })
 
   }
 
@@ -282,6 +298,7 @@ class Main extends Component {
           typographyClass={fontClass[userInfo.typography]}
         />
         <Formulario
+          onChangeRadioColor={this.handleRadioColor}
           userInfo={this.state.data}
           onInputNameChange={this.handleNameInput}
           onInputJobChange={this.handleJobInput}

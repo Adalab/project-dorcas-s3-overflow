@@ -17,6 +17,7 @@ class Formulario extends Component {
 
     render() {
         const {
+            onChangeRadioColor,
             userInfo,
             onInputNameChange,
             onInputJobChange,
@@ -52,7 +53,8 @@ class Formulario extends Component {
                                             type="radio"
                                             value="1"
                                             name="palette"
-                                            defaultChecked />
+                                            defaultChecked 
+                                            onChange ={onChangeRadioColor}/>
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="first-color__square1"></div>
@@ -67,7 +69,8 @@ class Formulario extends Component {
                                             id="form__subtitle__second-color"
                                             type="radio"
                                             value="2"
-                                            name="palette" />
+                                            name="palette" 
+                                            onChange ={onChangeRadioColor}/>
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="second-color__square1"></div>
@@ -82,7 +85,8 @@ class Formulario extends Component {
                                             id="form__subtitle__third-color"
                                             type="radio"
                                             value="3"
-                                            name="palette" />
+                                            name="palette" 
+                                            onChange ={onChangeRadioColor}/>
                                         <span className="checkmark"></span>
                                         <div className="container__square group-square2">
                                             <div className="third-color__square1"></div>
