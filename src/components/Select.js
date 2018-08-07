@@ -9,7 +9,9 @@ class Select extends Component {
             onClickAbilityButton1,
             onClickAbilityButton2,
             onClickAbilityButton3,
-            onChangeAbilitySelect,
+            onChangeAbilitySelect1,
+            onChangeAbilitySelect2,
+            onChangeAbilitySelect3,
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
@@ -17,9 +19,9 @@ class Select extends Component {
         return (
             <Fragment>
                 <div className="form__container-select">
-                    <select name="" id=""
+                    <select name="" id="1"
                         className="form__select"
-                        onChange={onChangeAbilitySelect}>
+                        onChange={onChangeAbilitySelect1}>
                         {skillOptions.map((skill, i) =>
                             <option
                                 key={i}
@@ -43,9 +45,9 @@ class Select extends Component {
                     </div>
                 </div>
                 <div className="form__container-select">
-                    <select name="" id=""
+                    <select name="" id="2"
                         className="form__select"
-                        onChange={onChangeAbilitySelect}>
+                        onChange={onChangeAbilitySelect2}>
                         {skillOptions.map((skill, i) =>
                             <option
                                 key={i}
@@ -69,9 +71,9 @@ class Select extends Component {
                     </div>
                 </div>
                 <div className="form__container-select">
-                    <select name="" id=""
+                    <select name="" id="3"
                         className="form__select"
-                        onChange={onChangeAbilitySelect}>
+                        onChange={onChangeAbilitySelect3}>
                         {skillOptions.map((skill, i) =>
                             <option
                                 key={i}

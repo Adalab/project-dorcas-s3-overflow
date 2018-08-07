@@ -35,7 +35,9 @@ class Main extends Component {
       },
 
       skillOptions: [],
-      optionSelected: '',
+      optionSelected1: '',
+      optionSelected2: '',
+      optionSelected3: '',
       skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
       buttonIcon1: '+',
       buttonIcon2: '+',
@@ -56,10 +58,9 @@ class Main extends Component {
     this.handleAbilitiesButton1 = this.handleAbilitiesButton1.bind(this);
     this.handleAbilitiesButton2 = this.handleAbilitiesButton2.bind(this);
     this.handleAbilitiesButton3 = this.handleAbilitiesButton3.bind(this);
-    this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
-
-    this.getSkills();
-
+    this.handleAbilitiesSelect1 = this.handleAbilitiesSelect1.bind(this);
+    this.handleAbilitiesSelect2 = this.handleAbilitiesSelect2.bind(this);
+    this.handleAbilitiesSelect3 = this.handleAbilitiesSelect3.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleRadioColor = this.handleRadioColor.bind(this);
 
@@ -81,18 +82,12 @@ class Main extends Component {
   }
 
   handleClickImage(event) {
-    console.log(event.target.files)
-    console.log(this.setState)
     const fr = new FileReader();
     fr.addEventListener('load', () => {
       this.setState({ image: fr.result });
     });
     fr.readAsDataURL(event.target.files[0]);
 
-  }
-
-  handleAbilities() {
-    console.log('habilidad añadida')
   }
 
   // handle rellena inputs
@@ -153,15 +148,12 @@ class Main extends Component {
 
   // handle imagen load
 
-
   handleAddImage(event) {
-    console.log(this.fileInput.click)
     this.fileInput.current.click()
   }
 
 
   handleClickImage(event) {
-    console.log(event.target.files)
     const fr = new FileReader();
 
     fr.addEventListener('load', () => {
@@ -178,8 +170,7 @@ class Main extends Component {
   }
 
   // fetch to get skills
-
-  getSkills() {
+  componentDidMount() {
     fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
       .then((response) => response.json())
       .then((jsonskills) => {
@@ -191,9 +182,22 @@ class Main extends Component {
 
   // Skills handlers
 
-  handleAbilitiesSelect(event) {
+  handleAbilitiesSelect1(event) {
+    console.log(event.target.value)
     this.setState({
-      optionSelected: event.target.value,
+      optionSelected1: event.target.value,
+    })
+  }
+
+  handleAbilitiesSelect2(event) {
+    this.setState({
+      optionSelected2: event.target.value,
+    })
+  }
+
+  handleAbilitiesSelect3(event) {
+    this.setState({
+      optionSelected3: event.target.value,
     })
   }
 
@@ -207,7 +211,7 @@ class Main extends Component {
     if (this.state.buttonIcon1 === '+') {
       const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [this.state.optionSelected, ...array.slice(1, 3)]
+        skillsOnCard: [this.state.optionSelected1, ...array.slice(1, 3)]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
@@ -226,11 +230,11 @@ class Main extends Component {
     if (this.state.buttonIcon2 === '+') {
       const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [array[0], this.state.optionSelected, array[2]]
+        skillsOnCard: [array[0], this.state.optionSelected2, array[2]]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      array.splice(1, 1, "");
+      array.splice(1, 1, '');
       this.setState({ skillsOnCard: array });
     }
   }
@@ -245,7 +249,7 @@ class Main extends Component {
     if (this.state.buttonIcon3 === '+') {
       const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [array[0], array[1], this.state.optionSelected]
+        skillsOnCard: [array[0], array[1], this.state.optionSelected3]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
@@ -256,7 +260,6 @@ class Main extends Component {
 
   handleReset(event) {
     event.preventDefault()
-    console.log('evento reset:', 'elemento clicado')
 
     this.setState({
       data: {
@@ -271,7 +274,9 @@ class Main extends Component {
         typography: ''
       },
 
-      optionSelected: '',
+      optionSelected1: '',
+      optionSelected2: '',
+      optionSelected3: '',
       skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
       buttonIcon1: '+',
       buttonIcon2: '+',
@@ -280,7 +285,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log('skills', this.state.skills)
     const userInfo = this.state.data
     return (
       <main className="container-mediaqueries-preview">
@@ -314,7 +318,9 @@ class Main extends Component {
           handleAbilitiesButton1={this.handleAbilitiesButton1}
           handleAbilitiesButton2={this.handleAbilitiesButton2}
           handleAbilitiesButton3={this.handleAbilitiesButton3}
-          handleAbilitiesSelect={this.handleAbilitiesSelect}
+          handleAbilitiesSelect1={this.handleAbilitiesSelect1}
+          handleAbilitiesSelect2={this.handleAbilitiesSelect2}
+          handleAbilitiesSelect3={this.handleAbilitiesSelect3}
           buttonIcon1={this.state.buttonIcon1}
           buttonIcon2={this.state.buttonIcon2}
           buttonIcon3={this.state.buttonIcon3}

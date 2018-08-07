@@ -31,7 +31,9 @@ class Formulario extends Component {
             handleAbilitiesButton1,
             handleAbilitiesButton2,
             handleAbilitiesButton3,
-            handleAbilitiesSelect,
+            handleAbilitiesSelect1,
+            handleAbilitiesSelect2,
+            handleAbilitiesSelect3,
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
@@ -242,7 +244,9 @@ class Formulario extends Component {
                                     onClickAbilityButton1={handleAbilitiesButton1}
                                     onClickAbilityButton2={handleAbilitiesButton2}
                                     onClickAbilityButton3={handleAbilitiesButton3}
-                                    onChangeAbilitySelect={handleAbilitiesSelect}
+                                    onChangeAbilitySelect1={handleAbilitiesSelect1}
+                                    onChangeAbilitySelect2={handleAbilitiesSelect2}
+                                    onChangeAbilitySelect3={handleAbilitiesSelect3}
                                     buttonIcon1={buttonIcon1}
                                     buttonIcon2={buttonIcon2}
                                     buttonIcon3={buttonIcon3}
