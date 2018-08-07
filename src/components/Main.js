@@ -188,7 +188,7 @@ class Main extends Component {
     event.preventDefault();
     // lógica para cambiar el signo del botón
     this.setState((prevState, props) => ({
-      buttonIcon2: (prevState.buttonIcon1 === '+') ? '-' : '+'
+      buttonIcon1: (prevState.buttonIcon1 === '+') ? '-' : '+'
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon1 === '+') {
