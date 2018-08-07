@@ -35,7 +35,9 @@ class Main extends Component {
       },
 
       skillOptions: [],
-      optionSelected: '',
+      optionSelected1: '',
+      optionSelected2: '',
+      optionSelected3: '',
       skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
       buttonIcon1: '+',
       buttonIcon2: '+',
@@ -56,7 +58,9 @@ class Main extends Component {
     this.handleAbilitiesButton1 = this.handleAbilitiesButton1.bind(this);
     this.handleAbilitiesButton2 = this.handleAbilitiesButton2.bind(this);
     this.handleAbilitiesButton3 = this.handleAbilitiesButton3.bind(this);
-    this.handleAbilitiesSelect = this.handleAbilitiesSelect.bind(this);
+    this.handleAbilitiesSelect1 = this.handleAbilitiesSelect1.bind(this);
+    this.handleAbilitiesSelect2 = this.handleAbilitiesSelect2.bind(this);
+    this.handleAbilitiesSelect3 = this.handleAbilitiesSelect3.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
 
@@ -127,7 +131,6 @@ class Main extends Component {
 
   // handle imagen load
 
-
   handleAddImage(event) {
     this.fileInput.current.click()
   }
@@ -162,28 +165,40 @@ class Main extends Component {
 
   // Skills handlers
 
-  handleAbilitiesSelect(event) {
+  handleAbilitiesSelect1(event) {
+    console.log(event.target.value)
     this.setState({
-      optionSelected: event.target.value,
+      optionSelected1: event.target.value,
+    })
+  }
+
+  handleAbilitiesSelect2(event) {
+    this.setState({
+      optionSelected2: event.target.value,
+    })
+  }
+
+  handleAbilitiesSelect3(event) {
+    this.setState({
+      optionSelected3: event.target.value,
     })
   }
 
   handleAbilitiesButton1(event) {
     event.preventDefault();
-    
     // lógica para cambiar el signo del botón
     this.setState((prevState, props) => ({
-      buttonIcon1: (prevState.buttonIcon1 === '+') ? '-' : '+'
+      buttonIcon2: (prevState.buttonIcon1 === '+') ? '-' : '+'
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon1 === '+') {
       const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [this.state.optionSelected, ...array.slice(1, 3)]
+        skillsOnCard: [this.state.optionSelected1, ...array.slice(1, 3)]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-      array.splice(0, 1);
+      array.splice(0, 1, '');
       this.setState({ skillsOnCard: array });
     }
   }
@@ -198,7 +213,7 @@ class Main extends Component {
     if (this.state.buttonIcon2 === '+') {
       const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [array[0], this.state.optionSelected, array[2]]
+        skillsOnCard: [array[0], this.state.optionSelected2, array[2]]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
@@ -217,7 +232,7 @@ class Main extends Component {
     if (this.state.buttonIcon3 === '+') {
       const array = [...this.state.skillsOnCard]
       this.setState({
-        skillsOnCard: [array[0], array[1], this.state.optionSelected]
+        skillsOnCard: [array[0], array[1], this.state.optionSelected3]
       })
     } else {
       const array = [...this.state.skillsOnCard]; // make a separate copy of the array
@@ -242,7 +257,9 @@ class Main extends Component {
         typography: ''
       },
 
-      optionSelected: '',
+      optionSelected1: '',
+      optionSelected2: '',
+      optionSelected3: '',
       skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
       buttonIcon1: '+',
       buttonIcon2: '+',
@@ -283,7 +300,9 @@ class Main extends Component {
           handleAbilitiesButton1={this.handleAbilitiesButton1}
           handleAbilitiesButton2={this.handleAbilitiesButton2}
           handleAbilitiesButton3={this.handleAbilitiesButton3}
-          handleAbilitiesSelect={this.handleAbilitiesSelect}
+          handleAbilitiesSelect1={this.handleAbilitiesSelect1}
+          handleAbilitiesSelect2={this.handleAbilitiesSelect2}
+          handleAbilitiesSelect3={this.handleAbilitiesSelect3}
           buttonIcon1={this.state.buttonIcon1}
           buttonIcon2={this.state.buttonIcon2}
           buttonIcon3={this.state.buttonIcon3}
