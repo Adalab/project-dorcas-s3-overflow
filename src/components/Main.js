@@ -42,6 +42,7 @@ class Main extends Component {
       buttonIcon1: '+',
       buttonIcon2: '+',
       buttonIcon3: '+',
+      isHidden: true,
     }
 
     // rellena inputs binds
@@ -62,6 +63,7 @@ class Main extends Component {
     this.handleAbilitiesSelect2 = this.handleAbilitiesSelect2.bind(this);
     this.handleAbilitiesSelect3 = this.handleAbilitiesSelect3.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.toggleHidden = this.toggleHidden.bind(this);
   }
 
   handleClickImage(event) {
@@ -266,6 +268,14 @@ class Main extends Component {
       buttonIcon3: '+',
     })
   }
+  //Collapsible
+  toggleHidden (){
+    // this.setState({
+    //   isHidden: !this.state.isHidden
+    // })
+  console.log ("hola collapsible");
+  }
+
 
   render() {
     const userInfo = this.state.data
@@ -306,6 +316,7 @@ class Main extends Component {
           buttonIcon1={this.state.buttonIcon1}
           buttonIcon2={this.state.buttonIcon2}
           buttonIcon3={this.state.buttonIcon3}
+          handleCollapsible={this.toggleHidden}
         />
       </main>
 

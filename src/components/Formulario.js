@@ -5,15 +5,17 @@ import Select from './Select';
 import martirioPic from '../images/martirio.jpg';
 
 class Formulario extends Component {
+
     //handle button
 
-    handleCreateCard() {
-        console.log('tarjeta creada')
-    }
+    // handleCreateCard() {
+    //     console.log('tarjeta creada')
+    // }
 
-    handleTwitter() {
-        console.log('compartido en twitter')
-    }
+    // handleTwitter() {
+    //     console.log('compartido en twitter')
+    // }
+    
 
     render() {
         const {
@@ -30,18 +32,17 @@ class Formulario extends Component {
             handleAbilitiesButton1,
             handleAbilitiesButton2,
             handleAbilitiesButton3,
-            handleAbilitiesSelect1,
-            handleAbilitiesSelect2,
-            handleAbilitiesSelect3,
+            handleAbilitiesSelect,
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
+            handleCollapsible,
         } = this.props;
 
         return (
             <div className="container-izquierda">
                 <form className="form" action="/signup" method="post">
-                    <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`}>
+                    <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`} handleCollapsible={handleCollapsible}>
                         <fieldset className="fieldset-colors">
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">COLORES</legend>
@@ -148,7 +149,7 @@ class Formulario extends Component {
                             </div>
                         </div>
                     </Collapsable>
-                    <Collapsable seccion={`RELLENA`} icono={`far fa-keyboard`}>
+                    <Collapsable seccion={`RELLENA`} icono={`far fa-keyboard`} handleCollapsible={handleCollapsible}>
                         <div className="form__container">
                             <label className="form__label" htmlFor="nombre">Nombre completo</label>
                             <input
@@ -240,9 +241,7 @@ class Formulario extends Component {
                                     onClickAbilityButton1={handleAbilitiesButton1}
                                     onClickAbilityButton2={handleAbilitiesButton2}
                                     onClickAbilityButton3={handleAbilitiesButton3}
-                                    onChangeAbilitySelect1={handleAbilitiesSelect1}
-                                    onChangeAbilitySelect2={handleAbilitiesSelect2}
-                                    onChangeAbilitySelect3={handleAbilitiesSelect3}
+                                    onChangeAbilitySelect={handleAbilitiesSelect}
                                     buttonIcon1={buttonIcon1}
                                     buttonIcon2={buttonIcon2}
                                     buttonIcon3={buttonIcon3}
@@ -250,7 +249,7 @@ class Formulario extends Component {
                             </div>
                         </div>
                     </Collapsable>
-                    <Collapsable seccion={`COMPARTE`} icono={`fas fa-share-alt`}>
+                    <Collapsable seccion={`COMPARTE`} icono={`fas fa-share-alt`} handleCollapsible={handleCollapsible}>
                         <div className="contenedor-boton">
                             <a
                                 href="#"

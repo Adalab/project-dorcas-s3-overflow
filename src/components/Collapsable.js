@@ -3,11 +3,11 @@ import React, {Component, Fragment} from 'react';
 class Collapsable extends Component {
 
     render() {
-
+const {handleCollapsible} = this.props
         return (
             <div className="colapsable colapsable">
                 <div className="form-fill colapsable--visible">
-                    <div className="container__rectangle_title_arrow colapsable-titulo">
+                    <div className="container__rectangle_title_arrow colapsable-titulo" onClick={handleCollapsible}>
                         <div className="container__rectangle_title">
                             <i className={`${this.props.icono} rectangle_2`}></i>
                             <legend className="form__title-principal titulo-colapsable">{this.props.seccion}</legend>
