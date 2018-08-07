@@ -16,12 +16,12 @@ class Preview extends Component {
             github,
             linkedin,
             photo,
-            skills,
+            skillsOnCard,
             paletteClass,
             typographyClass,
             OnResetButton,
         } = this.props
-        console.log(this.props.paletteClass)
+        console.log(photo)
         return (
         
             <div className={`preview-container ${paletteClass} ${typographyClass}`}>
@@ -64,9 +64,7 @@ class Preview extends Component {
                                 />
                             </div>
                             <div className="etiquetas-habilidades-container">
-                                <Skills skillName='HTML' />
-                                <Skills skillName='CSS' />
-                                <Skills skillName='GULP' />
+                                <Skills skillName={skillsOnCard} />
                             </div>
                         </div>
                     </div>

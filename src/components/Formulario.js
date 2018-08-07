@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
@@ -6,10 +6,6 @@ import martirioPic from '../images/martirio.jpg';
 
 class Formulario extends Component {
     //handle button
-
-    handleAbilities() {
-        console.log('habilidad añadida')
-    }
 
     handleCreateCard() {
         console.log('tarjeta creada')
@@ -20,8 +16,26 @@ class Formulario extends Component {
     }
 
     render() {
+        const {
+            userInfo,
+            onInputNameChange,
+            onInputJobChange,
+            onInputEmailChange,
+            onInputPhoneChange,
+            onInputGitChange,
+            onInputLinkedinChange,
+            onInputImageClick,
+            onInputImageChange,
+            skillOptions,
+            handleAbilitiesButton1,
+            handleAbilitiesButton2,
+            handleAbilitiesButton3,
+            handleAbilitiesSelect,
+            buttonIcon1,
+            buttonIcon2,
+            buttonIcon3,
+        } = this.props;
 
-        const { userInfo, onInputNameChange, onInputJobChange, onInputImageClick, onInputImageChange, onInputEmailChange, onInputPhoneChange, onInputGitChange, onInputLinkedinChange } = this.props;
         return (
             <div className="container-izquierda">
                 <form className="form" action="/signup" method="post">
@@ -38,7 +52,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="1"
                                             name="palette"
-                                            checked />
+                                            defaultChecked />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="first-color__square1"></div>
@@ -61,7 +75,7 @@ class Formulario extends Component {
                                             <div className="second-color__square3"></div>
                                         </div>
                                     </label>
-                                    <label className="container_input_div" for="form__subtitle__third-color">
+                                    <label className="container_input_div" htmlFor="form__subtitle__third-color">
                                         <input
                                             className="clikable local--palette radio-color"
                                             data-donde="greyTarget"
@@ -109,7 +123,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="2"
                                             name="typography"
-                                            checked />
+                                            defaultChecked />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Comic Sans
@@ -141,17 +155,17 @@ class Formulario extends Component {
                                 type="text"
                                 name="name"
                                 placeholder="Ej. Martirio"
-                                maxlength="19"
+                                maxLength="19"
                                 value={userInfo.name}
                                 onChange={onInputNameChange} />
-                            <label className="form__label" for="puesto">Puesto</label>
+                            <label className="form__label" htmlFor="puesto">Puesto</label>
                             <input
                                 className="form__input form__input--puesto local--input--job"
                                 id="puesto"
                                 type="text"
                                 name="job"
                                 placeholder="Ej. Reina de la canción"
-                                maxlength="22"
+                                maxLength="22"
                                 value={userInfo.job}
                                 onChange={onInputJobChange} />
                             <label className="form__label">Imagen de perfil</label>
@@ -177,7 +191,7 @@ class Formulario extends Component {
                                         alt="Foto de perfil" />
                                 </div>
                             </div>
-                            <label className="form__label" for="email">Email</label>
+                            <label className="form__label" htmlFor="email">Email</label>
                             <input
                                 className="form__input inputhref form__mail local--input--email"
                                 id="email"
@@ -186,7 +200,7 @@ class Formulario extends Component {
                                 placeholder="Ej. reinadelacancion@ole.es"
                                 value={userInfo.email}
                                 onChange={onInputEmailChange} />
-                            <label className="form__label" for="telefono">Teléfono</label>
+                            <label className="form__label" htmlFor="telefono">Teléfono</label>
                             <input
                                 className="form__input inputhref form__telefono local--input--phone"
                                 id="telefono"
@@ -195,7 +209,7 @@ class Formulario extends Component {
                                 placeholder="Ej. 982938437"
                                 value={userInfo.phone}
                                 onChange={onInputPhoneChange} />
-                            <label className="form__label " for="linkedin">Linkedin</label>
+                            <label className="form__label " htmlFor="linkedin">Linkedin</label>
                             <input
                                 className="form__input inputhref form__linkedin local--input--linkedin"
                                 id="linkedin"
@@ -204,7 +218,7 @@ class Formulario extends Component {
                                 placeholder="Ej. martirio.reina"
                                 value={userInfo.linkedin}
                                 onChange={onInputLinkedinChange} />
-                            <label className="form__label" for="github">Github</label>
+                            <label className="form__label" htmlFor="github">Github</label>
                             <input
                                 className="form__input inputhref form__github local--input--github"
                                 id="github"
@@ -215,13 +229,20 @@ class Formulario extends Component {
                                 onChange={onInputGitChange} />
 
                             <div className="form__container--habilidades">
-                                <label className="form__label" for="habilidades">Habilidades (máximo 3)</label>
+                                <label className="form__label" htmlFor="habilidades">Habilidades (máximo 3)</label>
                             </div>
 
                             <div className="form__container--habilidad">
-                                <Select skillOptions={this.props.skillOptions} />
-                                <Select skillOptions={this.props.skillOptions} />
-                                <Select skillOptions={this.props.skillOptions} />
+                                <Select
+                                    skillOptions={skillOptions}
+                                    onClickAbilityButton1={handleAbilitiesButton1}
+                                    onClickAbilityButton2={handleAbilitiesButton2}
+                                    onClickAbilityButton3={handleAbilitiesButton3}
+                                    onChangeAbilitySelect={handleAbilitiesSelect}
+                                    buttonIcon1={buttonIcon1}
+                                    buttonIcon2={buttonIcon2}
+                                    buttonIcon3={buttonIcon3}
+                                />
                             </div>
                         </div>
                     </Collapsable>

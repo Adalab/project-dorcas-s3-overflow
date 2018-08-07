@@ -3,16 +3,25 @@ import PropTypes from 'prop-types';
 
 class Skills extends Component {
     render() {
-        const skills = this.props;
+        const {skillName} = this.props;
         return (
-            <p className="etiqueta-habilidad">{skills.skillName}</p>
+            <ul className="skills__container-list">
+                {skillName.map((skill, i) =>
+                    <li
+                        key={i}
+                        className="etiqueta-habilidad"
+                    >
+                        {skill}
+                    </li>
+                )}
+            </ul>
+
         );
     }
 }
 
 Skills.propTypes = {
     skills: PropTypes.array
-  
 };
 
 export default Skills;
