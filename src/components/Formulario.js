@@ -37,12 +37,14 @@ class Formulario extends Component {
             buttonIcon2,
             buttonIcon3,
             handleCollapsible,
+            collapsibleClass,
+            isHidden,
         } = this.props;
 
         return (
             <div className="container-izquierda">
                 <form className="form" action="/signup" method="post">
-                    <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`} handleCollapsible={handleCollapsible}>
+                    <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`} handleCollapsible={handleCollapsible} collapsibleClass={collapsibleClass} isHidden={isHidden}>
                         <fieldset className="fieldset-colors">
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">COLORES</legend>

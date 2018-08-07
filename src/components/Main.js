@@ -42,7 +42,9 @@ class Main extends Component {
       buttonIcon1: '+',
       buttonIcon2: '+',
       buttonIcon3: '+',
+
       isHidden: true,
+      collapsibleClass: 'colapsable--visible',
     }
 
     // rellena inputs binds
@@ -270,10 +272,18 @@ class Main extends Component {
   }
   //Collapsible
   toggleHidden (){
-    // this.setState({
-    //   isHidden: !this.state.isHidden
-    // })
-  console.log ("hola collapsible");
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+    if (this.state.isHidden === true){
+      this.setState({
+        collapsibleClass: 'colapsable--visible'
+      })
+    } else {
+      this.setState({
+        collapsibleClass: ''
+      })
+    }
   }
 
 
@@ -317,6 +327,7 @@ class Main extends Component {
           buttonIcon2={this.state.buttonIcon2}
           buttonIcon3={this.state.buttonIcon3}
           handleCollapsible={this.toggleHidden}
+          collapsibleClass={this.state.collapsibleClass}
         />
       </main>
 
