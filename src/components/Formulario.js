@@ -18,6 +18,7 @@ class Formulario extends Component {
     render() {
         const {
             onChangeRadioColor,
+            onChangeRadioTypography,
             userInfo,
             onInputNameChange,
             onInputJobChange,
@@ -113,7 +114,8 @@ class Formulario extends Component {
                                             id="form__subtitle__first-font"
                                             type="radio"
                                             value="1"
-                                            name="typography" />
+                                            name="typography" 
+                                            onChange={onChangeRadioTypography}/>
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Ubuntu
@@ -129,6 +131,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="2"
                                             name="typography"
+                                            onChange={onChangeRadioTypography}
                                             defaultChecked />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
@@ -142,7 +145,8 @@ class Formulario extends Component {
                                             id="form__subtitle__third-font"
                                             type="radio"
                                             value="3"
-                                            name="typography" />
+                                            name="typography" 
+                                            onChange={onChangeRadioTypography}/>
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Montserrat

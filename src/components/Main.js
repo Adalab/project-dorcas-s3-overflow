@@ -63,6 +63,7 @@ class Main extends Component {
     this.handleAbilitiesSelect3 = this.handleAbilitiesSelect3.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleRadioColor = this.handleRadioColor.bind(this);
+    this.handleRadioTypography = this.handleRadioTypography.bind(this);
 
   }
   handleRadioColor(event) {
@@ -76,6 +77,24 @@ class Main extends Component {
     }), () => {
 
       console.log(this.state.data.palette)
+
+    })
+
+  }
+
+  handleRadioTypography(event) {
+    console.log(event.target.value)
+    const {
+      value
+    } = event.target;
+    this.setState((prevState) => ({
+      data: {
+        ...prevState.data,
+        typography: value
+      }
+    }), () => {
+
+      console.log(this.state.data.typography)
 
     })
 
@@ -303,6 +322,7 @@ class Main extends Component {
         />
         <Formulario
           onChangeRadioColor={this.handleRadioColor}
+          onChangeRadioTypography={this.handleRadioTypography}
           userInfo={this.state.data}
           onInputNameChange={this.handleNameInput}
           onInputJobChange={this.handleJobInput}
