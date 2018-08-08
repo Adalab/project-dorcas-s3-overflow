@@ -30,8 +30,8 @@ class Main extends Component {
         phone: '',
         github: '',
         linkedin: '',
-        palette: '1',
-        typography: '1'
+        palette: '',
+        typography: ''
       },
 
       skillOptions: [],
@@ -301,6 +301,17 @@ class Main extends Component {
       buttonIcon2: '+',
       buttonIcon3: '+',
     })
+  }
+  componentWillMount(){
+    localStorage.getItem('datos') && this.setState({
+      data: JSON.parse(localStorage.getItem('datos'))
+    
+    })
+  }
+
+  componentWillUpdate(nextProps, nextState){
+
+    localStorage.setItem('datos', JSON.stringify(nextState.data));
   }
 
   render() {
