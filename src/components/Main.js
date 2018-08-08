@@ -31,7 +31,7 @@ class Main extends Component {
         github: '',
         linkedin: '',
         palette: '1',
-        typography: ''
+        typography: '1'
       },
 
       skillOptions: [],
@@ -305,6 +305,7 @@ class Main extends Component {
 
   render() {
     const userInfo = this.state.data
+    console.log(userInfo)
     return (
       <main className="container-mediaqueries-preview">
         <Preview

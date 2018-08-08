@@ -115,6 +115,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="1"
                                             name="typography" 
+                                            defaultChecked
                                             onChange={onChangeRadioTypography}/>
                                         <span className="checkmark"></span>
                                         <div className="container__font">
@@ -132,7 +133,7 @@ class Formulario extends Component {
                                             value="2"
                                             name="typography"
                                             onChange={onChangeRadioTypography}
-                                            defaultChecked />
+                                             />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Comic Sans
