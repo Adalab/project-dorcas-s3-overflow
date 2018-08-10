@@ -30,11 +30,12 @@ class Main extends Component {
         phone: '',
         github: '',
         linkedin: '',
-        palette: '1',
+        palette: '',
         typography: ''
       },
 
       skillOptions: [],
+      skillSelect: [],
       optionSelected1: '',
       optionSelected2: '',
       optionSelected3: '',
@@ -63,6 +64,7 @@ class Main extends Component {
     this.handleAbilitiesSelect3 = this.handleAbilitiesSelect3.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleRadioColor = this.handleRadioColor.bind(this);
+    this.handleRadioTypography = this.handleRadioTypography.bind(this);
 
   }
   handleRadioColor(event) {
@@ -76,6 +78,24 @@ class Main extends Component {
     }), () => {
 
       console.log(this.state.data.palette)
+
+    })
+
+  }
+
+  handleRadioTypography(event) {
+    console.log(event.target.value)
+    const {
+      value
+    } = event.target;
+    this.setState((prevState) => ({
+      data: {
+        ...prevState.data,
+        typography: value
+      }
+    }), () => {
+
+      console.log(this.state.data.typography)
 
     })
 
@@ -176,8 +196,17 @@ class Main extends Component {
       .then((jsonskills) => {
         this.setState({
           skillOptions: jsonskills.skills
-        });
+        }, this.pushSelect);
       });
+  }
+
+  pushSelect() {
+    const copyArray = [...this.state.skillOptions]
+    let array = ['Selecciona una', ...copyArray]
+
+    this.setState({
+      skillSelect: array
+    })
   }
 
   // Skills handlers
@@ -283,9 +312,21 @@ class Main extends Component {
       buttonIcon3: '+',
     })
   }
+  componentWillMount() {
+    localStorage.getItem('datos') && this.setState({
+      data: JSON.parse(localStorage.getItem('datos'))
+
+    })
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+
+    localStorage.setItem('datos', JSON.stringify(nextState.data));
+  }
 
   render() {
     const userInfo = this.state.data
+    console.log(userInfo)
     return (
       <main className="container-mediaqueries-preview">
         <Preview
@@ -303,6 +344,7 @@ class Main extends Component {
         />
         <Formulario
           onChangeRadioColor={this.handleRadioColor}
+          onChangeRadioTypography={this.handleRadioTypography}
           userInfo={this.state.data}
           onInputNameChange={this.handleNameInput}
           onInputJobChange={this.handleJobInput}
@@ -312,9 +354,8 @@ class Main extends Component {
           onInputPhoneChange={this.handlePhoneInput}
           onInputGitChange={this.handleGithubInput}
           onInputLinkedinChange={this.handleLinkedinInput}
-          skillOptions={this.state.skillOptions}
+          skillOptions={this.state.skillSelect}
           fileInput={this.fileInput}
-          skillOptions={this.state.skillOptions}
           handleAbilitiesButton1={this.handleAbilitiesButton1}
           handleAbilitiesButton2={this.handleAbilitiesButton2}
           handleAbilitiesButton3={this.handleAbilitiesButton3}
