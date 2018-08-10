@@ -178,7 +178,7 @@ class Formulario extends Component {
                                 id="puesto"
                                 type="text"
                                 name="job"
-                                placeholder="Ej. Reina de la canción"
+                                placeholder="Ej. Realfooder"
                                 maxLength="22"
                                 value={userInfo.job}
                                 onChange={onInputJobChange}/>
@@ -211,7 +211,7 @@ class Formulario extends Component {
                                 id="email"
                                 type="mail"
                                 name="email"
-                                placeholder="Ej. reinadelacancion@ole.es"
+                                placeholder="Ej. sansebastianmola@soyvasca.com"
                                 value={userInfo.email}
                                 onChange={onInputEmailChange}/>
                             <label className="form__label" htmlFor="telefono">Teléfono</label>
@@ -229,7 +229,7 @@ class Formulario extends Component {
                                 id="linkedin"
                                 type="text"
                                 name="linkedin"
-                                placeholder="Ej. martirio.reina"
+                                placeholder="Ej. olatz.reina"
                                 value={userInfo.linkedin}
                                 onChange={onInputLinkedinChange}/>
                             <label className="form__label" htmlFor="github">Github</label>
@@ -238,7 +238,7 @@ class Formulario extends Component {
                                 id="github"
                                 type="text"
                                 name="github"
-                                placeholder="Ej. martirio-reina"
+                                placeholder="Ej. olatz-reina"
                                 value={userInfo.github}
                                 onChange={onInputGitChange}/>
 
