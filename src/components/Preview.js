@@ -79,7 +79,7 @@ Preview.propTypes = {
     name: PropTypes.string,
     job: PropTypes.string,
     email: PropTypes.string,
-    phone: PropTypes.number,
+    phone: PropTypes.string,
     github: PropTypes.string,
     linkedin: PropTypes.string,
     photo: PropTypes.string,
