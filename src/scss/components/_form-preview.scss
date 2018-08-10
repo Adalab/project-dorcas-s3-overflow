@@ -30,6 +30,7 @@
 
 .container-izquierda {
     @media all and (min-width: 768px) {
+        margin: 0;
         margin-left: 40px;
         width: 50%;
     }
@@ -63,7 +64,6 @@
     display: flex;
     justify-content: center;
     @media all and (min-width: 768px) {
-        width: 329px;
         min-height: 460px;
         justify-content: flex-start;
     }
