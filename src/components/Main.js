@@ -285,7 +285,9 @@ class Main extends Component {
     })
     if (this.state.isHiddenDesign === true){
       this.setState({
-        collapsibleClassDesign: 'colapsable--visible'
+        collapsibleClassDesign: 'colapsable--visible',
+        collapsibleClassFill: '',
+        collapsibleClassShare: '',
       })
     } else {
       this.setState({
@@ -300,7 +302,9 @@ class Main extends Component {
     })
     if (this.state.isHiddenFill === true){
       this.setState({
-        collapsibleClassFill: 'colapsable--visible'
+        collapsibleClassFill: 'colapsable--visible',
+        collapsibleClassShare: '',
+        collapsibleClassDesign: '',
       })
     } else {
       this.setState({
@@ -315,7 +319,9 @@ class Main extends Component {
     })
     if (this.state.isHiddenShare === true){
       this.setState({
-        collapsibleClassShare: 'colapsable--visible'
+        collapsibleClassShare: 'colapsable--visible',
+        collapsibleClassDesign: '',
+        collapsibleClassFill: '',
       })
     } else {
       this.setState({
