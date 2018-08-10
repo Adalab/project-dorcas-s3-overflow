@@ -427,6 +427,7 @@ body {
 
 @media all and (min-width: 768px) {
   .container-izquierda {
+    margin: 0;
     margin-left: 40px;
     width: 50%; } }
 
@@ -453,7 +454,6 @@ body {
   justify-content: center; }
   @media all and (min-width: 768px) {
     .preview-container {
-      width: 329px;
       min-height: 460px;
       justify-content: flex-start; } }
 
