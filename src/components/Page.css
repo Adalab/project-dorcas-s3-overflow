@@ -276,7 +276,8 @@ $font-size-xxl-plus:    px;
 
 .profile-image__item {
   width: 100%;
-  display: block; }
+  display: block;
+  object-fit: cover; }
 
 .contenedor--imagen {
   border-color: #a2deaf;

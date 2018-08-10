@@ -5,8 +5,6 @@ import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
 
 class Preview extends Component {
-   
-
     render() {
         const { 
             name,

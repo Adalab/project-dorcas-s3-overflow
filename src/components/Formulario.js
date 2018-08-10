@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
-import martirioPic from '../images/martirio.jpg';
+import Overflow from '../images/overflow.jpg';
 
 class Formulario extends Component {
     //handle button
@@ -163,7 +163,7 @@ class Formulario extends Component {
                                 id="nombre"
                                 type="text"
                                 name="name"
-                                placeholder="Ej. Martirio"
+                                placeholder="Ej. Olatz"
                                 maxLength="19"
                                 value={userInfo.name}
                                 onChange={onInputNameChange} />
@@ -196,7 +196,7 @@ class Formulario extends Component {
                                 <div className="profile-image contenedor--imagen">
                                     <img
                                         className="profile-image__item"
-                                        src={userInfo.image || martirioPic}
+                                        src={userInfo.image || Overflow}
                                         alt="Foto de perfil" />
                                 </div>
                             </div>
