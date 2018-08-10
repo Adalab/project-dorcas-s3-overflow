@@ -43,6 +43,7 @@ class Main extends Component {
       buttonIcon1: '+',
       buttonIcon2: '+',
       buttonIcon3: '+',
+      twitter: '',
     }
 
     // rellena inputs binds
@@ -65,7 +66,7 @@ class Main extends Component {
     this.handleReset = this.handleReset.bind(this);
     this.handleRadioColor = this.handleRadioColor.bind(this);
     this.handleRadioTypography = this.handleRadioTypography.bind(this);
-
+    this.handleTwitter = this.handleTwitter.bind(this);
   }
   handleRadioColor(event) {
     console.log(event.target.value)
@@ -287,6 +288,15 @@ class Main extends Component {
     }
   }
 
+  handleTwitter(event) {
+    event.preventDefault()
+    // const twitterURL = this.state.url
+    // this.setState({
+    //   twitter: `https://twitter.com/intent/tweet?url= ${twitterURL} &text=Acabo%20de%20crear%20mi%20tarjeta%20con%20Font%20Awesome%20de%20Tarjetas-Martirio&hashtags=WomenInTech`
+    // })
+    console.log('compartido en twitter')
+}
+
   handleReset(event) {
     event.preventDefault()
 
@@ -320,7 +330,6 @@ class Main extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-
     localStorage.setItem('datos', JSON.stringify(nextState.data));
   }
 
@@ -365,6 +374,8 @@ class Main extends Component {
           buttonIcon1={this.state.buttonIcon1}
           buttonIcon2={this.state.buttonIcon2}
           buttonIcon3={this.state.buttonIcon3}
+          twitterButtonHandler={this.handleTwitter}
+          twitterURL={this.state.twitter}
         />
       </main>
 
