@@ -43,22 +43,12 @@ $font-size-xxl-plus:    px;
 
 .header__link {
   display: flex;
-  margin-left: 40px;
-  position: relative;
-  height: 150px; }
-  .header__link::after {
-    content: '';
-    background-image: url("../images/before.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline;
-    height: 150px;
-    width: 300px;
-    position: absolute;
-    left: 20px; }
+  align-items: center;
+  height: 111px; }
 
 .header__img {
-  width: 300px; }
+  width: 300px;
+  padding-bottom: 45px; }
 
 .form__fill {
   border: 0;
