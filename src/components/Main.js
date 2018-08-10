@@ -35,6 +35,7 @@ class Main extends Component {
       },
 
       skillOptions: [],
+      skillSelect: [],
       optionSelected1: '',
       optionSelected2: '',
       optionSelected3: '',
@@ -195,8 +196,17 @@ class Main extends Component {
       .then((jsonskills) => {
         this.setState({
           skillOptions: jsonskills.skills
-        });
+        }, this.pushSelect);
       });
+  }
+
+  pushSelect() {
+    const copyArray = [...this.state.skillOptions]
+    let array = ['Selecciona una', ...copyArray]
+
+    this.setState({
+      skillSelect: array
+    })
   }
 
   // Skills handlers
@@ -302,14 +312,14 @@ class Main extends Component {
       buttonIcon3: '+',
     })
   }
-  componentWillMount(){
+  componentWillMount() {
     localStorage.getItem('datos') && this.setState({
       data: JSON.parse(localStorage.getItem('datos'))
-    
+
     })
   }
 
-  componentWillUpdate(nextProps, nextState){
+  componentWillUpdate(nextProps, nextState) {
 
     localStorage.setItem('datos', JSON.stringify(nextState.data));
   }
@@ -344,9 +354,8 @@ class Main extends Component {
           onInputPhoneChange={this.handlePhoneInput}
           onInputGitChange={this.handleGithubInput}
           onInputLinkedinChange={this.handleLinkedinInput}
-          skillOptions={this.state.skillOptions}
+          skillOptions={this.state.skillSelect}
           fileInput={this.fileInput}
-          skillOptions={this.state.skillOptions}
           handleAbilitiesButton1={this.handleAbilitiesButton1}
           handleAbilitiesButton2={this.handleAbilitiesButton2}
           handleAbilitiesButton3={this.handleAbilitiesButton3}
