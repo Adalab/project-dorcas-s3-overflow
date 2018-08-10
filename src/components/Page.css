@@ -419,8 +419,11 @@ body {
 @media all and (min-width: 768px) {
   .container-izquierda {
     margin: 0;
-    margin-left: 40px;
     width: 50%; } }
+
+@media all and (min-width: 1200px) {
+  .container-izquierda {
+    margin-left: 40px; } }
 
 .colapsable-titulo {
   border-bottom: 1px solid lightgrey; }
