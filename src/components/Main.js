@@ -43,8 +43,12 @@ class Main extends Component {
       buttonIcon2: '+',
       buttonIcon3: '+',
 
-      isHidden: true,
-      collapsibleClass: 'colapsable--visible',
+      isHiddenDesign: true,
+      isHiddenFill: false,
+      isHiddenShare: false,
+      collapsibleClassDesign: 'colapsable--visible',
+      collapsibleClassFill: null,
+      collapsibleClassShare: null,
     }
 
     // rellena inputs binds
@@ -65,7 +69,9 @@ class Main extends Component {
     this.handleAbilitiesSelect2 = this.handleAbilitiesSelect2.bind(this);
     this.handleAbilitiesSelect3 = this.handleAbilitiesSelect3.bind(this);
     this.handleReset = this.handleReset.bind(this);
-    this.toggleHidden = this.toggleHidden.bind(this);
+    this.toggleHiddenDesing = this.toggleHiddenDesing.bind(this);
+    this.toggleHiddenComparte = this.toggleHiddenComparte.bind(this);
+    this.toggleHiddenRellena = this.toggleHiddenRellena.bind(this);
   }
 
   handleClickImage(event) {
@@ -271,17 +277,49 @@ class Main extends Component {
     })
   }
   //Collapsible
-  toggleHidden (){
+  toggleHiddenDesing (){
+    console.log("diseña")
+    
     this.setState({
-      isHidden: !this.state.isHidden
+      isHiddenDesign: !this.state.isHiddenDesign
     })
-    if (this.state.isHidden === true){
+    if (this.state.isHiddenDesign === true){
       this.setState({
-        collapsibleClass: 'colapsable--visible'
+        collapsibleClassDesign: 'colapsable--visible'
       })
     } else {
       this.setState({
-        collapsibleClass: ''
+        collapsibleClassDesign: ''
+      })
+    }
+  }
+  toggleHiddenRellena (){
+    console.log("rellena")
+    this.setState({
+      isHiddenFill: !this.state.isHiddenFill
+    })
+    if (this.state.isHiddenFill === true){
+      this.setState({
+        collapsibleClassFill: 'colapsable--visible'
+      })
+    } else {
+      this.setState({
+        collapsibleClassFill: ''
+      })
+    }
+  }
+  toggleHiddenComparte (){
+    console.log("comparte")
+    this.setState({
+      isHiddenShare: !this.state.isHiddenShare
+    })
+    if (this.state.isHiddenShare === true){
+      this.setState({
+        collapsibleClassShare: 'colapsable--visible'
+      })
+    } else {
+      this.setState({
+        collapsibleClassShare: ''
       })
     }
   }
@@ -326,8 +364,15 @@ class Main extends Component {
           buttonIcon1={this.state.buttonIcon1}
           buttonIcon2={this.state.buttonIcon2}
           buttonIcon3={this.state.buttonIcon3}
-          handleCollapsible={this.toggleHidden}
-          collapsibleClass={this.state.collapsibleClass}
+          handleCollapsibleDesing={this.toggleHiddenDesing}
+          handleCollapsibleRellena={this.toggleHiddenRellena}
+          handleCollapsibleComparte={this.toggleHiddenComparte}
+          collapsibleClassDesign={this.state.collapsibleClassDesign}
+          collapsibleClassFill={this.state.collapsibleClassFill}
+          collapsibleClassShare={this.state.collapsibleClassShare}
+          isHiddenDesign={this.state.isHiddenDesign}
+          isHiddenFill={this.state.isHiddenFill}
+          isHiddenShare={this.state.isHiddenShare}
         />
       </main>
 

@@ -37,14 +37,26 @@ class Formulario extends Component {
             buttonIcon2,
             buttonIcon3,
             handleCollapsible,
-            collapsibleClass,
-            isHidden,
+            collapsibleClassDesign,
+            collapsibleClassFill,
+            collapsibleClassShare,
+            isHiddenDesign,
+            isHiddenFill,
+            isHiddenShare,
+            handleCollapsibleDesing,
+            handleCollapsibleRellena,
+            handleCollapsibleComparte,
         } = this.props;
 
         return (
             <div className="container-izquierda">
                 <form className="form" action="/signup" method="post">
-                    <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`} handleCollapsible={handleCollapsible} collapsibleClass={collapsibleClass} isHidden={isHidden}>
+                    <Collapsable 
+                    seccion={`DISEÑA`} 
+                    icono={`far fa-object-ungroup`} 
+                    handleCollapsible={handleCollapsibleDesing} 
+                    collapsibleClass={collapsibleClassDesign} 
+                    isHidden={isHiddenDesign}>
                         <fieldset className="fieldset-colors">
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">COLORES</legend>
@@ -151,7 +163,13 @@ class Formulario extends Component {
                             </div>
                         </div>
                     </Collapsable>
-                    <Collapsable seccion={`RELLENA`} icono={`far fa-keyboard`} handleCollapsible={handleCollapsible}>
+                    <Collapsable 
+                    seccion={`RELLENA`} 
+                    icono={`far fa-keyboard`} 
+                    handleCollapsible={handleCollapsibleRellena}
+                    collapsibleClass={collapsibleClassFill} 
+                    isHidden={isHiddenFill}
+                    >
                         <div className="form__container">
                             <label className="form__label" htmlFor="nombre">Nombre completo</label>
                             <input
@@ -251,7 +269,13 @@ class Formulario extends Component {
                             </div>
                         </div>
                     </Collapsable>
-                    <Collapsable seccion={`COMPARTE`} icono={`fas fa-share-alt`} handleCollapsible={handleCollapsible}>
+                    <Collapsable 
+                    seccion={`COMPARTE`} 
+                    icono={`fas fa-share-alt`} 
+                    handleCollapsible={handleCollapsibleComparte}
+                    collapsibleClass={collapsibleClassShare} 
+                    isHidden={isHiddenShare}
+                    >
                         <div className="contenedor-boton">
                             <a
                                 href="#"
