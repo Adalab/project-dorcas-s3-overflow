@@ -448,8 +448,7 @@ body {
 
 .preview-container {
   border: 0;
-  background-image: url("../images/fondo-dots2.svg");
-  background-size: cover;
+  background: linear-gradient(to bottom right, #000066, #ccffff);
   display: flex;
   justify-content: center; }
   @media all and (min-width: 768px) {
@@ -546,7 +545,8 @@ body {
 
 .changeImagePreview {
   width: 100%;
-  display: block; }
+  display: block;
+  object-fit: cover; }
 
 .footer-preview__container {
   background-color: #fff; }

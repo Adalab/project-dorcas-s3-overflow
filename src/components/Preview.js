@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import martirioPic from '../images/martirio.jpg';
+import Overflow from '../images/overflow.jpg';
 import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
 
@@ -36,13 +36,13 @@ class Preview extends Component {
                             <div className="preview-title__container">
                                 <div className="color-line"></div>
                                 <div className="container-name-profesion">
-                                    <p className="name_line" id="element-nombre">{name || "Martirio"}</p>
-                                    <p className="profesion_line" id="element-puesto">{job || "Reina de la canción"}</p>
+                                    <p className="name_line" id="element-nombre">{name || "Overflow"}</p>
+                                    <p className="profesion_line" id="element-puesto">{job || "Rebosar talento"}</p>
                                 </div>
                             </div>
                         </div>
                         <div className="photo-container">
-                            <img className="changeImagePreview" src={photo ||martirioPic} alt="" />
+                            <img className="changeImagePreview" src={photo ||Overflow} alt="" />
                         </div>
                         <div className="footer-preview__container">
                             <div className="logos-container">
