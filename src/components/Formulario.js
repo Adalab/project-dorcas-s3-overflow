@@ -11,10 +11,6 @@ class Formulario extends Component {
         console.log('tarjeta creada')
     }
 
-    handleTwitter() {
-        console.log('compartido en twitter')
-    }
-
     render() {
         const {
             onChangeRadioColor,
@@ -38,6 +34,8 @@ class Formulario extends Component {
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
+            twitterButtonHandler,
+            twitterURL,
         } = this.props;
 
         return (
@@ -56,8 +54,8 @@ class Formulario extends Component {
                                             type="radio"
                                             value="1"
                                             name="palette"
-                                            defaultChecked 
-                                            onChange ={onChangeRadioColor}/>
+                                            defaultChecked
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="first-color__square1"></div>
@@ -72,8 +70,8 @@ class Formulario extends Component {
                                             id="form__subtitle__second-color"
                                             type="radio"
                                             value="2"
-                                            name="palette" 
-                                            onChange ={onChangeRadioColor}/>
+                                            name="palette"
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="second-color__square1"></div>
@@ -88,8 +86,8 @@ class Formulario extends Component {
                                             id="form__subtitle__third-color"
                                             type="radio"
                                             value="3"
-                                            name="palette" 
-                                            onChange ={onChangeRadioColor}/>
+                                            name="palette"
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square group-square2">
                                             <div className="third-color__square1"></div>
@@ -114,9 +112,9 @@ class Formulario extends Component {
                                             id="form__subtitle__first-font"
                                             type="radio"
                                             value="1"
-                                            name="typography" 
+                                            name="typography"
                                             defaultChecked
-                                            onChange={onChangeRadioTypography}/>
+                                            onChange={onChangeRadioTypography} />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Ubuntu
@@ -133,7 +131,7 @@ class Formulario extends Component {
                                             value="2"
                                             name="typography"
                                             onChange={onChangeRadioTypography}
-                                             />
+                                        />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Comic Sans
@@ -146,8 +144,8 @@ class Formulario extends Component {
                                             id="form__subtitle__third-font"
                                             type="radio"
                                             value="3"
-                                            name="typography" 
-                                            onChange={onChangeRadioTypography}/>
+                                            name="typography"
+                                            onChange={onChangeRadioTypography} />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Montserrat
@@ -272,7 +270,7 @@ class Formulario extends Component {
                         </div>
                         <div className="contenedor-twitter">
                             <h2 className="titletarjeta response parraphtarjeta"></h2>
-                            <a href="" className="maketwitter" target="_blank" onClick={this.handleTwitter}>&nbsp;&nbsp;Compartir en Twitter
+                            <a href={twitterURL} className="maketwitter" target="_blank" onClick={twitterButtonHandler}>&nbsp;&nbsp;Compartir en Twitter
                             <i className="fab fa-twitter"></i>
                             </a>
                             <span className="rectangl2"></span>
