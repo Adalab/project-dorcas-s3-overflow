@@ -7,9 +7,7 @@ import martirioPic from '../images/martirio.jpg';
 class Formulario extends Component {
     //handle button
 
-    handleCreateCard() {
-        console.log('tarjeta creada')
-    }
+    
 
     handleTwitter() {
         console.log('compartido en twitter')
@@ -38,11 +36,13 @@ class Formulario extends Component {
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
+            onSubmitkCreateCard,
+            url
         } = this.props;
 
         return (
             <div className="container-izquierda">
-                <form className="form" action="/signup" method="post">
+                <form className="form"  onSubmit={onSubmitkCreateCard}>
                     <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`}>
                         <fieldset className="fieldset-colors">
                             <div className="container-legend-label-input">
@@ -261,13 +261,16 @@ class Formulario extends Component {
                     </Collapsable>
                     <Collapsable seccion={`COMPARTE`} icono={`fas fa-share-alt`}>
                         <div className="contenedor-boton">
-                            <a
+                            {/* <a
                                 href="#"
                                 className="makecard submit"
                                 id="submit"
-                                onClick={this.handleCreateCard}>&nbsp;&nbsp;CREAR TARJETA
+                                type="submit"
+                                >&nbsp;&nbsp;CREAR TARJETA
                             <i className="far fa-address-card"></i>
-                            </a>
+                            </a> */}
+                            <button className="makecard submit" id="submit" type="submit">CREAR TARJETA<i className="far fa-address-card"></i></button>
+                            <a href={url}>tarjeta</a>
                             <span className="rectangl2"></span>
                         </div>
                         <div className="contenedor-twitter">

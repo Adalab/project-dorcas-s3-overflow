@@ -25,13 +25,15 @@ class Main extends Component {
       data: {
         name: '',
         job: '',
-        image: '',
+        photo: '',
         email: '',
         phone: '',
         github: '',
         linkedin: '',
         palette: '',
-        typography: ''
+        typography: '',
+        skills: "css"
+       
       },
 
       skillOptions: [],
@@ -64,6 +66,10 @@ class Main extends Component {
     this.handleReset = this.handleReset.bind(this);
     this.handleRadioColor = this.handleRadioColor.bind(this);
     this.handleRadioTypography = this.handleRadioTypography.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.showUrl = this.showUrl.bind(this);
+
+    console.log("aaaaaaaa",this.state.data)
 
   }
   handleRadioColor(event) {
@@ -103,7 +109,7 @@ class Main extends Component {
   handleClickImage(event) {
     const fr = new FileReader();
     fr.addEventListener('load', () => {
-      this.setState({ image: fr.result });
+      this.setState({ photo: fr.result });
     });
     fr.readAsDataURL(event.target.files[0]);
 
@@ -179,7 +185,7 @@ class Main extends Component {
       this.setState({
         data: {
           ...this.state.data,
-          image: fr.result
+          photo: fr.result
         }
       })
     })
@@ -189,15 +195,15 @@ class Main extends Component {
   }
 
   // fetch to get skills
-  componentDidMount() {
-    fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
-      .then((response) => response.json())
-      .then((jsonskills) => {
-        this.setState({
-          skillOptions: jsonskills.skills
-        });
-      });
-  }
+  // componentDidMount() {
+  //   fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+  //     .then((response) => response.json())
+  //     .then((jsonskills) => {
+  //       this.setState({
+  //         skillOptions: jsonskills.skills
+  //       });
+  //     });
+  // }
 
   // Skills handlers
 
@@ -284,7 +290,7 @@ class Main extends Component {
       data: {
         name: '',
         job: '',
-        image: '',
+        photo: '',
         email: '',
         phone: '',
         github: '',
@@ -314,9 +320,57 @@ class Main extends Component {
     localStorage.setItem('datos', JSON.stringify(nextState.data));
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log("data", this.state.data)
+    const json = this.state.data;
+    json.skills = ["html","CSS","react"]
+    console.log("json",json)
+      fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
+          method: 'POST',
+          body: JSON.stringify(json),
+          headers: {
+            'content-type': 'application/json'
+          },
+        })
+        .then(function (resp) {
+          console.log(resp)
+          return resp.json();
+        })
+        .then(function (result) {
+          console.log("resultado",result)
+         // this.showURL(result);
+            if (result.success) {
+              console.log(result.cardURL)
+            } else {
+              console.log(result.error)
+            }
+    
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  }
+
+  showUrl(result){
+    console.log("entra");
+    console.log(result)
+      if (result.success) {
+        console.log(result.cardURL)
+              // this.setState({
+              //   url: result.cardURL
+              // })
+      } else {
+        console.log(result.error)
+      }
+
+  }
+
+
+
   render() {
     const userInfo = this.state.data
-    console.log(userInfo)
+    console.log("userinfo",userInfo)
     return (
       <main className="container-mediaqueries-preview">
         <Preview
@@ -327,10 +381,11 @@ class Main extends Component {
           phone={userInfo.phone}
           github={userInfo.github}
           linkedin={userInfo.linkedin}
-          photo={userInfo.image}
+          photo={userInfo.photo}
           skillsOnCard={this.state.skillsOnCard}
           paletteClass={paletteClass[userInfo.palette]}
           typographyClass={fontClass[userInfo.typography]}
+          
         />
         <Formulario
           onChangeRadioColor={this.handleRadioColor}
@@ -356,6 +411,8 @@ class Main extends Component {
           buttonIcon1={this.state.buttonIcon1}
           buttonIcon2={this.state.buttonIcon2}
           buttonIcon3={this.state.buttonIcon3}
+          onSubmitkCreateCard={this.handleSubmit}
+          url={userInfo.url}
         />
       </main>
 
@@ -366,7 +423,7 @@ class Main extends Component {
 Main.propTypes = {
   name: PropTypes.string,
   job: PropTypes.string,
-  image: PropTypes.string,
+  photo: PropTypes.string,
   email: PropTypes.string,
   phone: PropTypes.number,
   github: PropTypes.string,
