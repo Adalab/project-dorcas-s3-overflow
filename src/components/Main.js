@@ -270,7 +270,7 @@ class Main extends Component {
         phone: '',
         github: '',
         linkedin: '',
-        palette: '',
+        palette: '1',
         typography: ''
       },
 
