@@ -2,10 +2,14 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
-import martirioPic from '../images/martirio.jpg';
+import Overflow from '../images/overflow.jpg';
 
 class Formulario extends Component {
     //handle button
+
+    handleCreateCard() {
+        console.log('tarjeta creada')
+    }
 
     render() {
 
@@ -32,9 +36,11 @@ class Formulario extends Component {
             buttonIcon2,
             buttonIcon3,
             onSubmitkCreateCard,
-            url
+            url,
+            twitterButtonHandler,
+            twitterURL,
         } = this.props;
-
+            console.log('twitter url form', twitterURL)
         return (
             <div className="container-izquierda">
                 <form className="form" onSubmit={onSubmitkCreateCard}>
@@ -52,8 +58,7 @@ class Formulario extends Component {
                                             value="1"
                                             name="palette"
                                             defaultChecked
-                                            onChange
-                                            ={onChangeRadioColor}/>
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="first-color__square1"></div>
@@ -69,8 +74,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="2"
                                             name="palette"
-                                            onChange
-                                            ={onChangeRadioColor}/>
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="second-color__square1"></div>
@@ -86,8 +90,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="3"
                                             name="palette"
-                                            onChange
-                                            ={onChangeRadioColor}/>
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square group-square2">
                                             <div className="third-color__square1"></div>
@@ -114,7 +117,7 @@ class Formulario extends Component {
                                             value="1"
                                             name="typography"
                                             defaultChecked
-                                            onChange={onChangeRadioTypography}/>
+                                            onChange={onChangeRadioTypography} />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Ubuntu
@@ -130,7 +133,8 @@ class Formulario extends Component {
                                             type="radio"
                                             value="2"
                                             name="typography"
-                                            onChange={onChangeRadioTypography}/>
+                                            onChange={onChangeRadioTypography}
+                                        />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Comic Sans
@@ -146,7 +150,7 @@ class Formulario extends Component {
                                             type="radio"
                                             value="3"
                                             name="typography"
-                                            onChange={onChangeRadioTypography}/>
+                                            onChange={onChangeRadioTypography} />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Montserrat
@@ -164,7 +168,7 @@ class Formulario extends Component {
                                 id="nombre"
                                 type="text"
                                 name="name"
-                                placeholder="Ej. Martirio"
+                                placeholder="Ej. Olatz"
                                 maxLength="19"
                                 value={userInfo.name}
                                 onChange={onInputNameChange}/>
@@ -197,8 +201,8 @@ class Formulario extends Component {
                                 <div className="profile-image contenedor--imagen">
                                     <img
                                         className="profile-image__item"
-                                        src={userInfo.image || martirioPic}
-                                        alt="Foto de perfil"/>
+                                        src={userInfo.image || Overflow}
+                                        alt="Foto de perfil" />
                                 </div>
                             </div>
                             <label className="form__label" htmlFor="email">Email</label>
@@ -265,9 +269,13 @@ class Formulario extends Component {
                             <span className="rectangl2"></span>
                         </div>
                         <div className="contenedor-twitter">
-                            <h2 className="titletarjeta response parraphtarjeta"></h2>
-                            <a href="" className="maketwitter" target="_blank" onClick={this.handleTwitter}>&nbsp;&nbsp;Compartir en Twitter
-                                <i className="fab fa-twitter"></i>
+                            <a 
+                            href={twitterURL} 
+                            className="maketwitter" 
+                            target="_blank" 
+                            onClick={twitterButtonHandler}
+                            >&nbsp;&nbsp;Compartir en Twitter
+                            <i className="fab fa-twitter"></i>
                             </a>
                             <span className="rectangl2"></span>
                         </div>

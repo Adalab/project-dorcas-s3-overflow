@@ -42,7 +42,9 @@ class Main extends Component {
             optionSelected3: '',
             buttonIcon1: '+',
             buttonIcon2: '+',
-            buttonIcon3: '+'
+            buttonIcon3: '+',
+
+            twitter: '',
         }
 
         // rellena inputs binds
@@ -102,6 +104,7 @@ class Main extends Component {
         this.handleSubmit = this
             .handleSubmit
             .bind(this);
+            this.handleTwitter = this.handleTwitter.bind(this);
       
 
     }
@@ -229,115 +232,108 @@ class Main extends Component {
 
     //fetch to get skills
     componentDidMount() {
-        fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.j' +
-                'son').then((response) => response.json()).then((jsonskills) => {
-            this.setState({skillOptions: jsonskills.skills});
+      fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+        .then((response) => response.json())
+        .then((jsonskills) => {
+          this.setState({
+            skillOptions: jsonskills.skills
+          }, this.pushSelect);
         });
     }
-
+  
+    pushSelect() {
+      const copyArray = [...this.state.skillOptions]
+      let array = ['Selecciona una', ...copyArray]
+  
+      this.setState({
+        skillSelect: array
+      })
+    }
+  
     // Skills handlers
-
+  
     handleAbilitiesSelect1(event) {
-        console.log(event.target.value)
-        this.setState({optionSelected1: event.target.value})
+      console.log(event.target.value)
+      this.setState({
+        optionSelected1: event.target.value,
+      })
     }
-
+  
     handleAbilitiesSelect2(event) {
-        this.setState({optionSelected2: event.target.value})
+      this.setState({
+        optionSelected2: event.target.value,
+      })
     }
-
+  
     handleAbilitiesSelect3(event) {
-        this.setState({optionSelected3: event.target.value})
+      this.setState({
+        optionSelected3: event.target.value,
+      })
     }
-
+  
     handleAbilitiesButton1(event) {
-        event.preventDefault();
-        // lógica para cambiar el signo del botón
-        this.setState((prevState, props) => ({
-            buttonIcon1: (prevState.buttonIcon1 === '+')
-                ? '-'
-                : '+'
-        }));
-        // lógica para añadir o quitar skills de la tarjeta
-        if (this.state.buttonIcon1 === '+') {
-            const array = [...this.state.data.skills]
-            this.setState({
-                data: {
-                    ...this.state.data,
-                    skills: [
-                        this.state.optionSelected1, ...array.slice(1, 3)
-                    ]
-                }
-            })
-        } else {
-            const array = [...this.state.data.skills]; // make a separate copy of the array
-            array.splice(0, 1, '');
-            this.setState({
-                data: {
-                    ...this.state.data,
-                    skills: array
-                }
-            });
-        }
+      event.preventDefault();
+      // lógica para cambiar el signo del botón
+      this.setState((prevState, props) => ({
+        buttonIcon1: (prevState.buttonIcon1 === '+') ? '-' : '+'
+      }));
+      // lógica para añadir o quitar skills de la tarjeta
+      if (this.state.buttonIcon1 === '+') {
+        const array = [...this.state.skillsOnCard]
+        this.setState({
+          skillsOnCard: [this.state.optionSelected1, ...array.slice(1, 3)]
+        })
+      } else {
+        const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+        array.splice(0, 1, '');
+        this.setState({ skillsOnCard: array });
+      }
     }
-
+  
     handleAbilitiesButton2(event) {
-        event.preventDefault();
-        // lógica para cambiar el signo del botón
-        this.setState((prevState, props) => ({
-            buttonIcon2: (prevState.buttonIcon2 === '+')
-                ? '-'
-                : '+'
-        }));
-        // lógica para añadir o quitar skills de la tarjeta
-        if (this.state.buttonIcon2 === '+') {
-            const array = [...this.state.data.skills]
-            this.setState({
-                data: {
-                    ...this.state.data,
-                    skills: [array[0], this.state.optionSelected2, array[2]]
-                }
-            })
-        } else {
-            const array = [...this.state.data.skills]; // make a separate copy of the array
-            array.splice(1, 1, '');
-            this.setState({
-                data: {
-                    ...this.state.data,
-                    skills: array
-                }
-            });
-        }
+      event.preventDefault();
+      // lógica para cambiar el signo del botón
+      this.setState((prevState, props) => ({
+        buttonIcon2: (prevState.buttonIcon2 === '+') ? '-' : '+'
+      }));
+      // lógica para añadir o quitar skills de la tarjeta
+      if (this.state.buttonIcon2 === '+') {
+        const array = [...this.state.skillsOnCard]
+        this.setState({
+          skillsOnCard: [array[0], this.state.optionSelected2, array[2]]
+        })
+      } else {
+        const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+        array.splice(1, 1, '');
+        this.setState({ skillsOnCard: array });
+      }
     }
-
+  
     handleAbilitiesButton3(event) {
-        event.preventDefault();
-        // lógica para cambiar el signo del botón
-        this.setState((prevState, props) => ({
-            buttonIcon3: (prevState.buttonIcon3 === '+')
-                ? '-'
-                : '+'
-        }));
-        // lógica para añadir o quitar skills de la tarjeta
-        if (this.state.buttonIcon3 === '+') {
-            const array = [...this.state.data.skills]
-            this.setState({
-                data: {
-                    ...this.state.data,
-                    skills: [array[0], array[1], this.state.optionSelected3]
-                }
-            })
-        } else {
-            const array = [...this.state.data.skills]; // make a separate copy of the array
-            array.splice(2, 1, '');
-            this.setState({
-                data: {
-                    ...this.state.data,
-                    skills: array
-                }
-            });
-        }
+      event.preventDefault();
+      // lógica para cambiar el signo del botón
+      this.setState((prevState, props) => ({
+        buttonIcon3: (prevState.buttonIcon3 === '+') ? '-' : '+'
+      }));
+      // lógica para añadir o quitar skills de la tarjeta
+      if (this.state.buttonIcon3 === '+') {
+        const array = [...this.state.skillsOnCard]
+        this.setState({
+          skillsOnCard: [array[0], array[1], this.state.optionSelected3]
+        })
+      } else {
+        const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+        array.splice(2, 1, '');
+        this.setState({ skillsOnCard: array });
+      }
     }
+  
+    handleTwitter(event) {
+      const twitterURL = this.state.url
+      this.setState({
+      twitter: `https://twitter.com/intent/tweet?url=${twitterURL}&text=Acabo%20de%20crear%20mi%20tarjeta%20con%20Font%20Awesome%20de%20OVERflow&hashtags=WomenInTech`
+      })
+  }
 
     handleReset(event) {
         event.preventDefault()
@@ -446,7 +442,10 @@ class Main extends Component {
                     buttonIcon2={this.state.buttonIcon2}
                     buttonIcon3={this.state.buttonIcon3}
                     onSubmitkCreateCard={this.handleSubmit}
-                    url={this.state.url}/>
+                    url={this.state.url}
+                    twitterButtonHandler={this.handleTwitter}
+                    twitterURL={this.state.twitter}
+                    />
             </main>
 
         );
