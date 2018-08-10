@@ -32,15 +32,13 @@ class Main extends Component {
         linkedin: '',
         palette: '',
         typography: '',
-        skills: "css"
-       
+        skills: ['HTML', 'CSS', 'JavaScript'],
       },
 
       skillOptions: [],
       optionSelected1: '',
       optionSelected2: '',
       optionSelected3: '',
-      skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
       buttonIcon1: '+',
       buttonIcon2: '+',
       buttonIcon3: '+',
@@ -69,7 +67,7 @@ class Main extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showUrl = this.showUrl.bind(this);
 
-    console.log("aaaaaaaa",this.state.data)
+    console.log("aaaaaaaa", this.state.data)
 
   }
   handleRadioColor(event) {
@@ -205,7 +203,7 @@ class Main extends Component {
       });
   }
 
- // Skills handlers
+  // Skills handlers
 
   handleAbilitiesSelect1(event) {
     console.log(event.target.value)
@@ -234,14 +232,24 @@ class Main extends Component {
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon1 === '+') {
-      const array = [...this.state.skillsOnCard]
+      const array = [...this.state.data.skills]
       this.setState({
-        skillsOnCard: [this.state.optionSelected1, ...array.slice(1, 3)]
+        data:
+        {
+          ...this.state.data,
+          skills: [this.state.optionSelected1, ...array.slice(1, 3)]
+        }
       })
     } else {
-      const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+      const array = [...this.state.data.skills]; // make a separate copy of the array
       array.splice(0, 1, '');
-      this.setState({ skillsOnCard: array });
+      this.setState({
+        data:
+        {
+          ...this.state.data,
+          skills: array
+        }
+      });
     }
   }
 
@@ -253,14 +261,24 @@ class Main extends Component {
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon2 === '+') {
-      const array = [...this.state.skillsOnCard]
+      const array = [...this.state.data.skills]
       this.setState({
-        skillsOnCard: [array[0], this.state.optionSelected2, array[2]]
+        data:
+        {
+          ...this.state.data,
+          skills: [array[0], this.state.optionSelected2, array[2]]
+        }
       })
     } else {
-      const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+      const array = [...this.state.data.skills]; // make a separate copy of the array
       array.splice(1, 1, '');
-      this.setState({ skillsOnCard: array });
+      this.setState({
+        data:
+        {
+          ...this.state.data,
+          skills: array
+        }
+      });
     }
   }
 
@@ -272,14 +290,24 @@ class Main extends Component {
     }));
     // lógica para añadir o quitar skills de la tarjeta
     if (this.state.buttonIcon3 === '+') {
-      const array = [...this.state.skillsOnCard]
+      const array = [...this.state.data.skills]
       this.setState({
-        skillsOnCard: [array[0], array[1], this.state.optionSelected3]
+        data:
+        {
+          ...this.state.data,
+          skills: [array[0], array[1], this.state.optionSelected3]
+        }
       })
     } else {
-      const array = [...this.state.skillsOnCard]; // make a separate copy of the array
+      const array = [...this.state.data.skills]; // make a separate copy of the array
       array.splice(2, 1, '');
-      this.setState({ skillsOnCard: array });
+      this.setState({
+        data:
+        {
+          ...this.state.data,
+          skills: array
+        }
+      });
     }
   }
 
@@ -296,26 +324,26 @@ class Main extends Component {
         github: '',
         linkedin: '',
         palette: '',
-        typography: ''
+        typography: '',
+        skills: ['HTML', 'CSS', 'JavaScript'],
       },
 
       optionSelected1: '',
       optionSelected2: '',
       optionSelected3: '',
-      skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
       buttonIcon1: '+',
       buttonIcon2: '+',
       buttonIcon3: '+',
     })
   }
-  componentWillMount(){
+  componentWillMount() {
     localStorage.getItem('datos') && this.setState({
       data: JSON.parse(localStorage.getItem('datos'))
-    
+
     })
   }
 
-  componentWillUpdate(nextProps, nextState){
+  componentWillUpdate(nextProps, nextState) {
 
     localStorage.setItem('datos', JSON.stringify(nextState.data));
   }
@@ -325,44 +353,44 @@ class Main extends Component {
     console.log("data", this.state.data)
     const json = this.state.data;
     json.skills = this.state.skillOptions;
-    console.log("json",json)
-      fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
-          method: 'POST',
-          body: JSON.stringify(json),
-          headers: {
-            'content-type': 'application/json'
-          },
-        })
-        .then(function (resp) {
-          console.log(resp)
-          return resp.json();
-        })
-        .then(function (result) {
-          console.log("resultado",result)
-         // this.showURL(result);
-            if (result.success) {
-              console.log(result.cardURL)
-            } else {
-              console.log(result.error)
-            }
-    
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    console.log("json", json)
+    fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
+      method: 'POST',
+      body: JSON.stringify(json),
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(function (resp) {
+        console.log(resp)
+        return resp.json();
+      })
+      .then(function (result) {
+        console.log("resultado", result)
+        // this.showURL(result);
+        if (result.success) {
+          console.log(result.cardURL)
+        } else {
+          console.log(result.error)
+        }
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  showUrl(result){
+  showUrl(result) {
     console.log("entra");
     console.log(result)
-      if (result.success) {
-        console.log(result.cardURL)
-              // this.setState({
-              //   url: result.cardURL
-              // })
-      } else {
-        console.log(result.error)
-      }
+    if (result.success) {
+      console.log(result.cardURL)
+      // this.setState({
+      //   url: result.cardURL
+      // })
+    } else {
+      console.log(result.error)
+    }
 
   }
 
@@ -370,7 +398,7 @@ class Main extends Component {
 
   render() {
     const userInfo = this.state.data
-    console.log("userinfo",userInfo)
+    console.log("userinfo", userInfo)
     return (
       <main className="container-mediaqueries-preview">
         <Preview
@@ -382,10 +410,10 @@ class Main extends Component {
           github={userInfo.github}
           linkedin={userInfo.linkedin}
           photo={userInfo.photo}
-          skillsOnCard={this.state.skillsOnCard}
+          skillsOnCard={userInfo.skills}
           paletteClass={paletteClass[userInfo.palette]}
           typographyClass={fontClass[userInfo.typography]}
-          
+
         />
         <Formulario
           onChangeRadioColor={this.handleRadioColor}
