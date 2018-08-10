@@ -194,18 +194,18 @@ class Main extends Component {
 
   }
 
-  // fetch to get skills
-  // componentDidMount() {
-  //   fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
-  //     .then((response) => response.json())
-  //     .then((jsonskills) => {
-  //       this.setState({
-  //         skillOptions: jsonskills.skills
-  //       });
-  //     });
-  // }
+  //fetch to get skills
+  componentDidMount() {
+    fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+      .then((response) => response.json())
+      .then((jsonskills) => {
+        this.setState({
+          skillOptions: jsonskills.skills
+        });
+      });
+  }
 
-  // Skills handlers
+ // Skills handlers
 
   handleAbilitiesSelect1(event) {
     console.log(event.target.value)
@@ -324,7 +324,7 @@ class Main extends Component {
     event.preventDefault();
     console.log("data", this.state.data)
     const json = this.state.data;
-    json.skills = ["html","CSS","react"]
+    json.skills = this.state.skillOptions;
     console.log("json",json)
       fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
           method: 'POST',
