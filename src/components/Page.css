@@ -662,7 +662,7 @@ body {
   border-radius: 50%; }
 
 .clikable:checked ~ .checkmark {
-  background-color: #bd1010;
+  background-color: #3e5b65;
   opacity: 1; }
 
 .checkmark:after {
