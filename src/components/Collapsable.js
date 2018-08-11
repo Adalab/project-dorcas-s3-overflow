@@ -7,7 +7,7 @@ const {handleCollapsible,
        collapsibleClass,
        isHidden
     } = this.props
-    console.log ("buuu",isHidden)
+    
         return (
             <div className="colapsable colapsable">
                 <div className={`form-fill  ${collapsibleClass}`}>

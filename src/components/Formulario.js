@@ -5,13 +5,6 @@ import Select from './Select';
 import Overflow from '../images/overflow.jpg';
 
 class Formulario extends Component {
-
-    //handle button
-
-    handleCreateCard() {
-        console.log('tarjeta creada')
-    }
-
     render() {
 
         const {
@@ -30,7 +23,9 @@ class Formulario extends Component {
             handleAbilitiesButton1,
             handleAbilitiesButton2,
             handleAbilitiesButton3,
-            handleAbilitiesSelect,
+            handleAbilitiesSelect1,
+            handleAbilitiesSelect2,
+            handleAbilitiesSelect3,
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
@@ -48,7 +43,6 @@ class Formulario extends Component {
             twitterButtonHandler,
             twitterURL,
         } = this.props;
-            console.log('twitter url form', twitterURL)
 
         return (
             <div className="container-izquierda">
@@ -273,7 +267,9 @@ class Formulario extends Component {
                                     onClickAbilityButton1={handleAbilitiesButton1}
                                     onClickAbilityButton2={handleAbilitiesButton2}
                                     onClickAbilityButton3={handleAbilitiesButton3}
-                                    onChangeAbilitySelect={handleAbilitiesSelect}
+                                    onChangeAbilitySelect1={handleAbilitiesSelect1}
+                                    onChangeAbilitySelect2={handleAbilitiesSelect2}
+                                    onChangeAbilitySelect3={handleAbilitiesSelect3}
                                     buttonIcon1={buttonIcon1}
                                     buttonIcon2={buttonIcon2}
                                     buttonIcon3={buttonIcon3}/>
