@@ -1,16 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
 import Overflow from '../images/overflow.jpg';
 
 class Formulario extends Component {
-    //handle button
-
-    handleCreateCard() {
-        console.log('tarjeta creada')
-    }
-
     render() {
 
         const {
@@ -35,16 +29,31 @@ class Formulario extends Component {
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
+            collapsibleClassDesign,
+            collapsibleClassFill,
+            collapsibleClassShare,
+            isHiddenDesign,
+            isHiddenFill,
+            isHiddenShare,
+            handleCollapsibleDesing,
+            handleCollapsibleRellena,
+            handleCollapsibleComparte,
             onSubmitkCreateCard,
             url,
             twitterButtonHandler,
             twitterURL,
         } = this.props;
-            console.log('twitter url form', twitterURL)
+
         return (
             <div className="container-izquierda">
                 <form className="form" onSubmit={onSubmitkCreateCard}>
-                    <Collapsable seccion={`DISEÑA`} icono={`far fa-object-ungroup`}>
+                    <Collapsable
+                        seccion={`DISEÑA`}
+                        icono={`far fa-object-ungroup`}
+                        handleCollapsible={handleCollapsibleDesing}
+                        collapsibleClass={collapsibleClassDesign}
+                        isHidden={isHiddenDesign}>
+
                         <fieldset className="fieldset-colors">
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">COLORES</legend>
@@ -160,7 +169,13 @@ class Formulario extends Component {
                             </div>
                         </div>
                     </Collapsable>
-                    <Collapsable seccion={`RELLENA`} icono={`far fa-keyboard`}>
+                    <Collapsable
+                        seccion={`RELLENA`}
+                        icono={`far fa-keyboard`}
+                        handleCollapsible={handleCollapsibleRellena}
+                        collapsibleClass={collapsibleClassFill}
+                        isHidden={isHiddenFill}
+                    >
                         <div className="form__container">
                             <label className="form__label" htmlFor="nombre">Nombre completo</label>
                             <input
@@ -171,7 +186,7 @@ class Formulario extends Component {
                                 placeholder="Ej. Olatz"
                                 maxLength="19"
                                 value={userInfo.name}
-                                onChange={onInputNameChange}/>
+                                onChange={onInputNameChange} />
                             <label className="form__label" htmlFor="puesto">Puesto</label>
                             <input
                                 className="form__input form__input--puesto local--input--job"
@@ -181,7 +196,7 @@ class Formulario extends Component {
                                 placeholder="Ej. Realfooder"
                                 maxLength="22"
                                 value={userInfo.job}
-                                onChange={onInputJobChange}/>
+                                onChange={onInputJobChange} />
                             <label className="form__label">Imagen de perfil</label>
 
                             <div className="form__container--imagen">
@@ -196,7 +211,7 @@ class Formulario extends Component {
                                         id="img-selector"
                                         className="action__hiddenField"
                                         ref={this.props.fileInput}
-                                        onChange={onInputImageChange}/>
+                                        onChange={onInputImageChange} />
                                 </div>
                                 <div className="profile-image contenedor--imagen">
                                     <img
@@ -213,7 +228,7 @@ class Formulario extends Component {
                                 name="email"
                                 placeholder="Ej. sansebastianmola@soyvasca.com"
                                 value={userInfo.email}
-                                onChange={onInputEmailChange}/>
+                                onChange={onInputEmailChange} />
                             <label className="form__label" htmlFor="telefono">Teléfono</label>
                             <input
                                 className="form__input inputhref form__telefono local--input--phone"
@@ -222,7 +237,7 @@ class Formulario extends Component {
                                 name="phone"
                                 placeholder="Ej. 982938437"
                                 value={userInfo.phone}
-                                onChange={onInputPhoneChange}/>
+                                onChange={onInputPhoneChange} />
                             <label className="form__label " htmlFor="linkedin">Linkedin</label>
                             <input
                                 className="form__input inputhref form__linkedin local--input--linkedin"
@@ -231,7 +246,7 @@ class Formulario extends Component {
                                 name="linkedin"
                                 placeholder="Ej. olatz.reina"
                                 value={userInfo.linkedin}
-                                onChange={onInputLinkedinChange}/>
+                                onChange={onInputLinkedinChange} />
                             <label className="form__label" htmlFor="github">Github</label>
                             <input
                                 className="form__input inputhref form__github local--input--github"
@@ -240,7 +255,7 @@ class Formulario extends Component {
                                 name="github"
                                 placeholder="Ej. olatz-reina"
                                 value={userInfo.github}
-                                onChange={onInputGitChange}/>
+                                onChange={onInputGitChange} />
 
                             <div className="form__container--habilidades">
                                 <label className="form__label" htmlFor="habilidades">Habilidades (máximo 3)</label>
@@ -257,11 +272,17 @@ class Formulario extends Component {
                                     onChangeAbilitySelect3={handleAbilitiesSelect3}
                                     buttonIcon1={buttonIcon1}
                                     buttonIcon2={buttonIcon2}
-                                    buttonIcon3={buttonIcon3}/>
+                                    buttonIcon3={buttonIcon3} />
                             </div>
                         </div>
                     </Collapsable>
-                    <Collapsable seccion={`COMPARTE`} icono={`fas fa-share-alt`}>
+                    <Collapsable
+                        seccion={`COMPARTE`}
+                        icono={`fas fa-share-alt`}
+                        handleCollapsible={handleCollapsibleComparte}
+                        collapsibleClass={collapsibleClassShare}
+                        isHidden={isHiddenShare}
+                    >
                         <div className="contenedor-boton">
                             <button className="makecard submit" id="submit" type="submit">CREAR TARJETA<i className="far fa-address-card"></i>
                             </button>
@@ -269,11 +290,11 @@ class Formulario extends Component {
                             <span className="rectangl2"></span>
                         </div>
                         <div className="contenedor-twitter">
-                            <a 
-                            href={twitterURL} 
-                            className="maketwitter" 
-                            target="_blank" 
-                            onClick={twitterButtonHandler}
+                            <a
+                                href={twitterURL}
+                                className="maketwitter"
+                                target="_blank"
+                                onClick={twitterButtonHandler}
                             >&nbsp;&nbsp;Compartir en Twitter
                             <i className="fab fa-twitter"></i>
                             </a>

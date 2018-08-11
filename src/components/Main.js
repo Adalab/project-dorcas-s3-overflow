@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview.js';
 import Formulario from './Formulario.js';
@@ -37,12 +37,20 @@ class Main extends Component {
             url: '',
 
             skillOptions: [],
+            skillSelect: [],
             optionSelected1: '',
             optionSelected2: '',
             optionSelected3: '',
             buttonIcon1: '+',
             buttonIcon2: '+',
             buttonIcon3: '+',
+
+            collapsibleClassDesign: 'colapsable--visible',
+            collapsibleClassFill: null,
+            collapsibleClassShare: null,
+            isHiddenDesign: true,
+            isHiddenFill: false,
+            isHiddenShare: false,
 
             twitter: '',
         }
@@ -104,46 +112,43 @@ class Main extends Component {
         this.handleSubmit = this
             .handleSubmit
             .bind(this);
-            this.handleTwitter = this.handleTwitter.bind(this);
-      
-
+        this.handleTwitter = this.handleTwitter.bind(this);
+        this.toggleHiddenDesing = this
+            .toggleHiddenDesing
+            .bind(this);
+        this.toggleHiddenRellena = this
+            .toggleHiddenRellena
+            .bind(this);
+        this.toggleHiddenComparte = this
+            .toggleHiddenComparte
+            .bind(this);
     }
     handleRadioColor(event) {
-        console.log(event.target.value)
-        const {value} = event.target;
+        const { value } = event.target;
         this.setState((prevState) => ({
             data: {
                 ...prevState.data,
                 palette: value
             }
-        }), () => {
-
-            console.log(this.state.data.palette)
-
-        })
+        }))
 
     }
 
     handleRadioTypography(event) {
-        console.log(event.target.value)
-        const {value} = event.target;
+        const { value } = event.target;
         this.setState((prevState) => ({
             data: {
                 ...prevState.data,
                 typography: value
             }
-        }), () => {
-
-            console.log(this.state.data.typography)
-
-        })
+        }))
 
     }
 
     handleClickImage(event) {
         const fr = new FileReader();
         fr.addEventListener('load', () => {
-            this.setState({photo: fr.result});
+            this.setState({ photo: fr.result });
         });
         fr.readAsDataURL(event.target.files[0]);
 
@@ -232,142 +237,174 @@ class Main extends Component {
 
     //fetch to get skills
     componentDidMount() {
-      fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
-        .then((response) => response.json())
-        .then((jsonskills) => {
-          this.setState({
-            skillOptions: jsonskills.skills
-          }, this.pushSelect);
-        });
+        fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+            .then((response) => response.json())
+            .then((jsonskills) => {
+                this.setState({
+                    skillOptions: jsonskills.skills
+                }, this.pushSelect);
+            });
     }
-  
+
     pushSelect() {
-      const copyArray = [...this.state.skillOptions]
-      let array = ['Selecciona una', ...copyArray]
-  
-      this.setState({
-        skillSelect: array
-      })
+        const copyArray = [...this.state.skillOptions]
+        let array = ['Selecciona una', ...copyArray]
+        this.setState({
+            skillSelect: array
+        })
     }
-  
+
     // Skills handlers
-  
+
     handleAbilitiesSelect1(event) {
-      console.log(event.target.value)
-      this.setState({
-        optionSelected1: event.target.value,
-      })
+        console.log('entro', event.target.value)
+        this.setState({
+            optionSelected1: event.target.value,
+        })
     }
-  
+
     handleAbilitiesSelect2(event) {
-      this.setState({
-        optionSelected2: event.target.value,
-      })
+        this.setState({
+            optionSelected2: event.target.value,
+        })
     }
-  
+
     handleAbilitiesSelect3(event) {
-      this.setState({
-        optionSelected3: event.target.value,
-      })
+        this.setState({
+            optionSelected3: event.target.value,
+        })
     }
-  
+
     handleAbilitiesButton1(event) {
-      event.preventDefault();
-      // lógica para cambiar el signo del botón
-      this.setState((prevState, props) => ({
-        buttonIcon1: (prevState.buttonIcon1 === '+') ? '-' : '+'
-      }));
-      // lógica para añadir o quitar skills de la tarjeta
-      if (this.state.buttonIcon1 === '+') {
-        const array = [...this.state.skillsOnCard]
-        this.setState({
-          skillsOnCard: [this.state.optionSelected1, ...array.slice(1, 3)]
-        })
-      } else {
-        const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-        array.splice(0, 1, '');
-        this.setState({ skillsOnCard: array });
-      }
+        event.preventDefault();
+        // lógica para cambiar el signo del botón
+        this.setState((prevState, props) => ({
+            buttonIcon1: (prevState.buttonIcon1 === '+')
+                ? '-'
+                : '+'
+        }));
+        // lógica para añadir o quitar skills de la tarjeta
+        if (this.state.buttonIcon1 === '+') {
+            const array = [...this.state.data.skills]
+            this.setState({
+                data: {
+                    ...this.state.data,
+                    skills: [
+                        this.state.optionSelected1, ...array.slice(1, 3)
+                    ]
+                }
+            })
+        } else {
+            const array = [...this.state.data.skills]; // make a separate copy of the array
+            array.splice(0, 1, '');
+            this.setState({
+                data: {
+                    ...this.state.data,
+                    skills: array
+                }
+            });
+        }
     }
-  
+
     handleAbilitiesButton2(event) {
-      event.preventDefault();
-      // lógica para cambiar el signo del botón
-      this.setState((prevState, props) => ({
-        buttonIcon2: (prevState.buttonIcon2 === '+') ? '-' : '+'
-      }));
-      // lógica para añadir o quitar skills de la tarjeta
-      if (this.state.buttonIcon2 === '+') {
-        const array = [...this.state.skillsOnCard]
-        this.setState({
-          skillsOnCard: [array[0], this.state.optionSelected2, array[2]]
-        })
-      } else {
-        const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-        array.splice(1, 1, '');
-        this.setState({ skillsOnCard: array });
-      }
+        event.preventDefault();
+        // lógica para cambiar el signo del botón
+        this.setState((prevState, props) => ({
+            buttonIcon2: (prevState.buttonIcon2 === '+')
+                ? '-'
+                : '+'
+        }));
+        // lógica para añadir o quitar skills de la tarjeta
+        if (this.state.buttonIcon2 === '+') {
+            const array = [...this.state.data.skills]
+            this.setState({
+                data: {
+                    ...this.state.data,
+                    skills: [array[0], this.state.optionSelected2, array[2]]
+                }
+            })
+        } else {
+            const array = [...this.state.data.skills]; // make a separate copy of the array
+            array.splice(1, 1, '');
+            this.setState({
+                data: {
+                    ...this.state.data,
+                    skills: array
+                }
+            });
+        }
     }
-  
+
     handleAbilitiesButton3(event) {
-      event.preventDefault();
-      // lógica para cambiar el signo del botón
-      this.setState((prevState, props) => ({
-        buttonIcon3: (prevState.buttonIcon3 === '+') ? '-' : '+'
-      }));
-      // lógica para añadir o quitar skills de la tarjeta
-      if (this.state.buttonIcon3 === '+') {
-        const array = [...this.state.skillsOnCard]
-        this.setState({
-          skillsOnCard: [array[0], array[1], this.state.optionSelected3]
-        })
-      } else {
-        const array = [...this.state.skillsOnCard]; // make a separate copy of the array
-        array.splice(2, 1, '');
-        this.setState({ skillsOnCard: array });
-      }
+        event.preventDefault();
+        // lógica para cambiar el signo del botón
+        this.setState((prevState, props) => ({
+            buttonIcon3: (prevState.buttonIcon3 === '+')
+                ? '-'
+                : '+'
+        }));
+        // lógica para añadir o quitar skills de la tarjeta
+        if (this.state.buttonIcon3 === '+') {
+            const array = [...this.state.data.skills]
+            this.setState({
+                data: {
+                    ...this.state.data,
+                    skills: [array[0], array[1], this.state.optionSelected3]
+                }
+            })
+        } else {
+            const array = [...this.state.data.skills]; // make a separate copy of the array
+            array.splice(2, 1, '');
+            this.setState({
+                data: {
+                    ...this.state.data,
+                    skills: array
+                }
+            });
+        }
     }
-  
+
     handleTwitter(event) {
-      const twitterURL = this.state.url
-      this.setState({
-      twitter: `https://twitter.com/intent/tweet?url=${twitterURL}&text=Acabo%20de%20crear%20mi%20tarjeta%20con%20Font%20Awesome%20de%20OVERflow&hashtags=WomenInTech`
-      })
-  }
+        const twitterURL = this.state.url
+        this.setState({
+            twitter: `https://twitter.com/intent/tweet?url=${twitterURL}&text=Acabo%20de%20crear%20mi%20tarjeta%20con%20Font%20Awesome%20de%20OVERflow&hashtags=WomenInTech`
+        })
+    }
 
-<<<<<<< HEAD
-  handleReset(event) {
-    event.preventDefault()
-
-    this.setState({
-      data: {
-        name: '',
-        job: '',
-        image: '',
-        email: '',
-        phone: '',
-        github: '',
-        linkedin: '',
-        palette: '1',
-        typography: ''
-      },
-
-      optionSelected1: '',
-      optionSelected2: '',
-      optionSelected3: '',
-      skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
-      buttonIcon1: '+',
-      buttonIcon2: '+',
-      buttonIcon3: '+',
-    })
-  }
-  componentWillMount() {
-    localStorage.getItem('datos') && this.setState({
-      data: JSON.parse(localStorage.getItem('datos'))
-=======
     handleReset(event) {
         event.preventDefault()
->>>>>>> a42df765d42195c74717c53b4072ed4cbf404609
+
+        this.setState({
+            data: {
+                name: '',
+                job: '',
+                image: '',
+                email: '',
+                phone: '',
+                github: '',
+                linkedin: '',
+                palette: '1',
+                typography: ''
+            },
+
+            optionSelected1: '',
+            optionSelected2: '',
+            optionSelected3: '',
+            skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
+            buttonIcon1: '+',
+            buttonIcon2: '+',
+            buttonIcon3: '+',
+        })
+    }
+    componentWillMount() {
+        localStorage.getItem('datos') && this.setState({
+            data: JSON.parse(localStorage.getItem('datos'))
+        })
+    }
+
+
+    handleReset(event) {
+        event.preventDefault()
 
         this.setState({
             data: {
@@ -391,6 +428,7 @@ class Main extends Component {
             buttonIcon3: '+'
         })
     }
+
     componentWillMount() {
         localStorage.getItem('datos') && this.setState({
             data: JSON.parse(localStorage.getItem('datos'))
@@ -399,41 +437,87 @@ class Main extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-
         localStorage.setItem('datos', JSON.stringify(nextState.data));
     }
 
     handleSubmit(event) {
-
         event.preventDefault();
         console.log("data", this.state.data)
         const json = this.state.data;
-
         console.log("json", json)
         fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
             method: 'POST',
             body: JSON.stringify(json),
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
             .then(function (resp) {
                 return resp.json();
             })
+
             .then((result) => {
-
-                this.setState({url: result.cardURL})
-
+                const cardURL = result.cardURL
+                this.setState({ url: cardURL })
             })
             .catch(function (error) {
                 console.log(error);
-            });;
-
+            });
     }
+
+
+    toggleHiddenDesing() {
+        this.setState({
+            isHiddenDesign: !this.state.isHiddenDesign
+        })
+        if (this.state.isHiddenDesign === true) {
+            this.setState({
+                collapsibleClassDesign: 'colapsable--visible',
+                collapsibleClassFill: '',
+                collapsibleClassShare: '',
+            })
+        } else {
+            this.setState({
+                collapsibleClassDesign: ''
+            })
+        }
+    }
+    toggleHiddenRellena() {
+        this.setState({
+            isHiddenFill: !this.state.isHiddenFill
+        })
+        if (this.state.isHiddenFill === true) {
+            this.setState({
+                collapsibleClassFill: 'colapsable--visible',
+                collapsibleClassShare: '',
+                collapsibleClassDesign: '',
+            })
+        } else {
+            this.setState({
+                collapsibleClassFill: ''
+            })
+        }
+    }
+    toggleHiddenComparte() {
+        this.setState({
+            isHiddenShare: !this.state.isHiddenShare
+        })
+        if (this.state.isHiddenShare === true) {
+            this.setState({
+                collapsibleClassShare: 'colapsable--visible',
+                collapsibleClassDesign: '',
+                collapsibleClassFill: '',
+            })
+        } else {
+            this.setState({
+                collapsibleClassShare: ''
+            })
+        }
+    }
+
 
     render() {
         const userInfo = this.state.data
-        console.log("URL", this.state)
         return (
             <main className="container-mediaqueries-preview">
                 <Preview
@@ -447,7 +531,7 @@ class Main extends Component {
                     photo={userInfo.photo}
                     skillsOnCard={userInfo.skills}
                     paletteClass={paletteClass[userInfo.palette]}
-                    typographyClass={fontClass[userInfo.typography]}/>
+                    typographyClass={fontClass[userInfo.typography]} />
                 <Formulario
                     onChangeRadioColor={this.handleRadioColor}
                     onChangeRadioTypography={this.handleRadioTypography}
@@ -460,9 +544,8 @@ class Main extends Component {
                     onInputPhoneChange={this.handlePhoneInput}
                     onInputGitChange={this.handleGithubInput}
                     onInputLinkedinChange={this.handleLinkedinInput}
-                    skillOptions={this.state.skillOptions}
+                    skillOptions={this.state.skillSelect}
                     fileInput={this.fileInput}
-                    skillOptions={this.state.skillOptions}
                     handleAbilitiesButton1={this.handleAbilitiesButton1}
                     handleAbilitiesButton2={this.handleAbilitiesButton2}
                     handleAbilitiesButton3={this.handleAbilitiesButton3}
@@ -476,7 +559,17 @@ class Main extends Component {
                     url={this.state.url}
                     twitterButtonHandler={this.handleTwitter}
                     twitterURL={this.state.twitter}
-                    />
+                    handleCollapsibleDesing={this.toggleHiddenDesing}
+                    handleCollapsibleRellena={this.toggleHiddenRellena}
+                    handleCollapsibleComparte={this.toggleHiddenComparte}
+                    collapsibleClassDesign={this.state.collapsibleClassDesign}
+                    collapsibleClassFill={this.state.collapsibleClassFill}
+                    collapsibleClassShare={this.state.collapsibleClassShare}
+                    isHiddenDesign={this.state.isHiddenDesign}
+                    isHiddenFill={this.state.isHiddenFill}
+                    isHiddenShare={this.state.isHiddenShare}
+
+                />
             </main>
 
         );
