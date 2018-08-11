@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
-import martirioPic from '../images/martirio.jpg';
+import Overflow from '../images/overflow.jpg';
 
 class Formulario extends Component {
 
     //handle button
 
-    // handleCreateCard() {
-    //     console.log('tarjeta creada')
-    // }
-
-    // handleTwitter() {
-    //     console.log('compartido en twitter')
-    // }
-    
+    handleCreateCard() {
+        console.log('tarjeta creada')
+    }
 
     render() {
+
         const {
+            onChangeRadioColor,
+            onChangeRadioTypography,
             userInfo,
             onInputNameChange,
             onInputJobChange,
@@ -36,7 +34,6 @@ class Formulario extends Component {
             buttonIcon1,
             buttonIcon2,
             buttonIcon3,
-            handleCollapsible,
             collapsibleClassDesign,
             collapsibleClassFill,
             collapsibleClassShare,
@@ -46,30 +43,37 @@ class Formulario extends Component {
             handleCollapsibleDesing,
             handleCollapsibleRellena,
             handleCollapsibleComparte,
+            onSubmitkCreateCard,
+            url,
+            twitterButtonHandler,
+            twitterURL,
         } = this.props;
+            console.log('twitter url form', twitterURL)
 
         return (
             <div className="container-izquierda">
-                <form className="form" action="/signup" method="post">
+                <form className="form" onSubmit={onSubmitkCreateCard}>
                     <Collapsable 
                     seccion={`DISEÑA`} 
                     icono={`far fa-object-ungroup`} 
                     handleCollapsible={handleCollapsibleDesing} 
                     collapsibleClass={collapsibleClassDesign} 
                     isHidden={isHiddenDesign}>
-                        <fieldset className="fieldset-colors">
-                            <div className="container-legend-label-input">
-                                <legend className="form__subtitle">COLORES</legend>
-                                <div className="container__input__labels">
-                                    <label className="container_input_div" htmlFor="form__subtitle__first-color">
-                                        <input
-                                            className="clikable local--palette radio-color"
-                                            data-donde="greenTarget"
-                                            id="form__subtitle__first-color"
-                                            type="radio"
-                                            value="1"
-                                            name="palette"
-                                            defaultChecked />
+                
+                 <fieldset className="fieldset-colors">
+                    <div className="container-legend-label-input">
+                        <legend className="form__subtitle">COLORES</legend>
+                            <div className="container__input__labels">
+                                <label className="container_input_div" htmlFor="form__subtitle__first-color">
+                                    <input
+                                        className="clikable local--palette radio-color"
+                                        data-donde="greenTarget"
+                                        id="form__subtitle__first-color"
+                                        type="radio"
+                                        value="1"
+                                        name="palette"
+                                        defaultChecked
+                                        onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="first-color__square1"></div>
@@ -84,7 +88,8 @@ class Formulario extends Component {
                                             id="form__subtitle__second-color"
                                             type="radio"
                                             value="2"
-                                            name="palette" />
+                                            name="palette"
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square">
                                             <div className="second-color__square1"></div>
@@ -99,7 +104,8 @@ class Formulario extends Component {
                                             id="form__subtitle__third-color"
                                             type="radio"
                                             value="3"
-                                            name="palette" />
+                                            name="palette"
+                                            onChange={onChangeRadioColor} />
                                         <span className="checkmark"></span>
                                         <div className="container__square group-square2">
                                             <div className="third-color__square1"></div>
@@ -124,11 +130,13 @@ class Formulario extends Component {
                                             id="form__subtitle__first-font"
                                             type="radio"
                                             value="1"
-                                            name="typography" />
+                                            name="typography"
+                                            defaultChecked
+                                            onChange={onChangeRadioTypography} />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Ubuntu
-                                    </div>
+                                        </div>
                                     </label>
                                     <label
                                         className="font2 container_input_font container_input_div"
@@ -140,24 +148,28 @@ class Formulario extends Component {
                                             type="radio"
                                             value="2"
                                             name="typography"
-                                            defaultChecked />
+                                            onChange={onChangeRadioTypography}
+                                        />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Comic Sans
-                                    </div>
+                                        </div>
                                     </label>
-                                    <label className="font3 container_input_div" htmlFor="form__subtitle__third-font">
+                                    <label
+                                        className="font3 container_input_div"
+                                        htmlFor="form__subtitle__third-font">
                                         <input
                                             className="clikable local--typography radio-font"
                                             data-donde="montFont"
                                             id="form__subtitle__third-font"
                                             type="radio"
                                             value="3"
-                                            name="typography" />
+                                            name="typography"
+                                            onChange={onChangeRadioTypography} />
                                         <span className="checkmark"></span>
                                         <div className="container__font">
                                             Montserrat
-                                    </div>
+                                        </div>
                                     </label>
                                 </div>
                             </div>
@@ -177,20 +189,20 @@ class Formulario extends Component {
                                 id="nombre"
                                 type="text"
                                 name="name"
-                                placeholder="Ej. Martirio"
+                                placeholder="Ej. Olatz"
                                 maxLength="19"
                                 value={userInfo.name}
-                                onChange={onInputNameChange} />
+                                onChange={onInputNameChange}/>
                             <label className="form__label" htmlFor="puesto">Puesto</label>
                             <input
                                 className="form__input form__input--puesto local--input--job"
                                 id="puesto"
                                 type="text"
                                 name="job"
-                                placeholder="Ej. Reina de la canción"
+                                placeholder="Ej. Realfooder"
                                 maxLength="22"
                                 value={userInfo.job}
-                                onChange={onInputJobChange} />
+                                onChange={onInputJobChange}/>
                             <label className="form__label">Imagen de perfil</label>
 
                             <div className="form__container--imagen">
@@ -205,12 +217,12 @@ class Formulario extends Component {
                                         id="img-selector"
                                         className="action__hiddenField"
                                         ref={this.props.fileInput}
-                                        onChange={onInputImageChange} />
+                                        onChange={onInputImageChange}/>
                                 </div>
                                 <div className="profile-image contenedor--imagen">
                                     <img
                                         className="profile-image__item"
-                                        src={userInfo.image || martirioPic}
+                                        src={userInfo.image || Overflow}
                                         alt="Foto de perfil" />
                                 </div>
                             </div>
@@ -220,9 +232,9 @@ class Formulario extends Component {
                                 id="email"
                                 type="mail"
                                 name="email"
-                                placeholder="Ej. reinadelacancion@ole.es"
+                                placeholder="Ej. sansebastianmola@soyvasca.com"
                                 value={userInfo.email}
-                                onChange={onInputEmailChange} />
+                                onChange={onInputEmailChange}/>
                             <label className="form__label" htmlFor="telefono">Teléfono</label>
                             <input
                                 className="form__input inputhref form__telefono local--input--phone"
@@ -231,25 +243,25 @@ class Formulario extends Component {
                                 name="phone"
                                 placeholder="Ej. 982938437"
                                 value={userInfo.phone}
-                                onChange={onInputPhoneChange} />
+                                onChange={onInputPhoneChange}/>
                             <label className="form__label " htmlFor="linkedin">Linkedin</label>
                             <input
                                 className="form__input inputhref form__linkedin local--input--linkedin"
                                 id="linkedin"
                                 type="text"
                                 name="linkedin"
-                                placeholder="Ej. martirio.reina"
+                                placeholder="Ej. olatz.reina"
                                 value={userInfo.linkedin}
-                                onChange={onInputLinkedinChange} />
+                                onChange={onInputLinkedinChange}/>
                             <label className="form__label" htmlFor="github">Github</label>
                             <input
                                 className="form__input inputhref form__github local--input--github"
                                 id="github"
                                 type="text"
                                 name="github"
-                                placeholder="Ej. martirio-reina"
+                                placeholder="Ej. olatz-reina"
                                 value={userInfo.github}
-                                onChange={onInputGitChange} />
+                                onChange={onInputGitChange}/>
 
                             <div className="form__container--habilidades">
                                 <label className="form__label" htmlFor="habilidades">Habilidades (máximo 3)</label>
@@ -264,8 +276,7 @@ class Formulario extends Component {
                                     onChangeAbilitySelect={handleAbilitiesSelect}
                                     buttonIcon1={buttonIcon1}
                                     buttonIcon2={buttonIcon2}
-                                    buttonIcon3={buttonIcon3}
-                                />
+                                    buttonIcon3={buttonIcon3}/>
                             </div>
                         </div>
                     </Collapsable>
@@ -277,18 +288,18 @@ class Formulario extends Component {
                     isHidden={isHiddenShare}
                     >
                         <div className="contenedor-boton">
-                            <a
-                                href="#"
-                                className="makecard submit"
-                                id="submit"
-                                onClick={this.handleCreateCard}>&nbsp;&nbsp;CREAR TARJETA
-                            <i className="far fa-address-card"></i>
-                            </a>
+                            <button className="makecard submit" id="submit" type="submit">CREAR TARJETA<i className="far fa-address-card"></i>
+                            </button>
+                            <a href={url} target="_blank">{url}</a>
                             <span className="rectangl2"></span>
                         </div>
                         <div className="contenedor-twitter">
-                            <h2 className="titletarjeta response parraphtarjeta"></h2>
-                            <a href="" className="maketwitter" target="_blank" onClick={this.handleTwitter}>&nbsp;&nbsp;Compartir en Twitter
+                            <a 
+                            href={twitterURL} 
+                            className="maketwitter" 
+                            target="_blank" 
+                            onClick={twitterButtonHandler}
+                            >&nbsp;&nbsp;Compartir en Twitter
                             <i className="fab fa-twitter"></i>
                             </a>
                             <span className="rectangl2"></span>
@@ -301,13 +312,13 @@ class Formulario extends Component {
 }
 
 Formulario.propTypes = {
-    userInfo: PropTypes.string,
-    onInputNameChange: PropTypes.string,
-    onInputJobChange: PropTypes.string,
-    onInputEmailChange: PropTypes.string,
-    onInputPhoneChange: PropTypes.number,
-    onInputGitChange: PropTypes.string,
-    onInputLinkedinChange: PropTypes.string,
+    userInfo: PropTypes.object,
+    onInputNameChange: PropTypes.func,
+    onInputJobChange: PropTypes.func,
+    onInputEmailChange: PropTypes.func,
+    onInputPhoneChange: PropTypes.func,
+    onInputGitChange: PropTypes.func,
+    onInputLinkedinChange: PropTypes.func,
     // nombre de los selects:PropTypes.array
 };
 

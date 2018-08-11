@@ -30,8 +30,11 @@
 
 .container-izquierda {
     @media all and (min-width: 768px) {
-        margin-left: 40px;
+        margin: 0;
         width: 50%;
+    }
+    @media all and (min-width: 1200px) {
+        margin-left: 40px;
     }
 }
 
@@ -58,12 +61,10 @@
 
 .preview-container {
     border: 0;
-    background-image: url('../images/fondo-dots2.svg');
-    background-size: cover;
+    background: linear-gradient(to bottom right, #000066, #ccffff);
     display: flex;
     justify-content: center;
     @media all and (min-width: 768px) {
-        width: 329px;
         min-height: 460px;
         justify-content: flex-start;
     }
@@ -172,6 +173,7 @@
 .changeImagePreview {
     width: 100%;
     display: block;
+    object-fit: cover;
 }
 
 .footer-preview__container {
