@@ -428,6 +428,7 @@ class Main extends Component {
             buttonIcon3: '+'
         })
     }
+
     componentWillMount() {
         localStorage.getItem('datos') && this.setState({
             data: JSON.parse(localStorage.getItem('datos'))
@@ -436,15 +437,14 @@ class Main extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-
         localStorage.setItem('datos', JSON.stringify(nextState.data));
     }
 
     handleSubmit(event) {
-
         event.preventDefault();
+        console.log("data", this.state.data)
         const json = this.state.data;
-
+        console.log("json", json)
         fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
             method: 'POST',
             body: JSON.stringify(json),
@@ -455,16 +455,16 @@ class Main extends Component {
             .then(function (resp) {
                 return resp.json();
             })
+
             .then((result) => {
-
-                this.setState({ url: result.cardURL })
-
+                const cardURL = result.cardURL
+                this.setState({ url: cardURL })
             })
             .catch(function (error) {
                 console.log(error);
-            });;
-
+            });
     }
+
 
     toggleHiddenDesing() {
         this.setState({
