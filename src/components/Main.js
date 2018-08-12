@@ -123,6 +123,28 @@ class Main extends Component {
             .toggleHiddenComparte
             .bind(this);
     }
+
+    componentWillMount() {
+        localStorage.getItem('datos') && this.setState({
+            data: JSON.parse(localStorage.getItem('datos'))
+
+        })
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        localStorage.setItem('datos', JSON.stringify(nextState.data));
+    }
+
+    componentDidMount() {
+        fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
+            .then((response) => response.json())
+            .then((jsonskills) => {
+                this.setState({
+                    skillOptions: jsonskills.skills
+                }, this.pushSelect);
+            });
+    }
+
     handleRadioColor(event) {
         const { value } = event.target;
         this.setState((prevState) => ({
@@ -131,7 +153,6 @@ class Main extends Component {
                 palette: value
             }
         }))
-
     }
 
     handleRadioTypography(event) {
@@ -142,16 +163,6 @@ class Main extends Component {
                 typography: value
             }
         }))
-
-    }
-
-    handleClickImage(event) {
-        const fr = new FileReader();
-        fr.addEventListener('load', () => {
-            this.setState({ photo: fr.result });
-        });
-        fr.readAsDataURL(event.target.files[0]);
-
     }
 
     // handle rellena inputs
@@ -221,7 +232,6 @@ class Main extends Component {
 
     handleClickImage(event) {
         const fr = new FileReader();
-
         fr.addEventListener('load', () => {
             this.setState({
                 data: {
@@ -230,21 +240,11 @@ class Main extends Component {
                 }
             })
         })
-
         fr.readAsDataURL(event.target.files[0]);
-
     }
 
     //fetch to get skills
-    componentDidMount() {
-        fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
-            .then((response) => response.json())
-            .then((jsonskills) => {
-                this.setState({
-                    skillOptions: jsonskills.skills
-                }, this.pushSelect);
-            });
-    }
+
 
     pushSelect() {
         const copyArray = [...this.state.skillOptions]
@@ -279,11 +279,8 @@ class Main extends Component {
         event.preventDefault();
         // lógica para cambiar el signo del botón
         this.setState((prevState, props) => ({
-            buttonIcon1: (prevState.buttonIcon1 === '+')
-                ? '-'
-                : '+'
+            buttonIcon1: (prevState.buttonIcon1 === '+') ? '-' : '+'
         }));
-        // lógica para añadir o quitar skills de la tarjeta
         if (this.state.buttonIcon1 === '+') {
             const array = [...this.state.data.skills]
             this.setState({
@@ -310,9 +307,7 @@ class Main extends Component {
         event.preventDefault();
         // lógica para cambiar el signo del botón
         this.setState((prevState, props) => ({
-            buttonIcon2: (prevState.buttonIcon2 === '+')
-                ? '-'
-                : '+'
+            buttonIcon2: (prevState.buttonIcon2 === '+') ? '-' : '+'
         }));
         // lógica para añadir o quitar skills de la tarjeta
         if (this.state.buttonIcon2 === '+') {
@@ -339,9 +334,7 @@ class Main extends Component {
         event.preventDefault();
         // lógica para cambiar el signo del botón
         this.setState((prevState, props) => ({
-            buttonIcon3: (prevState.buttonIcon3 === '+')
-                ? '-'
-                : '+'
+            buttonIcon3: (prevState.buttonIcon3 === '+') ? '-' : '+'
         }));
         // lógica para añadir o quitar skills de la tarjeta
         if (this.state.buttonIcon3 === '+') {
@@ -371,37 +364,93 @@ class Main extends Component {
         })
     }
 
-    handleReset(event) {
-        event.preventDefault()
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log("data", this.state.data)
+        const json = this.state.data;
+        console.log("json", json)
+        fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
+            method: 'POST',
+            body: JSON.stringify(json),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(function (resp) {
+                return resp.json();
+            })
 
+            .then((result) => {
+                const cardURL = result.cardURL
+                this.setState({ url: cardURL })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    toggleHiddenDesing() {
+        const collapsibleStatus = !this.state.isHiddenDesign
         this.setState({
-            data: {
-                name: '',
-                job: '',
-                image: '',
-                email: '',
-                phone: '',
-                github: '',
-                linkedin: '',
-                palette: '1',
-                typography: ''
-            },
-
-            optionSelected1: '',
-            optionSelected2: '',
-            optionSelected3: '',
-            skillsOnCard: ['HTML', 'CSS', 'JavaScript'],
-            buttonIcon1: '+',
-            buttonIcon2: '+',
-            buttonIcon3: '+',
-        })
-    }
-    componentWillMount() {
-        localStorage.getItem('datos') && this.setState({
-            data: JSON.parse(localStorage.getItem('datos'))
-        })
+            isHiddenDesign: collapsibleStatus
+        }, () => {
+            const collapsibleStatus = this.state.isHiddenDesign
+            if (collapsibleStatus === true) {
+                this.setState({
+                    collapsibleClassDesign: 'colapsable--visible',
+                    collapsibleClassFill: '',
+                    collapsibleClassShare: '',
+                })
+            } else {
+                this.setState({
+                    collapsibleClassDesign: ''
+                })
+            }
+        }
+        )
     }
 
+    toggleHiddenRellena() {
+        const collapsibleStatus = !this.state.isHiddenFill
+        this.setState({
+            isHiddenFill: collapsibleStatus
+        }, () => {
+            const collapsibleStatus = this.state.isHiddenFill
+            if (collapsibleStatus === true) {
+                this.setState({
+                    collapsibleClassFill: 'colapsable--visible',
+                    collapsibleClassShare: '',
+                    collapsibleClassDesign: '',
+                })
+            } else {
+                this.setState({
+                    collapsibleClassFill: ''
+                })
+            }
+        }
+        )
+    }
+
+    toggleHiddenComparte() {
+        const collapsibleStatus = !this.state.isHiddenShare
+        this.setState({
+            isHiddenShare: collapsibleStatus
+        }, () => {
+            const collapsibleStatus = this.state.isHiddenShare
+            if (collapsibleStatus === true) {
+                this.setState({
+                    collapsibleClassShare: 'colapsable--visible',
+                    collapsibleClassDesign: '',
+                    collapsibleClassFill: '',
+                })
+            } else {
+                this.setState({
+                    collapsibleClassShare: ''
+                })
+            }
+        }
+        )
+    }
 
     handleReset(event) {
         event.preventDefault()
@@ -428,93 +477,6 @@ class Main extends Component {
             buttonIcon3: '+'
         })
     }
-
-    componentWillMount() {
-        localStorage.getItem('datos') && this.setState({
-            data: JSON.parse(localStorage.getItem('datos'))
-
-        })
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        localStorage.setItem('datos', JSON.stringify(nextState.data));
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        console.log("data", this.state.data)
-        const json = this.state.data;
-        console.log("json", json)
-        fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
-            method: 'POST',
-            body: JSON.stringify(json),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(function (resp) {
-                return resp.json();
-            })
-
-            .then((result) => {
-                const cardURL = result.cardURL
-                this.setState({ url: cardURL })
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-
-
-    toggleHiddenDesing() {
-        this.setState({
-            isHiddenDesign: !this.state.isHiddenDesign
-        })
-        if (this.state.isHiddenDesign === true) {
-            this.setState({
-                collapsibleClassDesign: 'colapsable--visible',
-                collapsibleClassFill: '',
-                collapsibleClassShare: '',
-            })
-        } else {
-            this.setState({
-                collapsibleClassDesign: ''
-            })
-        }
-    }
-    toggleHiddenRellena() {
-        this.setState({
-            isHiddenFill: !this.state.isHiddenFill
-        })
-        if (this.state.isHiddenFill === true) {
-            this.setState({
-                collapsibleClassFill: 'colapsable--visible',
-                collapsibleClassShare: '',
-                collapsibleClassDesign: '',
-            })
-        } else {
-            this.setState({
-                collapsibleClassFill: ''
-            })
-        }
-    }
-    toggleHiddenComparte() {
-        this.setState({
-            isHiddenShare: !this.state.isHiddenShare
-        })
-        if (this.state.isHiddenShare === true) {
-            this.setState({
-                collapsibleClassShare: 'colapsable--visible',
-                collapsibleClassDesign: '',
-                collapsibleClassFill: '',
-            })
-        } else {
-            this.setState({
-                collapsibleClassShare: ''
-            })
-        }
-    }
-
 
     render() {
         const userInfo = this.state.data
