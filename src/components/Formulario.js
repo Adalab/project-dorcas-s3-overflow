@@ -6,7 +6,6 @@ import Overflow from '../images/overflow.jpg';
 
 class Formulario extends Component {
     render() {
-
         const {
             onChangeRadioColor,
             onChangeRadioTypography,
@@ -48,12 +47,12 @@ class Formulario extends Component {
             <div className="container-izquierda">
                 <form className="form" onSubmit={onSubmitkCreateCard}>
                     <Collapsable
-                        seccion={`DISEÑA`}
+                        seccion='DISEÑA'
                         icono={`far fa-object-ungroup`}
                         handleCollapsible={handleCollapsibleDesing}
                         collapsibleClass={collapsibleClassDesign}
-                        isHidden={isHiddenDesign}>
-
+                        isHidden={isHiddenDesign}
+                    >
                         <fieldset className="fieldset-colors">
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">COLORES</legend>
@@ -111,7 +110,7 @@ class Formulario extends Component {
                             </div>
                         </fieldset>
 
-                        <div className="fieldset-font">
+                        <fieldset className="fieldset-font">
                             <div className="container-legend-label-input">
                                 <legend className="form__subtitle">FUENTES</legend>
                                 <div className="container__input__labels ">
@@ -167,7 +166,7 @@ class Formulario extends Component {
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </fieldset>
                     </Collapsable>
                     <Collapsable
                         seccion={`RELLENA`}
@@ -198,7 +197,6 @@ class Formulario extends Component {
                                 value={userInfo.job}
                                 onChange={onInputJobChange} />
                             <label className="form__label">Imagen de perfil</label>
-
                             <div className="form__container--imagen">
                                 <div className="action form__container--imagen">
                                     <button

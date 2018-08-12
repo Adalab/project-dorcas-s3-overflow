@@ -6,9 +6,9 @@ import Socialmedia from './Socialmedia.js';
 
 class Preview extends Component {
     render() {
-        const { 
+        const {
             name,
-            job, 
+            job,
             email,
             phone,
             github,
@@ -21,10 +21,12 @@ class Preview extends Component {
         } = this.props
 
         return (
-        
             <div className={`preview-container ${paletteClass} ${typographyClass}`}>
                 <div className="margin-preview">
-                    <div className="button-reset__container" onClick={OnResetButton}>
+                    <div
+                        className="button-reset__container"
+                        onClick={OnResetButton}
+                    >
                         <a className="button-reset__link button-reset__title" href="#">
                             <i className=" far fa-trash-alt icono-basura">RESET</i>
                         </a>
@@ -40,25 +42,25 @@ class Preview extends Component {
                             </div>
                         </div>
                         <div className="photo-container">
-                            <img className="changeImagePreview" src={photo ||Overflow} alt="" />
+                            <img className="changeImagePreview" src={photo || Overflow} alt="" />
                         </div>
                         <div className="footer-preview__container">
                             <div className="logos-container">
-                                <Socialmedia 
-                                url={`tel: +34 ${phone}`}
-                                icon={`fas fa-mobile-alt logo-preview`}
+                                <Socialmedia
+                                    url={`tel: +34 ${phone}`}
+                                    icon={`fas fa-mobile-alt logo-preview`}
                                 />
-                                <Socialmedia 
-                                url={`mailto:${email}`}
-                                icon={`far fa-envelope logo-preview`}
+                                <Socialmedia
+                                    url={`mailto:${email}`}
+                                    icon={`far fa-envelope logo-preview`}
                                 />
-                                <Socialmedia 
-                                url={`https://www.linkedin.com/${linkedin}`}
-                                icon={`fab fa-linkedin-in logo-preview`}
+                                <Socialmedia
+                                    url={`https://www.linkedin.com/${linkedin}`}
+                                    icon={`fab fa-linkedin-in logo-preview`}
                                 />
-                                <Socialmedia 
-                                url={`https://github.com/${github}`}
-                                icon={`fab fa-github-alt logo-preview`}
+                                <Socialmedia
+                                    url={`https://github.com/${github}`}
+                                    icon={`fab fa-github-alt logo-preview`}
                                 />
                             </div>
                             <div className="etiquetas-habilidades-container">
@@ -68,7 +70,6 @@ class Preview extends Component {
                     </div>
                 </div>
             </div>
-
         );
     }
 }

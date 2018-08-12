@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import logo from '../images/awesome.svg'
 
 class LandingMain extends Component {
-    
     render() {
         return (
-
             <div className="landingbox">
                 <img className="logo" src={logo} alt="Aquí había una imagen" />
                 <h1 className="maintitle">Crea tu tarjeta de visita</h1>
@@ -27,12 +25,10 @@ class LandingMain extends Component {
                         <p className="minitext" >Comparte</p>
                     </span>
                 </div>
-
                 <Link className="startbutt" to='/Page'>
                     COMENZAR
                 </Link>
             </div>
-
         );
     }
 }

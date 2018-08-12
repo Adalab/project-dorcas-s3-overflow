@@ -6,9 +6,7 @@ import './Page.css';
 
 
 class Page extends Component {
-
   render() {
-    
     return (
       <Fragment>
         <Header />
