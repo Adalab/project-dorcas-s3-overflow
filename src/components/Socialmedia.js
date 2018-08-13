@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 class Socialmedia extends Component {
     render() {
@@ -19,5 +20,10 @@ class Socialmedia extends Component {
         );
     }
 }
+
+Socialmedia.propTypes = {
+    url: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,   
+};
 
 export default Socialmedia;
