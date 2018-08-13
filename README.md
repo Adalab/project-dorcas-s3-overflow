@@ -12,21 +12,21 @@ We have been working to reach a milestone every week.
 
 - First week:
 
-  >  
+  >  During the first week we created the first version of our project with React. We refactorized the code with ES6, we defined the structure of the components with React and we wrote the props.
 
   - Second week:
 
-  >  
+  >  We included the states and events of React. We worked on the form, getting the information from the form and writing it in the preview of the card.
 
   - Third week:
 
-  > 
+  > We worked on the form. We implemented the lifting to move the information between the different components. We continued working with the events and the states of React.
 
     - Fourth week:
 
-  >  
+  >  We did the local storage of the  project and we did the single page application. We finished  the skills of the form.
 
 
     - Fifth week:
 
-  > 
+  > We cleaned the code and prepare the final presentation.
