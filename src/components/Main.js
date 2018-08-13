@@ -385,7 +385,11 @@ class Main extends Component {
                 const cardURL = result.cardURL
                 this.setState({ url: cardURL })
             })
-            .then()
+            .then(() => {
+                this.setState ({
+                   twitterClass: "" 
+                })
+            })
             .catch(function (error) {
                 console.log(error);
             });
