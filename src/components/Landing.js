@@ -7,7 +7,7 @@ class Landing extends Component {
     render() {
 
         return (
-            <section class="allboxes">
+            <section className="allboxes">
                 <LandingMain />
                 <Footer />
             </section>
