@@ -1,4 +1,4 @@
-# Sprint 2: OVERflow
+# Sprint 3: OVERflow
 We are the OVERflow team, composed by Olatz, Valeria, Esther and Raquel.
 
 This is our third project in Adalab. On this project we have been working with the code of our classmates. The objective of this project is to transform the project of the second sprint, made with Javascript Vanilla, to React. 
