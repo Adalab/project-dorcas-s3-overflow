@@ -10,6 +10,8 @@ body {
 }
 
 .allboxes {
+  display: flex;
+  flex-direction: column;
   background-color: $color-background;
   min-height: 100vh;
 }
