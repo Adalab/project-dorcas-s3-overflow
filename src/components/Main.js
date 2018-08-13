@@ -507,6 +507,7 @@ class Main extends Component {
                     onInputLinkedinChange={this.handleLinkedinInput}
                     skillOptions={this.state.skillSelect}
                     fileInput={this.fileInput}
+                    photo={userInfo.photo}
                     handleAbilitiesButton1={this.handleAbilitiesButton1}
                     handleAbilitiesButton2={this.handleAbilitiesButton2}
                     handleAbilitiesButton3={this.handleAbilitiesButton3}

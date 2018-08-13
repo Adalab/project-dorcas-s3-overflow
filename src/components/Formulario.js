@@ -41,6 +41,8 @@ class Formulario extends Component {
             url,
             twitterButtonHandler,
             twitterURL,
+            photo,
+            fileInput,
         } = this.props;
 
         return (
@@ -208,13 +210,13 @@ class Formulario extends Component {
                                         name="photo"
                                         id="img-selector"
                                         className="action__hiddenField"
-                                        ref={this.props.fileInput}
+                                        ref={fileInput}
                                         onChange={onInputImageChange} />
                                 </div>
                                 <div className="profile-image contenedor--imagen">
                                     <img
                                         className="profile-image__item"
-                                        src={userInfo.image || Overflow}
+                                        src={photo || Overflow}
                                         alt="Foto de perfil" />
                                 </div>
                             </div>
