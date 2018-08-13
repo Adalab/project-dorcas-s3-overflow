@@ -538,19 +538,6 @@ class Main extends Component {
     }
 }
 
-Main.propTypes = {
-    name: PropTypes.string,
-    job: PropTypes.string,
-    photo: PropTypes.string,
-    email: PropTypes.string,
-    phone: PropTypes.string,
-    github: PropTypes.string,
-    linkedin: PropTypes.string,
-    skills: PropTypes.array,
-    palette: PropTypes.string,
-    typography: PropTypes.string,
-    skillOptions: PropTypes.array,
-    // nombre de los selects:PropTypes.array
-};
+
 
 export default Main;
