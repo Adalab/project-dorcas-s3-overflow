@@ -10,13 +10,12 @@ body {
 }
 
 .allboxes {
-  margin-left: auto;
-  margin-right: auto;
   background-color: $color-background;
   min-height: 100vh;
 }
 
 .landingbox {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;

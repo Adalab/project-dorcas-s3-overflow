@@ -11,7 +11,6 @@ class Landing extends Component {
                 <LandingMain />
                 <Footer />
             </section>
-
         );
     }
 }
