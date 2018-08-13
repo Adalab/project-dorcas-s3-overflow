@@ -43,6 +43,7 @@ class Formulario extends Component {
             twitterURL,
             photo,
             fileInput,
+            twitterClass
         } = this.props;
 
         return (
@@ -289,7 +290,7 @@ class Formulario extends Component {
                             <a href={url} target="_blank">{url}</a>
                             <span className="rectangl2"></span>
                         </div>
-                        <div className="contenedor-twitter">
+                        <div className= {`contenedor-twitter ${twitterClass}`}>
                             <a
                                 href={twitterURL}
                                 className="maketwitter"
@@ -344,6 +345,7 @@ Formulario.propTypes = {
             twitterURL: PropTypes.string.isRequired,
             photo: PropTypes.string.isRequired,
             fileInput: PropTypes.func.isRequired,
+            twitterClass:PropTypes.string.isRequired,
 };
 
 export default Formulario;

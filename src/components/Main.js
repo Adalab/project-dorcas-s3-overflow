@@ -51,7 +51,9 @@ class Main extends Component {
             isHiddenFill: false,
             isHiddenShare: false,
 
+            twitterClass: 'action__hiddenField',
             twitter: '',
+
         }
 
         // rellena inputs binds
@@ -383,6 +385,7 @@ class Main extends Component {
                 const cardURL = result.cardURL
                 this.setState({ url: cardURL })
             })
+            .then()
             .catch(function (error) {
                 console.log(error);
             });
@@ -530,6 +533,7 @@ class Main extends Component {
                     isHiddenDesign={this.state.isHiddenDesign}
                     isHiddenFill={this.state.isHiddenFill}
                     isHiddenShare={this.state.isHiddenShare}
+                    twitterClass= {this.state.twitterClass}
 
                 />
             </main>
