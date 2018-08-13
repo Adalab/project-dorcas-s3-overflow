@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Overflow from '../images/overflow.jpg';
+import Overflow from '../images/overflow-group.jpeg';
 import Skills from './Skills.js';
 import Socialmedia from './Socialmedia.js';
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
-import Overflow from '../images/overflow.jpg';
+import Overflow from '../images/overflow-group.jpeg';
 
 class Formulario extends Component {
     render() {
@@ -43,6 +43,7 @@ class Formulario extends Component {
             twitterURL,
             photo,
             fileInput,
+            twitterClass
         } = this.props;
 
         return (
@@ -289,7 +290,7 @@ class Formulario extends Component {
                             <a href={url} target="_blank">{url}</a>
                             <span className="rectangl2"></span>
                         </div>
-                        <div className="contenedor-twitter">
+                        <div className={`contenedor-twitter ${twitterClass}`}>
                             <a
                                 href={twitterURL}
                                 className="maketwitter"
@@ -308,14 +309,43 @@ class Formulario extends Component {
 }
 
 Formulario.propTypes = {
-    userInfo: PropTypes.object,
-    onInputNameChange: PropTypes.func,
-    onInputJobChange: PropTypes.func,
-    onInputEmailChange: PropTypes.func,
-    onInputPhoneChange: PropTypes.func,
-    onInputGitChange: PropTypes.func,
-    onInputLinkedinChange: PropTypes.func,
-    // nombre de los selects:PropTypes.array
+    onChangeRadioColor: PropTypes.func.isRequired,
+    onChangeRadioTypography: PropTypes.func.isRequired,
+    userInfo: PropTypes.object.isRequired,
+    onInputNameChange: PropTypes.func.isRequired,
+    onInputJobChange: PropTypes.func.isRequired,
+    onInputEmailChange: PropTypes.func.isRequired,
+    onInputPhoneChange: PropTypes.func.isRequired,
+    onInputGitChange: PropTypes.func.isRequired,
+    onInputLinkedinChange: PropTypes.func.isRequired,
+    onInputImageClick: PropTypes.func.isRequired,
+    onInputImageChange: PropTypes.func.isRequired,
+    skillOptions: PropTypes.array.isRequired,
+    handleAbilitiesButton1: PropTypes.func.isRequired,
+    handleAbilitiesButton2: PropTypes.func.isRequired,
+    handleAbilitiesButton3: PropTypes.func.isRequired,
+    handleAbilitiesSelect1: PropTypes.func.isRequired,
+    handleAbilitiesSelect2: PropTypes.func.isRequired,
+    handleAbilitiesSelect3: PropTypes.func.isRequired,
+    buttonIcon1: PropTypes.string.isRequired,
+    buttonIcon2: PropTypes.string.isRequired,
+    buttonIcon3: PropTypes.string.isRequired,
+    collapsibleClassDesign: PropTypes.string.isRequired,
+    collapsibleClassFill: PropTypes.string.isRequired,
+    collapsibleClassShare: PropTypes.string.isRequired,
+    isHiddenDesign: PropTypes.bool.isRequired,
+    isHiddenFill: PropTypes.bool.isRequired,
+    isHiddenShare: PropTypes.bool.isRequired,
+    handleCollapsibleDesing: PropTypes.func.isRequired,
+    handleCollapsibleRellena: PropTypes.func.isRequired,
+    handleCollapsibleComparte: PropTypes.func.isRequired,
+    onSubmitkCreateCard: PropTypes.func.isRequired,
+    url: PropTypes.string.isRequired,
+    twitterButtonHandler: PropTypes.func.isRequired,
+    twitterURL: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+    fileInput: PropTypes.func.isRequired,
+    twitterClass: PropTypes.string.isRequired,
 };
 
 export default Formulario;

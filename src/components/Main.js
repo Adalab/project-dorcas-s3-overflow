@@ -51,7 +51,9 @@ class Main extends Component {
             isHiddenFill: false,
             isHiddenShare: false,
 
+            twitterClass: 'action__hiddenField',
             twitter: '',
+
         }
 
         // rellena inputs binds
@@ -126,7 +128,6 @@ class Main extends Component {
     componentWillMount() {
         localStorage.getItem('datos') && this.setState({
             data: JSON.parse(localStorage.getItem('datos'))
-
         })
     }
 
@@ -383,6 +384,11 @@ class Main extends Component {
                 const cardURL = result.cardURL
                 this.setState({ url: cardURL })
             })
+            .then(() => {
+                this.setState ({
+                   twitterClass: "" 
+                })
+            })
             .catch(function (error) {
                 console.log(error);
             });
@@ -530,6 +536,7 @@ class Main extends Component {
                     isHiddenDesign={this.state.isHiddenDesign}
                     isHiddenFill={this.state.isHiddenFill}
                     isHiddenShare={this.state.isHiddenShare}
+                    twitterClass= {this.state.twitterClass}
 
                 />
             </main>
@@ -538,19 +545,6 @@ class Main extends Component {
     }
 }
 
-Main.propTypes = {
-    name: PropTypes.string,
-    job: PropTypes.string,
-    photo: PropTypes.string,
-    email: PropTypes.string,
-    phone: PropTypes.string,
-    github: PropTypes.string,
-    linkedin: PropTypes.string,
-    skills: PropTypes.array,
-    palette: PropTypes.string,
-    typography: PropTypes.string,
-    skillOptions: PropTypes.array,
-    // nombre de los selects:PropTypes.array
-};
+
 
 export default Main;
