@@ -474,7 +474,6 @@ class Main extends Component {
             },
             url: '',
 
-            skillOptions: [],
             skillSelect: [],
             optionSelected1: '',
             optionSelected2: '',
