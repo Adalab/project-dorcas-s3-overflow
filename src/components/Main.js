@@ -53,7 +53,6 @@ class Main extends Component {
 
             twitterClass: 'action__hiddenField',
             twitter: '',
-
         }
 
         // rellena inputs binds
@@ -385,8 +384,8 @@ class Main extends Component {
                 this.setState({ url: cardURL })
             })
             .then(() => {
-                this.setState ({
-                   twitterClass: "" 
+                this.setState({
+                    twitterClass: ""
                 })
             })
             .catch(function (error) {
@@ -473,13 +472,26 @@ class Main extends Component {
                 typography: '',
                 skills: ['HTML', 'CSS', 'JavaScript']
             },
+            url: '',
 
+            skillOptions: [],
+            skillSelect: [],
             optionSelected1: '',
             optionSelected2: '',
             optionSelected3: '',
             buttonIcon1: '+',
             buttonIcon2: '+',
-            buttonIcon3: '+'
+            buttonIcon3: '+',
+
+            collapsibleClassDesign: 'colapsable--visible',
+            collapsibleClassFill: null,
+            collapsibleClassShare: null,
+            isHiddenDesign: true,
+            isHiddenFill: false,
+            isHiddenShare: false,
+
+            twitterClass: 'action__hiddenField',
+            twitter: '',
         })
     }
 
@@ -536,7 +548,7 @@ class Main extends Component {
                     isHiddenDesign={this.state.isHiddenDesign}
                     isHiddenFill={this.state.isHiddenFill}
                     isHiddenShare={this.state.isHiddenShare}
-                    twitterClass= {this.state.twitterClass}
+                    twitterClass={this.state.twitterClass}
 
                 />
             </main>
