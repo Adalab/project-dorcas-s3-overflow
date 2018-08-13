@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Collapsable from './Collapsable';
 import Select from './Select';
-import Overflow from '../images/overflow.jpg';
+import Overflow from '../images/overflow-group.jpeg';
 
 class Formulario extends Component {
     render() {
