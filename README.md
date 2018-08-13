@@ -29,4 +29,4 @@ We have been working to reach a milestone every week.
 
 - Fifth week:
 
-  > We cleaned the code, check that all the parts of the projects were working good and prepare the final presentation.
+  > We cleaned the code, checked that all the parts of the projects were working good and prepare the final presentation.
