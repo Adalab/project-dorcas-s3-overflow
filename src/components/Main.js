@@ -126,7 +126,6 @@ class Main extends Component {
     componentWillMount() {
         localStorage.getItem('datos') && this.setState({
             data: JSON.parse(localStorage.getItem('datos'))
-
         })
     }
 
